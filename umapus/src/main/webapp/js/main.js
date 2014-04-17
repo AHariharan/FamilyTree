@@ -152,6 +152,26 @@ var Account = function() {
     	if(self.loginValidation())
     	{
     		
+    		var username= "arun_nh@yahoo.com";
+    		var passwd = "testpwd";
+    		
+    		var formdata = {
+    				username : username,
+    				passwd : passwd
+    		}
+    		var url = "/login";
+    		$.ajax({
+				type : "POST",
+				url : url,
+				contentType : "application/json",
+				data : JSON.stringify(formdata),
+				success : function(data, textStatus, jqXHR) {
+					alert("Successful" + data);
+				},
+				error : function(data) {
+					alert("Sign up failure" + data);
+				}
+				
     	}
     };
      
