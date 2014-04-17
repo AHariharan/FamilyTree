@@ -16,12 +16,12 @@ InitialContextFactory {
 
 
     public Object getObjectInstance( Object obj, Name name, Context
-nameCtx, Hashtable environment)
+nameCtx, Hashtable<?,?> environment)
     throws NamingException {
 
-        Hashtable env = new Hashtable();
+        Hashtable<Object,Object> env = new Hashtable<Object,Object>();
         Reference ref = (Reference) obj;
-        Enumeration addrs = ref.getAll();
+        Enumeration<RefAddr> addrs = ref.getAll();
 
         while (addrs.hasMoreElements()) {
             RefAddr addr = (RefAddr) addrs.nextElement();
@@ -50,7 +50,7 @@ nameCtx, Hashtable environment)
         return this.getInitialContext(env);
     }
 
-    public Context getInitialContext(Hashtable environment) throws
+    public Context getInitialContext(Hashtable<?,?> environment) throws
 NamingException {
         return new InitialDirContext(environment);
     }
