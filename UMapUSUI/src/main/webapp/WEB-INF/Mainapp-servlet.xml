@@ -4,7 +4,7 @@
     <context:annotation-config/>
     <context:component-scan base-package="com.mysoft.web.controllers"/>
 
-    <mvc:default-servlet-handler />
+    <mvc:default-servlet-handler/>
 
     <!-- Enable annotation-based controllers using @Controller annotations -->
     <bean id="annotationUrlMapping" class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">

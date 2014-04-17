@@ -14,7 +14,7 @@ public class AfterLoginController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String afterLogin(ModelMap model)
 	{
-		model.addAttribute("message","Shinku Tatsumaki");
+		model.addAttribute("message","Arunkumar Hariharan");
 		return "UMapUSWork";
 	}
 	
