@@ -53,7 +53,7 @@ var Account = function() {
 	self.updateValidationStatus = function(domelement, strmessage, vstatus) {
 		if (!vstatus) {
 			domelement.parent().parent().addClass('has-error');
-			var test = $('#span' + domelement.attr("id"));
+			
 			if ($('#span' + domelement.attr("id")).length == 0)
 				domelement.parent().append('<span id="span' + domelement.attr("id") + '" class="error_msg">' + strmessage + '</span>');
 		} else {
@@ -104,6 +104,7 @@ var Account = function() {
 
     self.loginValidation = function()
     {
+    	var result = true;
     	var loginemail = $('#loginemail');
     	var passwd = $('#loginpasswd');
     	
@@ -118,6 +119,7 @@ var Account = function() {
     		if (!validator.isValidEmail(loginemail.val())) 
     		{
     			self.updateLoginValidationStatus(loginemail,errorMessages.login.err_emailadd);
+    			result = false;
     		}
     		else
     		     self.updateLoginValidationStatus(loginemail, null, true);
@@ -125,9 +127,12 @@ var Account = function() {
     		if (validator.isStringEmpty(passwd.val())) 
     		{
     			self.updateLoginValidationStatus(passwd,errorMessages.login.err_passwd);
+    			result = false;
     		}
     		else
-    		     self.updateLoginValidationStatus(passwd, null, true);     
+    		     self.updateLoginValidationStatus(passwd, null, true);  
+    		
+       return result;
     };
     
     self.updateLoginValidationStatus = function(domelement, strmessage, vstatus)
@@ -135,7 +140,7 @@ var Account = function() {
     	
     	if (!vstatus) {
     		domelement.parent().addClass('has-error');
-    		var test = $('#span' + domelement.attr("id"));
+    		
 			if ($('#span' + domelement.attr("id")).length == 0)
 				 $('#loginerrpanel').append('<div><span id="span' + domelement.attr("id") + '" class="error_msg">' + strmessage + '</span></div>');
     	}
@@ -171,8 +176,8 @@ var Account = function() {
 				error : function(data) {
 					alert("Sign up failure" + data);
 				}
-				
-    	}
+			});
+        }
     };
      
 };

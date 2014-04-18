@@ -97,7 +97,7 @@ font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 font-size: 14px;
 line-height: 1.42857143;
 color: #333;
-padding-top: 70px; 
+padding-top: 60px; 
 }
 
 .header{
@@ -114,7 +114,7 @@ padding-top: 70px;
 
 
 .carousel-control {
-height: 435px;
+/*height: 337px; */
 margin-top: 0;
 font-size: 120px !important;
 text-shadow: 0 1px 1px rgba(0,0,0,.4);
@@ -164,29 +164,40 @@ display:inline-table;*/
 }
 
 
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 50px;
+    height: 50px;
+    padding-top: 0;
+}
 
-.navbar-nav li  a{
-    line-height: 80px;
-    height: 80px;
-    padding-top: 30px !important;
+.navbar-brand img
+{
+	margin-top:-15px;
+}
+
+/* .navbar-nav li a{
+    line-height:50px !important;
+    height: 50px !important; 
+    padding-top: 8px !important;
 }
 
 .navbar-form {
-      padding-top: 15px !important;
+      padding-top: 8px !important;
 }
 
 .navbar-brand  {
-      padding-top: 0px !important;
+      padding-top: 4px !important;
 }
-
+ */
 .mainpagesection
 {
   	
-background-image: -o-linear-gradient(left top, #2EA4BF 0%, #EAF2EB 80%);
-background-image: -moz-linear-gradient(left top, #2EA4BF 0%, #EAF2EB 80%);
-background-image: -webkit-linear-gradient(left top, #2EA4BF 0%, #EAF2EB 80%);
-background-image: -ms-linear-gradient(left top, #2EA4BF 0%, #EAF2EB 80%);
-background-image: linear-gradient(to left top, #2EA4BF 0%, #EAF2EB 80%);
+background-image: -o-linear-gradient(left top, #2EA4BF 0%, #EAF2EB 80%) !important; 
+background-image: -moz-linear-gradient(left top, #2EA4BF 0%, #EAF2EB 80%) !important;
+background-image: -webkit-linear-gradient(left top, #2EA4BF 0%, #EAF2EB 80%) !important;
+background-image: -ms-linear-gradient(left top, #2EA4BF 0%, #EAF2EB 80%) !important;
+background-image: linear-gradient(to left top, #2EA4BF 0%, #EAF2EB 80%) !important;
 
 }
 

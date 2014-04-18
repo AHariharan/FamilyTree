@@ -24,7 +24,7 @@
 
 	<!-- Add your site or application content here -->
 	<!-- <p>Hello world! This is HTML5 Boilerplate.</p> -->
-	<div class="navbar navbar-default navbar-fixed-top mainpagesection"
+	<div id="header" class="navbar navbar-default navbar-fixed-top"
 		role="navigation">
 		<div class="container">
 			<div class="navbar-header">
@@ -34,8 +34,8 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><img src="./images/Logo.png"
-					height="78px"></a>
+				<a class="navbar-brand" href="#"> <img src="./images/Logo.png"
+					height="50px" width="100px"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
@@ -51,6 +51,7 @@
 						<input placeholder="Password" class="form-control" type="password">
 					</div>
 					<button type="submit" class="btn btn-success">Sign in</button>
+					<button type="button" class="btn btn-primary">Sign up</button>
 				</form>
 			</div>
 			<!--/.navbar-collapse -->
@@ -60,17 +61,29 @@
 	<div id="maincontainer">
 
 		<section id="Container" class="container  ">
+			<div id="intro" class="breadcrumb">
+				<h2>Welcome to UMapUs</h2>
+				<div class="row">
+					<div class="col-md-offset-2 col-md-4">
+						<p>Build your family network</p>
+						<p>Discover your extended family and invite</p>
+						<p>Share news &amp; keep in touch</p>
+					</div>
+					<div class="col-md-6">
+						<h4>Search your family / extended family</h4>
 
-			<div class="row panel-body ">
-				<h4>Search your family / extended family</h4>
-
-				<div class="input-group">
-					<input type="text" class="form-control"> <span
-						class="input-group-btn">
-						<button class="btn btn-default" type="button">Lookup</button>
-					</span>
+						<div class="input-group">
+							<input type="text" class="form-control"> <span
+								class="input-group-btn">
+								<button class="btn btn-default" type="button">Lookup</button>
+							</span>
+						</div>
+					</div>
+					
 				</div>
+
 			</div>
+            <div></div>
 
 			<div id="myCarousel" class="carousel slide">
 				<div class="carousel-inner">
@@ -81,9 +94,7 @@
 								<h1>UMapUS</h1>
 								<p class="Lead">Connect with your family and maintain roots
 
-								Discover extended family
-							
-								Let's stay connected</p>
+									Discover extended family Let's stay connected</p>
 								<a class="btn btn-large btn-primary" href="#">Learn more</a>
 							</div>
 						</div>
@@ -96,7 +107,7 @@
 								<p class="Lead">Connect with your family and maintain roots</p>
 
 								<p class="Lead">Discover extended family</p>
-							
+
 								<p class="Lead">Let's stay connected</p>
 								<a class="btn btn-large btn-primary" href="#">Learn more</a>
 							</div>
@@ -117,89 +128,6 @@
 				<a class="left carousel-control" href="#myCarousel"
 					data-slide="prev">‹</a> <a class="right carousel-control"
 					href="#myCarousel" data-slide="next">›</a>
-			</div>
-
-			<div id="intro" class="row breadcrump">
-
-				<div class="col-md-4 show-grid ">
-					<h1>UMapUS</h1>
-					<p>Connect with your family and maintain roots</p>
-
-					<p>Discover extended family</p>
-					</br>
-					<p>Let's stay connected</p>
-					</br>
-
-					<p>
-						<a class="btn btn-success btn-lg" role="button">Learn more >>
-						</a>
-					</p>
-				</div>
-
-				<div id="signup" class="col-md-8">
-
-					<h2>
-						Sign up !!! <small> build your family network</small>
-					</h2>
-
-					<form class="form-horizontal">
-						<div class="form-group">
-							<label for="familyname" class="col-sm-2 control-label"><span
-								style="color: red">* </span>Family Name</label>
-							<div class="col-offset-1 col-sm-9">
-								<select id="familyname" class="form-control">
-									<option>-Select-</option>
-									<option>Vaithiyam</option>
-									<option>Kuttuva</option>
-									<option>Nattamai</option>
-									<option>Solai</option>
-									<option>Neelman</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="firstname" class="col-sm-2 control-label"><span
-								style="color: red">* </span>First Name</label>
-							<div class="col-offset-1 col-sm-9">
-								<input type="text" class="form-control" id="firstname"
-									placeholder="First Name">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="lastname" class="col-sm-2 control-label"><span
-								style="color: red">* </span>Last Name</label>
-							<div class="col-offset-1 col-sm-9">
-								<input type="text" class="form-control" id="lastname"
-									placeholder="Last Name">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="emailsignup" class="col-sm-2 control-label">
-								<span style="color: red">* </span>Email
-							</label>
-							<div class="col-offset-1 col-sm-9">
-								<input type="text" class="form-control" id="emailsignup"
-									placeholder="Email">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="passwdsignup" class="col-sm-2 control-label"><span
-								style="color: red">* </span>Password</label>
-							<div class="col-offset-1 col-sm-9">
-								<input type="password" class="form-control" id="passwdsignup"
-									placeholder="Password">
-							</div>
-						</div>
-						<div class="col-offset-10 col-sm-2"
-							style="float: right; margin-right: 54px">
-							<button class="btn btn-md btn-primary"
-								onclick="account.accountSignup(event);">Get started</button>
-						</div>
-
-					</form>
-
-				</div>
-
 			</div>
 
 			<div style="margin-top: 50px;"></div>
