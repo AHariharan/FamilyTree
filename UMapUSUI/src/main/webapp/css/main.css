@@ -97,7 +97,7 @@ font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 font-size: 14px;
 line-height: 1.42857143;
 color: #333;
-padding-top: 89px; 
+padding-top: 70px; 
 }
 
 .header{
@@ -106,12 +106,27 @@ padding-top: 89px;
 }
 
 
+.container
+{
+	max-width:1180px;
+	margin: 0 auto;
+}
+
+
+.carousel-control {
+height: 435px;
+margin-top: 0;
+font-size: 120px !important;
+text-shadow: 0 1px 1px rgba(0,0,0,.4);
+background-color: transparent;
+border: 0;
+z-index: 10;
+}
 
 input
 {
 	width:200px;
-	height:30px;
-	
+	height:30px;	
 	margin-left:10px;
 	
 }
@@ -148,6 +163,21 @@ display:inline-table;*/
 	color:rgb(169,69,68);
 }
 
+
+
+.navbar-nav li  a{
+    line-height: 80px;
+    height: 80px;
+    padding-top: 30px !important;
+}
+
+.navbar-form {
+      padding-top: 15px !important;
+}
+
+.navbar-brand  {
+      padding-top: 0px !important;
+}
 
 .mainpagesection
 {
