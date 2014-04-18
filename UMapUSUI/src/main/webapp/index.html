@@ -24,65 +24,30 @@
 
 		<!-- Add your site or application content here -->
 		<!-- <p>Hello world! This is HTML5 Boilerplate.</p> -->
-		<div id="header" class="navbar navbar-inverted navbar-fixed-top header mainpagesection container-fluid">
-
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a id="brand" href="#" class="navbar-brand" style="margin-top:-16px"> <img id="brandimg" alt="Logo" src="./img/Logo.jpg" class="img-rounded"/> </a>
-				<div class="collapse navbar-collapse" style="float:left;margin-top: 20px" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li class="active">
-							<a href="#">Home</a>
-						</li>
-						<li>
-							<a href="#">My Family Tree</a>
-						</li>
-						<li>
-							<a href="#">About</a>
-						</li>
-						<li>
-							<a href="#">Contact Us</a>
-						</li>
-					</ul>
-
-				</div>
-
-				<!-- navbar-collapse -->
-
-			</div>
-			<div id="login" style="padding-top:12px;margin-right:30px">
-				<div >
-					<form class="navbar-form navbar-right"  >
-						<div class="form-group">
-							<input id="loginemail" class="form-control" type="text" placeholder="Email"/>
-
-						</div>
-						<div class="form-group">
-							<input id="loginpasswd" class="form-control" type="password" placeholder="Password"/>
-
-						</div>
-						<button class="btn btn-primary btn-md" type="submit" onclick="account.login();">
-							Log in
-						</button>
-
-					</form>
-				</div>
-				<div class="loginissues">
-					<button class="btn btn-link" type="button">
-						Trouble Singing in ?
-					</button>
-				</div>
-				<div id="loginerrpanel" class="error_msg">
-
-				</div>
-			</div>
-
-		</div>
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">UMapUS</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right" role="form">
+            <div class="form-group">
+              <input placeholder="Email" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+              <input placeholder="Password" class="form-control" type="password">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
 
 		<div id="maincontainer">
 
