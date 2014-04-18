@@ -14,7 +14,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
     <context:annotation-config/>
     <context:component-scan base-package="com.umapus.web.controllers"/>
 
-    <mvc:default-servlet-handler />
+    <mvc:default-servlet-handler/>
 
     <!-- Enable annotation-based controllers using @Controller annotations -->
     <bean id="annotationUrlMapping" class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
