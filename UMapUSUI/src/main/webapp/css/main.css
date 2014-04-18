@@ -209,6 +209,26 @@ background-color: #FCFCFC !important;
 }
 
 
+#footer {
+    margin: 0px auto;
+    color: #FFF;
+    background: none repeat scroll 0% 0% #FFFFF;
+}
+
+.single-block
+{
+	color: slategray;
+	float:right;
+}
+
+#social-block li {
+    float: right;
+    font-size: 0.75em;
+    list-style: none outside none;
+    padding-left: 30px;
+    
+}
+
 .mainpagesearch
 {
 background-image: -o-linear-gradient(left top, #2EA4BF 0%, #EAF2EB 80%);
