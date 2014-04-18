@@ -39,7 +39,7 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#">Home</a></li>
 					<li><a href="#about">About</a></li>
 					<li><a href="#contact">Contact</a></li>
 				</ul>
@@ -51,7 +51,7 @@
 						<input placeholder="Password" class="form-control" type="password">
 					</div>
 					<button type="submit" class="btn btn-success">Sign in</button>
-					<button type="button" class="btn btn-primary">Sign up</button>
+					<!--  <button type="button" class="btn btn-primary">Sign up</button> -->
 				</form>
 			</div>
 			<!--/.navbar-collapse -->
@@ -61,8 +61,11 @@
 	<div id="maincontainer">
 
 		<section id="Container" class="container  ">
-			<div id="intro" class="breadcrumb">
-				<h2>Welcome to UMapUs</h2>
+			<div id="intro" class="row breadcrumb">
+				<h2>
+					Welcome to <span style="color: rgba(212, 57, 57, 1);">U</span>Map<span
+						style="color: rgba(212, 57, 57, 1);">Us</span>
+				</h2>
 				<div class="row">
 					<div class="col-md-offset-2 col-md-4">
 						<p>Build your family network</p>
@@ -79,57 +82,118 @@
 							</span>
 						</div>
 					</div>
-					
+
 				</div>
 
 			</div>
-            <div></div>
 
-			<div id="myCarousel" class="carousel slide">
-				<div class="carousel-inner">
-					<div class="item">
-						<img src="./images/DSC_0818.JPG" alt="" height="500px">
-						<div class="container">
-							<div class="carousel-caption">
-								<h1>UMapUS</h1>
-								<p class="Lead">Connect with your family and maintain roots
+			<div class="row">
+				<div class="col-md-6">
+					<div id="myCarousel" class="carousel slide">
+						<div class="carousel-inner">
+							<div class="item">
+								<img src="./images/DSC_0818.JPG" alt="" height="500px">
+								<div class="container">
+									<div class="carousel-caption">
+										<h1>UMapUS</h1>
+										<p class="Lead">Connect with your family and maintain
+											roots Discover extended family Let's stay connected</p>
+										<a class="btn btn-large btn-primary" href="#">Learn more</a>
+									</div>
+								</div>
+							</div>
+							<div class="item active">
+								<img src="./images/DSC_0728.JPG" alt="" height="500px">
+								<div class="container">
+									<div class="carousel-caption">
+										<h1>UMapUS</h1>
+										<p class="Lead">Connect with your family and maintain
+											roots</p>
 
-									Discover extended family Let's stay connected</p>
-								<a class="btn btn-large btn-primary" href="#">Learn more</a>
+										<p class="Lead">Discover extended family</p>
+
+										<p class="Lead">Let's stay connected</p>
+										<a class="btn btn-large btn-primary" href="#">Learn more</a>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<img src="./images/UMapUSTree.png" alt="" height="500px">
+								<div class="container">
+									<div class="carousel-caption">
+										<h1>Family Tree.</h1>
+										<p class="lead">Build your family tree and trace the blood
+											line.</p>
+										<a class="btn btn-large btn-primary" href="#">Browse
+											members</a>
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="item">
-						<img src="./images/DSC_0728.JPG" alt="" height="500px">
-						<div class="container">
-							<div class="carousel-caption">
-								<h1>UMapUS</h1>
-								<p class="Lead">Connect with your family and maintain roots</p>
-
-								<p class="Lead">Discover extended family</p>
-
-								<p class="Lead">Let's stay connected</p>
-								<a class="btn btn-large btn-primary" href="#">Learn more</a>
-							</div>
-						</div>
-					</div>
-					<div class="item active">
-						<img src="./images/UMapUSTree.png" alt="" height="500px">
-						<div class="container">
-							<div class="carousel-caption">
-								<h1>Family Tree.</h1>
-								<p class="lead">Build your family tree and trace the blood
-									line.</p>
-								<a class="btn btn-large btn-primary" href="#">Browse members</a>
-							</div>
-						</div>
+						<a class="left carousel-control" href="#myCarousel"
+							data-slide="prev">‹</a> <a class="right carousel-control"
+							href="#myCarousel" data-slide="next">›</a>
 					</div>
 				</div>
-				<a class="left carousel-control" href="#myCarousel"
-					data-slide="prev">‹</a> <a class="right carousel-control"
-					href="#myCarousel" data-slide="next">›</a>
-			</div>
+				<div id="signup" class="col-md-6 breadcrumb">
+				    <h4> Sign up <small> and get started</small></h4>
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label for="familyname" class="col-sm-4 control-label"><span
+								style="color: red">* </span>Family Name</label>
+							<div class="col-offset-1 col-sm-7">
+								<select id="familyname" class="form-control">
+									<option>-Select-</option>
+									<option>Vaithiyam</option>
+									<option>Kuttuva</option>
+									<option>Nattamai</option>
+									<option>Solai</option>
+									<option>Neelman</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="firstname" class="col-sm-4 control-label"><span
+								style="color: red">* </span>First Name</label>
+							<div class="col-offset-1 col-sm-7">
+								<input type="text" class="form-control" id="firstname"
+									placeholder="First Name">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="lastname" class="col-sm-4 control-label"><span
+								style="color: red">* </span>Last Name</label>
+							<div class="col-offset-1 col-sm-7">
+								<input type="text" class="form-control" id="lastname"
+									placeholder="Last Name">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="emailsignup" class="col-sm-4 control-label">
+								<span style="color: red">* </span>Email
+							</label>
+							<div class="col-offset-1 col-sm-7">
+								<input type="text" class="form-control" id="emailsignup"
+									placeholder="Email">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="passwdsignup" class="col-sm-4 control-label"><span
+								style="color: red">* </span>Password</label>
+							<div class="col-offset-1 col-sm-7">
+								<input type="password" class="form-control" id="passwdsignup"
+									placeholder="Password">
+							</div>
+						</div>
+						<div class="col-sm-offset-9 col-sm-3"	>
+							<button class="btn btn-md btn-primary"
+								onclick="account.accountSignup(event);">Sign up</button>
+						</div>
 
+					</form>
+
+				</div>
+			</div>
 			<div style="margin-top: 50px;"></div>
 			<div class="row panel panel-primary">
 				<div class="panel-heading">How it works ?</div>
@@ -166,6 +230,8 @@
 		ga('create','UA-XXXXX-X');ga('send','pageview');
 		</script>
 		-->
+
+	<!--  Modals for Sign up -->
 </body>
 
 </html>
