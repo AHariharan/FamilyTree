@@ -23,6 +23,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.umapus.domain.entity.LoginRequest;
 import com.umapus.domain.entity.SignUpResponse;
@@ -51,7 +52,14 @@ public class UMapUsService {
 //	@Path("/login")
 	@RequestMapping(value = { "/login"},method = RequestMethod.POST)
 //	@Produces(MediaType.APPLICATION_JSON)
-	public String Login(String jsonBody, @RequestBody HttpServletRequest req)
+	
+//	@RequestMapping(
+//		      //headers = {"Content-Type=application/json"},
+//		      method = RequestMethod.POST, 
+//		      value = {"/login"}
+//		           )
+	//@ResponseBody
+	public String Login( @RequestBody String jsonBody, @Context HttpServletRequest req)
 			throws JSONException {
 
 		// boolean loginStatus = false;

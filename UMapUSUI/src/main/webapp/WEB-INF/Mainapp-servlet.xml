@@ -19,6 +19,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
     <!-- Enable annotation-based controllers using @Controller annotations -->
     <bean id="annotationUrlMapping" class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
         <property name="order" value="0" />
+            
     </bean>
 
     <bean id="controllerClassNameHandlerMapping" class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
