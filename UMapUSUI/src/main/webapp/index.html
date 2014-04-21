@@ -45,14 +45,17 @@
 				</ul>
 				<form class="navbar-form navbar-right" role="form">
 					<div class="form-group">
-						<input placeholder="Email" class="form-control" type="text">
+						<input id="loginemail" placeholder="Email" class="form-control" type="text">
 					</div>
 					<div class="form-group">
-						<input placeholder="Password" class="form-control" type="password">
+						<input id="loginpasswd" placeholder="Password" class="form-control" type="password">
 					</div>
-					<button type="submit" class="btn btn-success">Sign in</button>
+					<button type="submit" class="btn btn-success" onclick="account.login(event);">Sign in</button>
 					<!--  <button type="button" class="btn btn-primary">Sign up</button> -->
 				</form>
+				<div style="margin-top: 5px;" class="navbar-right" id="loginerrpanel">
+				</div>
+				
 			</div>
 			<!--/.navbar-collapse -->
 		</div>
@@ -61,6 +64,8 @@
 	<div id="maincontainer">
 
 		<section id="Container" class="container  ">
+		
+	   
 			<div id="intro" class="row holder breadcrumb">
 				<h2>
 					Welcome to <span style="color: rgba(212, 57, 57, 1);">U</span>Map<span

@@ -118,7 +118,7 @@ var Account = function() {
     	
     		if (!validator.isValidEmail(loginemail.val())) 
     		{
-    			self.updateLoginValidationStatus(loginemail,errorMessages.login.err_emailadd);
+    			self.updateLoginValidationStatus(loginemail,errorMessages.login.err_emailadd,false);
     			result = false;
     		}
     		else
@@ -126,7 +126,7 @@ var Account = function() {
     		     
     		if (validator.isStringEmpty(passwd.val())) 
     		{
-    			self.updateLoginValidationStatus(passwd,errorMessages.login.err_passwd);
+    			self.updateLoginValidationStatus(passwd,errorMessages.login.err_passwd,false);
     			result = false;
     		}
     		else
@@ -146,38 +146,45 @@ var Account = function() {
     	}
     	 else {
 			if (domelement.parent().hasClass('has-error')) {
-				domelement.parent().removeClass('has-error');
-				$('#span' + domelement.attr("id")).parent().remove();
+				     domelement.parent().removeClass('has-error');
+				     $('#span' + domelement.attr("id")).parent().remove();
 			}
-		}
+    	 }
+		
     };
     
-    self.login = function()
+    self.login = function(event)
     {
+    	event.preventDefault();
     	if(self.loginValidation())
     	{
     		
-    		var username= "arun_nh@yahoo.com";
-    		var passwd = "testpwd";
+    		var username = $('#loginemail').val();
+        	var passwd = $('#loginpasswd').val();
     		
     		var formdata = {
     				username : username,
     				passwd : passwd
-    		}
-    		var url = "/login";
+    		};
+    		var url = "/UMapUSUI/login";
+    		
     		$.ajax({
 				type : "POST",
 				url : url,
 				contentType : "application/json",
 				data : JSON.stringify(formdata),
 				success : function(data, textStatus, jqXHR) {
-					alert("Successful" + data);
+					alert("Login Successful" + data);
 				},
 				error : function(data) {
-					alert("Sign up failure" + data);
+					alert("login failure" + data);
 				}
 			});
         }
+    	else
+    		{
+    		       console.log("Test ");
+    		}
     };
      
 };
