@@ -174,7 +174,7 @@ var Account = function() {
 				contentType : "application/json",
 				data : JSON.stringify(formdata),
 				success : function(data, textStatus, jqXHR) {
-					alert("Login Successful" + data);
+					window.document.write = data;
 				},
 				error : function(data) {
 					alert("login failure" + data);
