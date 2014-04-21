@@ -166,7 +166,7 @@ var Account = function() {
     				username : username,
     				passwd : passwd
     		};
-    		var url = "/UMapUSUI/login";
+    		var url = "/UMapUSUI/umapusservice/login";
     		
     		$.ajax({
 				type : "POST",
