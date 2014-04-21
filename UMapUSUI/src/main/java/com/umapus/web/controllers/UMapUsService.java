@@ -19,6 +19,10 @@ import javax.ws.rs.core.Response;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.umapus.domain.entity.LoginRequest;
 import com.umapus.domain.entity.SignUpResponse;
@@ -28,8 +32,8 @@ import com.umapus.domain.util.UMapUsMapper;
 import com.umapus.infrastructure.dao.DAOFactory;
 
 @Controller
-@Path("umapusservice")
-@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+//@Path("umapusservice")
+//@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 public class UMapUsService {
 
 	@Autowired
@@ -40,11 +44,14 @@ public class UMapUsService {
 
 	@Autowired
 	private User user;
+	
 
-	@POST
-	@Path("/login")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response Login(String jsonBody, @Context HttpServletRequest req)
+
+//	@POST
+//	@Path("/login")
+	@RequestMapping(value = { "/login"},method = RequestMethod.POST)
+//	@Produces(MediaType.APPLICATION_JSON)
+	public String Login(String jsonBody, @RequestBody HttpServletRequest req)
 			throws JSONException {
 
 		// boolean loginStatus = false;
@@ -74,28 +81,26 @@ public class UMapUsService {
 			e.printStackTrace();
 		}
 
-		return Response.status(201)
-				.entity(mapper.MakeUserToJsonLoginResponse(user).toString())
-				.cookie(cookie).build();
+		return "UMapUSWork";
 	}
 
 	@POST
 	@Path("/signup")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response SignUp(String jsonBody, @Context HttpServletRequest req) {
+	public String SignUp(String jsonBody, @Context HttpServletRequest req) {
 
 		String signupstatus = "Success";
-		Response rep = null;
+		String rep = null;
 		try {
 			signupstatus = daoFactory.getLdapDao().CreateLDAPUser(
 					mapper.MapJsonToSignupRequest(jsonBody));
 			if (signupstatus.equals(SignUpResponse.SUCCESS.getStatus())) {
 				rep = Login(jsonBody, req);
 			} else {
-				return Response
-						.status(201)
-						.entity(mapper.MakeSignUpStatusToJson(signupstatus)
-								.toString()).build();
+//				return Response
+//						.status(201)
+//						.entity(mapper.MakeSignUpStatusToJson(signupstatus)
+//								.toString()).build();
 
 			}
 		} catch (NamingException | JSONException e) {
