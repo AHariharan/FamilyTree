@@ -33,7 +33,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a id="brand" href="#" class="navbar-brand" style="margin-top:-13px"> <img id="brandimg" alt="Logo" src="./img/Logo.jpg" width="120px" height="48px" class="img-rounded"/> </a>
+					<a id="brand" href="#" class="navbar-brand" style="margin-top:-13px"> <img id="brandimg" alt="Logo" src="./images/Logo.png" width="120px" height="48px" class="img-rounded"/> </a>
 					<div class="collapse navbar-collapse" style="float:left;" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
 							<li class="active">

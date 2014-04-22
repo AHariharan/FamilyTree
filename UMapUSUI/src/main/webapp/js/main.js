@@ -174,7 +174,8 @@ var Account = function() {
 				contentType : "application/json",
 				data : JSON.stringify(formdata),
 				success : function(data, textStatus, jqXHR) {
-					window.document.write = data;
+					console.log("Success");
+					window.location = "UMapUSWork";
 				},
 				error : function(data) {
 					alert("login failure" + data);

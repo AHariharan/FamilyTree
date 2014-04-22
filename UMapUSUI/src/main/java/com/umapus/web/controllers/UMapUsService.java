@@ -92,6 +92,15 @@ public class UMapUsService {
 		return "UMapUSWork";
 	}
 
+	@RequestMapping(value = { "/UMapUSWork"},method = RequestMethod.GET)
+	public String afterLogin(ModelMap model)
+	{
+		model.addAttribute("message","Arunkumar Hariharan");
+		return "UMapUSWork";
+	}
+	
+	
+	
 	@POST
 	@Path("/signup")
 	@Produces(MediaType.APPLICATION_JSON)
