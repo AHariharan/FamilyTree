@@ -155,7 +155,7 @@ var Account = function() {
     
     self.login = function(event)
     {
-    	event.preventDefault();
+    /*	event.preventDefault();
     	if(self.loginValidation())
     	{
     		
@@ -166,7 +166,7 @@ var Account = function() {
     				username : username,
     				passwd : passwd
     		};
-    		var url = "/UMapUSUI/umapusservice/login";
+    		var url = "/UMapUSUI/login";
     		
     		$.ajax({
 				type : "POST",
@@ -185,9 +185,11 @@ var Account = function() {
     	else
     		{
     		       console.log("Test ");
-    		}
-    };
+    		} */
+    		return self.loginValidation();
+    }; 
      
+    
 };
 
 // create Objects to be referred from html

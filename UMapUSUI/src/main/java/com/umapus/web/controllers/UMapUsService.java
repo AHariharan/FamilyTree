@@ -20,6 +20,8 @@ import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,25 +50,21 @@ public class UMapUsService {
 	
 
 
-//	@POST
-//	@Path("/login")
 	@RequestMapping(value = { "/login"},method = RequestMethod.POST)
-//	@Produces(MediaType.APPLICATION_JSON)
-	
-//	@RequestMapping(
-//		      //headers = {"Content-Type=application/json"},
-//		      method = RequestMethod.POST, 
-//		      value = {"/login"}
-//		           )
-	//@ResponseBody
-	public String Login( @RequestBody String jsonBody, @Context HttpServletRequest req)
-			throws JSONException {
+	public String Login(@ModelAttribute("loginrequest") LoginRequest loginrequest,ModelMap model)
+			throws Exception {
 
-		// boolean loginStatus = false;
+		
+		System.out.println("Login request username :- " + loginrequest.getuserName());
+		System.out.println("Login request password :- " + loginrequest.getPassWord());
+		if(loginrequest != null)
+		           model.addAttribute("message",loginrequest.getuserName());
+		           
+		           
 		NewCookie cookie = null;
 
 		String loginResponse = "{\"status\": \"OUT\"}";
-		try {
+		/*try {
 			// String loginUser =
 			// mapper.MapJsonToLoginRequest(jsonBody).getuserName();
 
@@ -87,17 +85,17 @@ public class UMapUsService {
 		} catch (NamingException | JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} */
 
 		return "UMapUSWork";
 	}
 
-	@RequestMapping(value = { "/UMapUSWork"},method = RequestMethod.GET)
+	/*@RequestMapping(value = { "/UMapUSWork"},method = RequestMethod.GET)
 	public String afterLogin(ModelMap model)
 	{
 		model.addAttribute("message","Arunkumar Hariharan");
 		return "UMapUSWork";
-	}
+	}*/
 	
 	
 	
@@ -112,7 +110,7 @@ public class UMapUsService {
 			signupstatus = daoFactory.getLdapDao().CreateLDAPUser(
 					mapper.MapJsonToSignupRequest(jsonBody));
 			if (signupstatus.equals(SignUpResponse.SUCCESS.getStatus())) {
-				rep = Login(jsonBody, req);
+			//	rep = Login(jsonBody, req);
 			} else {
 //				return Response
 //						.status(201)
