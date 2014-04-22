@@ -32,7 +32,9 @@ var FamilyTree = function() {
 			$('#theTree').css("display", "block");
 			$('#startTree').css("display", "none");
 
-			jsPlumb.draggable("treenode1");
+			jsPlumb.draggable("treenode1",{
+				  containment:"#workpane"
+			});
 		});
 
 		//modaltesting.initModal();
@@ -791,8 +793,12 @@ var NodeConnector = function() {
 	
 	
 	self.connectDivNodes = function(sourcediv, targetdiv, labelname,common) {
-		jsPlumb.draggable(sourcediv);
-		jsPlumb.draggable(targetdiv);
+		jsPlumb.draggable(sourcediv,{
+			  containment:"#workpane"
+		});
+		jsPlumb.draggable(targetdiv,{
+			  containment:"#workpane"
+		});
 		common.overlays[0][1].label = labelname;
 		jsPlumb.connect({
 			source : sourcediv,
