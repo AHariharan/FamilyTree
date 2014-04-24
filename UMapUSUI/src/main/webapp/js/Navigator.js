@@ -25,19 +25,7 @@ var Navigator = function() {
 			});
 			var divid = id.substring(0, id.indexOf("nav"));
 			$(divid).css('display', 'block');
-		/*	if (id == "#familytreenav") {
-				try
-				{
-				  nodeConnector.connectNodes("treenode1","treenode2","Wife");
-				  nodeConnector.connectNodes("treenode1","treenode3","Son");
-				  nodeConnector.connectNodes("treenode1","treenode4","Daughter");
-				  nodeConnector.connectNodes("treenode3","treenode4","Sister");
-				  nodeConnector.connectNodes("treenode3","treenode2","Mom");
-			    }catch(e)
-			  {
-			  	alert(e);
-			  }
-			} */
+		
 		});
 	};
 };

@@ -90,12 +90,14 @@ public class UMapUsService {
 		return "UMapUSWork";
 	}
 
-	/*@RequestMapping(value = { "/UMapUSWork"},method = RequestMethod.GET)
-	public String afterLogin(ModelMap model)
+	
+	// Don't comment this method I am using this as a stub for direct access to fix html and js
+	@RequestMapping(value = { "/UMapUSWork"},method = RequestMethod.GET)
+	public String myStubDontDelete(ModelMap model)
 	{
 		model.addAttribute("message","Arunkumar Hariharan");
 		return "UMapUSWork";
-	}*/
+	}
 	
 	
 	

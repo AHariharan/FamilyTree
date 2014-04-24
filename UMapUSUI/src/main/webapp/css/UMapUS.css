@@ -12,7 +12,10 @@ body
 	line-height: 1.12;
 }
 
-
+.familynewsimgalign
+{
+	display:table-cell; vertical-align:middle; text-align:center;
+}
 
 
 .footer {
