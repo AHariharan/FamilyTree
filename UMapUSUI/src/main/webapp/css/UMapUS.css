@@ -124,7 +124,7 @@ body
 /*position:fixed !important;*/
 }
 .workpane-after {
-
+margin-top: -33px;
 }
 
 .radioinput {
