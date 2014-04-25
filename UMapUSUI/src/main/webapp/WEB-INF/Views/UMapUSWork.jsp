@@ -144,8 +144,8 @@
 						<div class="col-md-2 familynewsimgalign">
 
 							<a href="#" id="helpnav"> <img
-								src="./images/ProfileDefault.png" 
-								width="96px" height="96px" alt="...">
+								src="./images/ProfileDefault.png" width="96px" height="96px"
+								alt="...">
 								<p style="text-align: center; padding-top: 3px;">Arunkumar
 									Nattamai Hariharan</p>
 							</a>
@@ -184,11 +184,10 @@
 						<div id="sharedmessages" class="row">
 							<div id="sharedmessage1" class="col-md-12"
 								style="border: 2px; margin-top: 10px">
-								<div class="col-md-2 familynewsimgalign" >
-									<a href="#" id="helpnav"> 
-									  <img 
-										src="./images/ProfileDefault.png"
-										width="32px" height="32px" alt="...">
+								<div class="col-md-2 familynewsimgalign">
+									<a href="#" id="helpnav"> <img
+										src="./images/ProfileDefault.png" width="32px" height="32px"
+										alt="...">
 										<p style="text-align: center; padding-top: 3px;">Nikitha
 											Nattamai Arunkumar</p>
 									</a>
@@ -196,12 +195,12 @@
 								<div class="popover right">
 									<div class="arrow"></div>
 									<div class="popover-content">
-										<div class="col-md-12" style="padding:10px">
+										<div class="col-md-12" style="padding: 10px">
 											<p style="word-wrap: break-word;">Shared messages 1 .....
 												Shared messages 1 ..... Shared messages 1 ..... Shared
 												messages 1 ..... Shared messages 1 .....</p>
 										</div>
-										<div class="col-md-offset-2 col-md-10" style="padding:10px">
+										<div class="col-md-offset-2 col-md-10" style="padding: 10px">
 											<a href="#" class="col-md-3"> <span> <i
 													class="fa fa-thumbs-o-up"></i> Thumbs up
 											</span>
@@ -222,228 +221,228 @@
 						</div>
 
 						<hr />
-	
+
 					</div>
 					<!-- SharedMessages End -->
 				</div>
 
 			</div>
-	
-		<!-- end of family news -->
-		<div id="profile" style="display: none;" class="panel panel-primary">
-			<div id="profilehead" class="panel-heading">
-				<h5 class="panel-title">Profile data</h5>
-			</div>
-			<div class="panel-body">
-				<div id="profilecontent">
-					<div id="profilepic" class="col-md-2">
-						<img src="./images/ProfileDefault.png" width="200px"
-							height="200px" alt="profile default" />
-						<div id="uploadpic" style="margin-left: 42px">
-							<div id="uploader" class="btn btn-primary fileUpload">
-								<span> Update Pic</span> <input type="file" class="upload" />
-							</div>
-						</div>
-					</div>
-					<!-- profile pic -->
-					<div id="profiledata" class="form-horizontal col-md-10">
-						<div>
-							<div class="form-group">
-								<label for="firstname" class="col-md-2 control-label">Family
-									Name</label>
-								<div class="col-md-offset-1 col-md-9">
-									<input type="text" class="form-control" disabled="disabled"
-										id="familyname" placeholder="Family Name">
 
+			<!-- end of family news -->
+			<div id="profile" style="display: none;" class="panel panel-primary">
+				<div id="profilehead" class="panel-heading">
+					<h5 class="panel-title">Profile data</h5>
+				</div>
+				<div class="panel-body">
+					<div id="profilecontent">
+						<div id="profilepic" class="col-md-2">
+							<img src="./images/ProfileDefault.png" width="200px"
+								height="200px" alt="profile default" />
+							<div id="uploadpic" style="margin-left: 42px">
+								<div id="uploader" class="btn btn-primary fileUpload">
+									<span> Update Pic</span> <input type="file" class="upload" />
 								</div>
 							</div>
 						</div>
-						<div >
-							<div class="form-group col-md-6">
-								<label for="firstname" class="col-md-4 control-label">First
-									Name</label>
-								<div class="col-md-offset-1 col-md-8">
-									<input type="text" class="form-control" id="firstname"
-										placeholder="First Name">
+						<!-- profile pic -->
+						<div id="profiledata" class="form-horizontal col-md-10">
+							<div>
+								<div class="form-group">
+									<label for="familyname" class="col-md-2 control-label">Family
+										Name</label>
+									<div class="col-md-10">
+										<input type="text" class="form-control" disabled="disabled"
+											id="familyname" placeholder="Family Name">
 
-								</div>
-							</div>
-							<div class="form-group col-md-6">
-								<label for="lastname" class="col-md-3 control-label">Last
-									Name</label>
-								<div class="col-md-offset-1 col-md-9">
-									<input type="text" class="form-control" id="lastname"
-										placeholder="Last Name">
-								</div>
-							</div>
-						</div>
-						<div >
-							<div class="form-group col-md-6">
-								<label for="emailsignup" class="col-md-4 control-label">
-									Email </label>
-								<div class="col-md-offset-1 col-md-8">
-									<input type="text" class="form-control" disabled="disabled"
-										id="emailsignup" placeholder="Email">
-								</div>
-							</div>
-							<div class="form-group col-md-6">
-								<label for="passwdsignup" class="col-md-3 control-label">Password</label>
-								<div class="col-md-offset-1 col-md-9">
-									<input type="password" class="form-control" id="passwdsignup"
-										placeholder="Password">
-								</div>
-							</div>
-						</div>
-
-						<div >
-							<div class="form-group col-md-6">
-								<label for="Gender" class="col-md-4 control-label">Gender</label>
-								<div data-toggle="buttons" class="col-md-offset-1 col-md-8"
-									style="padding-top: 6px;">
-									<label> <input class="radioinput" type="radio"
-										name="gender" id="sexm" value="Male" checked> Male
-									</label> <label> <input class="radioinput" type="radio"
-										name="gender" id="sexf" value="Female"> Female
-									</label>
-
-								</div>
-							</div>
-							<div class="form-group col-md-6">
-								<label for="passwdsignup" class="col-md-3 control-label">Birth
-									Date </label>
-								<div class="col-md-offset-1 col-md-5">
-									<div class="input-group">
-										<input id="birthdate" type="text" class="form-control"
-											readonly=""> <span class="input-group-btn">
-											<button id="birthdatepicker" class="btn btn-warning"
-												data-date="10/10/2010" data-date-format="mm/dd/yyyy"
-												data-date-viewMode="years" type="button">
-												<span class="glyphicon glyphicon-calendar"></span>
-											</button>
-									</div>
-								</div>
-								<div class="col-md-offset-1 col-md-1">
-									<button class="btn btn-link" style="margin-left: -26px">
-										why we need this ?</button>
-								</div>
-							</div>
-						</div>
-
-						<div >
-							<div class="form-group col-md-12">
-								<label for="geolocation" class="col-md-2 control-label">Geo
-									Location</label>
-								<div class="col-md-offset-1 col-md-9">
-									<div >
-										<div class="col-md-4">
-											<input type="text" class="form-control" id="City"
-												placeholder="City">
-
-										</div>
-
-										<div class="col-md-3">
-											<input type="text" class="form-control" id="State"
-												placeholder="State">
-										</div>
-
-										<div class="col-md-5">
-											<input type="text" class="form-control" id="Country"
-												placeholder="Country" style="width: 233px;">
-										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div >
-							<div class="col-md-offset-7 col-md-5">
-								<div class="row">
-									<button class="btn btn-primary col-md-offset-3 col-md-3">
-										Save</button>
-									<button class="btn btn-danger  col-md-3"
-										style="margin-left: 12px">Cancel</button>
+							<div>
+								<div class="form-group col-md-6">
+									<label for="firstname" class="col-md-4 control-label">First
+										Name</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" id="firstname"
+											placeholder="First Name">
+
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label for="lastname" class="col-md-4 control-label">Last
+										Name</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" id="lastname"
+											placeholder="Last Name">
+									</div>
+								</div>
+							</div>
+							<div>
+								<div class="form-group col-md-6">
+									<label for="emailprofile" class="col-md-4 control-label">
+										Email </label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" disabled="disabled"
+											id="emailprofile" placeholder="Email">
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label for="passwdprofile" class="col-md-4 control-label">Password</label>
+									<div class="col-md-8">
+										<input type="password" class="form-control" id="passwdprofile"
+											placeholder="Password">
+									</div>
+								</div>
+							</div>
+
+							<div>
+								<div class="form-group col-md-6">
+									<label for="Gender" class="col-md-4 control-label">Gender</label>
+									<div data-toggle="buttons" class="col-md-8"
+										style="padding-top: 6px;">
+										<label> <input class="radioinput" type="radio"
+											name="gender" id="sexm" value="Male" checked> Male
+										</label> <label> <input class="radioinput" type="radio"
+											name="gender" id="sexf" value="Female"> Female
+										</label>
+
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label for="birthdate" class="col-md-4 control-label">Birth
+										Date </label>
+									<div class="col-md-6">
+										<div class="input-group">
+											<input id="birthdate" type="text" class="form-control"
+												readonly=""> <span class="input-group-btn">
+												<button id="birthdatepicker" class="btn btn-warning"
+													data-date="10/10/2010" data-date-format="mm/dd/yyyy"
+													data-date-viewMode="years" type="button">
+													<span class="glyphicon glyphicon-calendar"></span>
+												</button>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<button class="btn btn-link" style="margin-left: -26px">
+											why we need this ?</button>
+									</div>
+								</div>
+							</div>
+
+							<div>
+								<div class="form-group ">
+									<label for="geolocation" class="control-label col-md-2">Geo
+										Location</label>
+									<div class="col-md-10">
+										<div>
+											<div class="col-md-4">
+												<input type="text" class="form-control" id="City"
+													placeholder="City">
+
+											</div>
+
+											<div class="col-md-3">
+												<input type="text" class="form-control" id="State"
+													placeholder="State">
+											</div>
+
+											<div class="col-md-5">
+												<input type="text" class="form-control" id="Country"
+													placeholder="Country" style="width: 233px;">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div>
+								<div class="col-md-offset-7 col-md-5">
+									<div class="row">
+										<button class="btn btn-primary col-md-offset-3 col-md-3">
+											Save</button>
+										<button class="btn btn-danger  col-md-3"
+											style="margin-left: 12px">Cancel</button>
+									</div>
 								</div>
 							</div>
 						</div>
+						<!-- profile data -->
 					</div>
-					<!-- profile data -->
+					<!-- end of profile content -->
 				</div>
-				<!-- end of profile content -->
 			</div>
-		</div>
-		<!-- end of profile -->
+			<!-- end of profile -->
 
-		<div id="familytree" style="display: none;">
-			<div id="familytreediv" style="margin: auto; text-align: center;">
-				<div id="startTree">
-					<h2>Feeling exicted to create your family tree Lets get
-						started.</h2>
-					<span><h4>Family Name : Nattamai</h4></span>
-					<div class="row">
-						<div class="col-md-offset-4 col-md-4">
-							<button id="createFamily" type="button"
-								class="btn btn-info btn-lg btn-block">Create my Family
-								tree</button>
+			<div id="familytree" style="display: none;">
+				<div id="familytreediv" style="margin: auto; text-align: center;">
+					<div id="startTree">
+						<h2>Feeling exicted to create your family tree Lets get
+							started.</h2>
+						<span><h4>Family Name : Nattamai</h4></span>
+						<div class="row">
+							<div class="col-md-offset-4 col-md-4">
+								<button id="createFamily" type="button"
+									class="btn btn-info btn-lg btn-block">Create my Family
+									tree</button>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div id="treetip" class="alert alert-info fade in"
-					style="display: none; text-align: left">
-					<button class="close" aria-hidden="true" data-dismiss="alert"
-						type="button">×</button>
-					<h4>Tips : -</h4>
+					<div id="treetip" class="alert alert-info fade in"
+						style="display: none; text-align: left">
+						<button class="close" aria-hidden="true" data-dismiss="alert"
+							type="button">×</button>
+						<h4>Tips : -</h4>
 
-					<ul>
-						<li>
-							<p>Hover over the circle to add connections</p>
-						</li>
-						<li>
-							<p>Drag the circle to move the postion</p>
-						</li>
-					</ul>
-					<button class="btn btn-primary" aria-hidden="true"
-						data-dismiss="alert" type="button">Ok Got it !!!</button>
+						<ul>
+							<li>
+								<p>Hover over the circle to add connections</p>
+							</li>
+							<li>
+								<p>Drag the circle to move the postion</p>
+							</li>
+						</ul>
+						<button class="btn btn-primary" aria-hidden="true"
+							data-dismiss="alert" type="button">Ok Got it !!!</button>
 
-				</div>
-				<div id="theTree" style="display: none">
-					<div id="treenode1" class="node" style="left: 600px; top: 150px">
-						<div id="mainnode" class="treenode">
-							<!-- <img src="./images/ProfileDefault.png" width="50px" height="50px" class="image-rounded"> -->
-							<p id="primarynodename">Arunkumar Hariharan</p>
-						</div>
+					</div>
+					<div id="theTree" style="display: none">
+						<div id="treenode1" class="node" style="left: 600px; top: 150px">
+							<div id="mainnode" class="treenode">
+								<!-- <img src="./images/ProfileDefault.png" width="50px" height="50px" class="image-rounded"> -->
+								<p id="primarynodename">Arunkumar Hariharan</p>
+							</div>
 
-						<div id="relation1" class="addtools toolmother"
-							data-toggle="tooltip" data-placement="right" title=""
-							data-original-title="Add Mom">
-							<p>Mom</p>
-						</div>
-						<div id="relation2" class="addtools toolfather"
-							data-toggle="tooltip" data-placement="right" title=""
-							data-original-title="Add Dad">
-							<p>Dad</p>
+							<div id="relation1" class="addtools toolmother"
+								data-toggle="tooltip" data-placement="right" title=""
+								data-original-title="Add Mom">
+								<p>Mom</p>
+							</div>
+							<div id="relation2" class="addtools toolfather"
+								data-toggle="tooltip" data-placement="right" title=""
+								data-original-title="Add Dad">
+								<p>Dad</p>
 
-						</div>
-						<div id="relation3" class="addtools toolchild"
-							data-toggle="tooltip" data-placement="right" title=""
-							data-original-title="Add Child">
-							<p>Child</p>
+							</div>
+							<div id="relation3" class="addtools toolchild"
+								data-toggle="tooltip" data-placement="right" title=""
+								data-original-title="Add Child">
+								<p>Child</p>
 
-						</div>
-						<div id="relation4" class="addtools toolspouse"
-							data-toggle="tooltip" data-placement="bottom" title=""
-							data-original-title="Add Spouse">
-							<p>Spouse</p>
-						</div>
-						<div id="relation5" class="addtools toolsibling"
-							data-toggle="tooltip" data-placement="left" title=""
-							data-original-title="Add Sibling">
-							<p>Sibling</p>
-						</div>
-						<div id="relation6" class="addtools toolother"
-							data-toggle="tooltip" data-placement="left" title=""
-							data-original-title="Add Others">
-							<p>Others</p>
-						</div>
-						<!--	<div id="relation7" class="addtools tooldelete" >
+							</div>
+							<div id="relation4" class="addtools toolspouse"
+								data-toggle="tooltip" data-placement="bottom" title=""
+								data-original-title="Add Spouse">
+								<p>Spouse</p>
+							</div>
+							<div id="relation5" class="addtools toolsibling"
+								data-toggle="tooltip" data-placement="left" title=""
+								data-original-title="Add Sibling">
+								<p>Sibling</p>
+							</div>
+							<div id="relation6" class="addtools toolother"
+								data-toggle="tooltip" data-placement="left" title=""
+								data-original-title="Add Others">
+								<p>Others</p>
+							</div>
+							<!--	<div id="relation7" class="addtools tooldelete" >
 									<label><i class="fa fa-times"></i></label>
 									<p>
 									Delete
@@ -451,26 +450,26 @@
 									</div>
 									-->
 
-					</div>
+						</div>
 
+					</div>
 				</div>
 			</div>
+			<!-- end of family tree -->
+			<div id="lookup" style="display: none;">
+				<span> test this lookup</span>
+			</div>
+			<!-- end of lookup -->
+			<div id="invite" style="display: none;">
+				<span> test this invite</span>
+			</div>
+			<!-- end of invite -->
+			<div id="help" style="display: none;">
+				<span> test this Help</span>
+			</div>
+			<!-- end of collaborate -->
 		</div>
-		<!-- end of family tree -->
-		<div id="lookup" style="display: none;">
-			<span> test this lookup</span>
-		</div>
-		<!-- end of lookup -->
-		<div id="invite" style="display: none;">
-			<span> test this invite</span>
-		</div>
-		<!-- end of invite -->
-		<div id="help" style="display: none;">
-			<span> test this Help</span>
-		</div>
-		<!-- end of collaborate -->
-	</div>
-	<!-- end of workpane -->
+		<!-- end of workpane -->
 	</div>
 	<!-- main navigation -->
 
