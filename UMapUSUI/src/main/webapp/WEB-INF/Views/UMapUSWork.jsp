@@ -10,14 +10,14 @@
 
 <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
 
-<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/vendor/normalize.css">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/UMapUS.css">
-<link rel="stylesheet" href="css/bootstrap-theme.css">
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<link rel="stylesheet" href="css/datepicker.css">
-<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/vendor/bootstrap-theme.css">
+<link rel="stylesheet" href="css/vendor/bootstrap.css">
+<link rel="stylesheet" href="css/vendor/font-awesome.min.css">
+<link rel="stylesheet" href="css/vendor/datepicker.css">
+<link rel="stylesheet" href="css/vendor/animate.css">
 <script src="js/vendor/modernizr-2.7.1.min.js"></script>
 <script src="js/Validators.js" type="text/javascript"></script>
 <script src="js/Messages.js" type="text/javascript"></script>
@@ -499,7 +499,7 @@
 									<label for="modalfamilyname" class="col-md-2 control-label"><span
 										style="color: red">* </span>Family Name</label>
 									<div class="col-md-10">
-										<select id="modalfamilyname" class="form-control"
+										<select id="modalfamilyname" class="form-control selectpicker"
 											placeholder="Family Name">
 											<option>-Select-</option>
 											<option>Vaithiyam</option>
@@ -562,12 +562,13 @@
 									<div class="col-md-6">
 										<div class="input-group">
 											<input id="Addbirthdate" type="text" class="form-control"
-												readonly=""> <span class="input-group-btn">
+												readonly=""> 
+												<span class="input-group-btn">
 												<button id="Addbirthdatepicker" class="btn btn-warning"
 													data-date="10/10/2010" data-date-format="mm/dd/yyyy"
 													data-date-viewMode="years" type="button">
 													<span class="glyphicon glyphicon-calendar"></span>
-												</button>
+												</button></span>
 										</div>
 									</div>
 									
@@ -647,7 +648,7 @@
 							</div>
 
 							<div class="moreinfo">
-								<a href="#"> More Information >> </a>
+								<a href="#"> More Information  </a>
 
 							</div>
 
@@ -694,10 +695,9 @@
 			window.jQuery
 					|| document
 							.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>');
-			// Enable Navigator
+			
 		</script>
-		<script src="js/vendor/jquery-ui-1.10.4.custom.js"
-			type="text/javascript"></script>
+		<script src="js/vendor/jquery-ui-1.10.4.custom.js" type="text/javascript"></script>
 		<script src="js/Utility.js" type="text/javascript"></script>
 		<script src="js/vendor/jquery.jsPlumb-1.5.5.js" type="text/javascript"></script>
 		<script src="./js/Navigator.js" type="text/javascript"></script>
@@ -705,7 +705,7 @@
 		<script>
 			nav.navigate();
 		</script>
-		<script src="./js/bootstrap-datepicker.js" type="text/javascript"></script>
+		<script src="./js/vendor/bootstrap-datepicker.js" type="text/javascript"></script>
 		<script src="./js/familytree.js" type="text/javascript"></script>
 		<script>
 			enableDatePicker('#birthdatepicker', '#birthdate');
