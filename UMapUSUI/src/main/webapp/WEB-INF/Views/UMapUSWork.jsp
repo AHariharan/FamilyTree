@@ -486,207 +486,234 @@
 					<h4 class="modal-title" id="myModalLabel">Add Relation</h4>
 				</div>
 				<div class="modal-body">
-					<form class="form-horizontal">
-						<div class="form-group">
-							<label for="modalname" class="col-md-2 control-label"><span
-								style="color: red">* </span>Name</label>
-							<div class="col-md-offset-1 col-md-9">
-								<input type="text" class="form-control" id="addmodalname"
-									placeholder="Name">
+					<ul id="AddTab" class="nav nav-tabs">
+						<li class="active"><a href="#AddBasic" data-toggle="tab">Basic
+								Info</a></li>
+						<li class=""><a href="#AddAdvanced" data-toggle="tab">Additonal
+								Info</a></li>
+					</ul>
+					<div id="AddTabContent" class="tab-content">
+						<div class="tab-pane fade active in" id="AddBasic">
+							<div class="form-horizontal">
+								<div class="form-group">
+									<label for="modalfamilyname" class="col-md-2 control-label"><span
+										style="color: red">* </span>Family Name</label>
+									<div class="col-md-10">
+										<select id="modalfamilyname" class="form-control"
+											placeholder="Family Name">
+											<option>-Select-</option>
+											<option>Vaithiyam</option>
+											<option>Kuttuva</option>
+											<option>Nattamai</option>
+											<option>Solai</option>
+											<option>Neelman</option>
+										</select>
 
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="emailinmodal" class="col-md-2 control-label">
-								Email </label>
-							<div class="col-md-offset-1 col-md-9">
-								<input type="text" class="form-control" id="addemailinmodal"
-									placeholder="Email">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="genderinmodal" class="col-md-2 control-label"><span
-								style="color: red">* </span> Gender </label>
-							<div class="col-md-offset-1 col-md-9">
-								<select id="addgenderselect" class="form-control">
-									<option>Male</option>
-									<option>Female</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="modalage" class="col-md-2 control-label"><span
-								style="color: red">* </span>Age</label>
-							<div class="col-md-offset-1 col-md-9">
-								<input type="number" class="form-control" id="addmodalage"
-									placeholder="Age in Years">
-							</div>
-						</div>
-						<div class="checkbox">
-							<label> <input type="checkbox" id="addisPersonExpired">
-								is Person Expired ?
-							</label>
-						</div>
-						<div class="panel-group" id="accordion">
-							<div>
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion"
-											href="#addmoreinfo" class=""> Add more information &gt; </a>
-									</h4>
+									</div>
 								</div>
-								<div id="addmoreinfo" class="panel-collapse collapse out"
-									style="height: auto;">
-									<div id="addmoreinformationcontent" class="panel-body"></div>
+								<div class="form-group">
+									<label for="modalname" class="col-md-2 control-label"><span
+										style="color: red">* </span>Name</label>
+									<div class="col-md-10">
+										<input type="text" class="form-control" id="addmodalname"
+											placeholder="Name">
+
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="emailinmodal" class="col-md-2 control-label">
+										Email </label>
+									<div class="col-md-10">
+										<input type="text" class="form-control" id="addemailinmodal"
+											placeholder="Email">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="genderinmodal" class="col-md-2 control-label"><span
+										style="color: red">* </span> Gender </label>
+									<div class=" col-md-10">
+										<select id="addgenderselect" class="form-control">
+											<option>Male</option>
+											<option>Female</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="modalage" class="col-md-2 control-label"><span
+										style="color: red">* </span>Age</label>
+									<div class="col-md-3">
+										<input type="number" class="form-control" id="addmodalage"
+											placeholder="Age in Years">
+									</div>
+								</div>
+								<div class="checkbox col-md-offset-2 col-md-10">
+									<label> <input type="checkbox" id="addisPersonExpired">
+										is Person Expired (RIP)?
+									</label>
+								</div>
+
+							</div>
+						</div>
+						<div class="tab-pane fade" id="AddAdvanced">
+							<div class="form-horizontal">
+								<div class="form-group">
+									<label for="birthdate" class="col-md-2 control-label">Birth
+										Date </label>
+									<div class="col-md-6">
+										<div class="input-group">
+											<input id="Addbirthdate" type="text" class="form-control"
+												readonly=""> <span class="input-group-btn">
+												<button id="Addbirthdatepicker" class="btn btn-warning"
+													data-date="10/10/2010" data-date-format="mm/dd/yyyy"
+													data-date-viewMode="years" type="button">
+													<span class="glyphicon glyphicon-calendar"></span>
+												</button>
+										</div>
+									</div>
+									
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">
+							Close</button>
+						<button id="AddRelationConfirm" type="button"
+							class="btn btn-primary">Add</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- Add Relation Modal end -->
+
+		<!-- Edit Node Modal -->
+		<div class="modal fade" id="EditRelation" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">Edit Relation</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label for="modalname" class="col-md-2 control-label"><span
+									style="color: red">* </span>Name</label>
+								<div class="col-md-offset-1 col-md-9">
+									<input type="text" class="form-control" id="editmodalname"
+										placeholder="Name">
 
 								</div>
 							</div>
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">
-						Close</button>
-					<button id="AddRelationConfirm" type="button"
-						class="btn btn-primary">Add</button>
-				</div>
+							<div class="form-group">
+								<label for="emailinmodal" class="col-md-2 control-label">
+									Email </label>
+								<div class="col-md-offset-1 col-md-9">
+									<input type="text" class="form-control" id="editemailinmodal"
+										placeholder="Email">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="genderinmodal" class="col-md-2 control-label"><span
+									style="color: red">* </span> Gender </label>
+								<div class="col-md-offset-1 col-md-9">
+									<select id="editgenderselect" class="form-control">
+										<option>Male</option>
+										<option>Female</option>
+									</select>
+								</div>
+							</div>
 
-			</div>
-		</div>
-	</div>
+							<div class="form-group">
+								<label for="modalage" class="col-md-2 control-label"><span
+									style="color: red">* </span>Age</label>
+								<div class="col-md-offset-1 col-md-9">
+									<input type="number" class="form-control" id="editmodalage"
+										placeholder="Age in Years">
 
-	<!-- Add Relation Modal end -->
+								</div>
+							</div>
 
-	<!-- Edit Node Modal -->
-	<div class="modal fade" id="EditRelation" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">Edit Relation</h4>
-				</div>
-				<div class="modal-body">
-					<form class="form-horizontal">
-						<div class="form-group">
-							<label for="modalname" class="col-md-2 control-label"><span
-								style="color: red">* </span>Name</label>
-							<div class="col-md-offset-1 col-md-9">
-								<input type="text" class="form-control" id="editmodalname"
-									placeholder="Name">
+							<div class="checkbox">
+								<label> <input type="checkbox" id="editisPersonExpired">
+									is Person Expired ?
+								</label>
+							</div>
+
+							<div class="moreinfo">
+								<a href="#"> More Information >> </a>
 
 							</div>
-						</div>
-						<div class="form-group">
-							<label for="emailinmodal" class="col-md-2 control-label">
-								Email </label>
-							<div class="col-md-offset-1 col-md-9">
-								<input type="text" class="form-control" id="editemailinmodal"
-									placeholder="Email">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="genderinmodal" class="col-md-2 control-label"><span
-								style="color: red">* </span> Gender </label>
-							<div class="col-md-offset-1 col-md-9">
-								<select id="editgenderselect" class="form-control">
-									<option>Male</option>
-									<option>Female</option>
-								</select>
-							</div>
-						</div>
 
-						<div class="form-group">
-							<label for="modalage" class="col-md-2 control-label"><span
-								style="color: red">* </span>Age</label>
-							<div class="col-md-offset-1 col-md-9">
-								<input type="number" class="form-control" id="editmodalage"
-									placeholder="Age in Years">
-
-							</div>
-						</div>
-
-						<div class="checkbox">
-							<label> <input type="checkbox" id="editisPersonExpired">
-								is Person Expired ?
-							</label>
-						</div>
-
-						<div class="moreinfo">
-							<a href="#"> More Information >> </a>
-
-						</div>
-
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">
-						Cancel</button>
-					<button id="EditRelationConfirm" type="button"
-						class="btn btn-primary">Save Changes</button>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">
+							Cancel</button>
+						<button id="EditRelationConfirm" type="button"
+							class="btn btn-primary">Save Changes</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- Modals for delete connection -->
-	<div class="modal fade" id="DeleteConnectionModal" tabindex="-1"
-		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">Delete Confirmation</h4>
-				</div>
-				<div class="modal-body">
-					<h4>This will delete the Family member and all connection
-						associated. Are you sure you wan't to do this ?</h4>
-				</div>
-				<div class="modal-footer">
-					<button id="DeleteConnectionYes" type="button"
-						class="btn btn-danger">Yes</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">
-						No</button>
+		<!-- Modals for delete connection -->
+		<div class="modal fade" id="DeleteConnectionModal" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">Delete Confirmation</h4>
+					</div>
+					<div class="modal-body">
+						<h4>This will delete the Family member and all connection
+							associated. Are you sure you wan't to do this ?</h4>
+					</div>
+					<div class="modal-footer">
+						<button id="DeleteConnectionYes" type="button"
+							class="btn btn-danger">Yes</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">
+							No</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- Main div container -->
-	<script
-		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script>
-		window.jQuery
-				|| document
-						.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>');
-		// Enable Navigator
-	</script>
-	<script src="js/vendor/jquery-ui-1.10.4.custom.js"
-		type="text/javascript"></script>
-	<script src="js/vendor/jquery.jsPlumb-1.5.5.js" type="text/javascript"></script>
-	<script src="./js/Navigator.js" type="text/javascript"></script>
-	<script src="js/vendor/bootstrap.min.js" type="text/javascript"></script>
-	<script>
-		nav.navigate();
-	</script>
-	<script src="./js/bootstrap-datepicker.js" type="text/javascript"></script>
-	<script src="./js/familytree.js" type="text/javascript"></script>
-	<script>
-		$('#birthdatepicker').datepicker({
-			format : 'mm/dd/yyyy',
-			onRender : function(date) {
-				return date.valueOf() > new Date().valueOf() ? 'disabled' : '';
-			}
-		}).on('changeDate', function(event) {
-			$('#birthdate').val($('#birthdatepicker').data('date'));
-		});
-	</script>
-	<script>
-		familyTree.inithover();
-		familyTree.initTools();
-		$('.addtools').tooltip();
-	</script>
-
+		<!-- Main div container -->
+		<script
+			src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script>
+			window.jQuery
+					|| document
+							.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>');
+			// Enable Navigator
+		</script>
+		<script src="js/vendor/jquery-ui-1.10.4.custom.js"
+			type="text/javascript"></script>
+		<script src="js/Utility.js" type="text/javascript"></script>
+		<script src="js/vendor/jquery.jsPlumb-1.5.5.js" type="text/javascript"></script>
+		<script src="./js/Navigator.js" type="text/javascript"></script>
+		<script src="js/vendor/bootstrap.min.js" type="text/javascript"></script>
+		<script>
+			nav.navigate();
+		</script>
+		<script src="./js/bootstrap-datepicker.js" type="text/javascript"></script>
+		<script src="./js/familytree.js" type="text/javascript"></script>
+		<script>
+			enableDatePicker('#birthdatepicker', '#birthdate');
+			enableDatePicker('#Addbirthdatepicker','#Addbirthdate');
+		</script>
+		<script>
+			familyTree.inithover();
+			familyTree.initTools();
+			$('.addtools').tooltip();
+		</script>
 </body>
