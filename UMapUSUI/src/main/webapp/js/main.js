@@ -153,6 +153,25 @@ var Account = function() {
 		
     };
     
+    self.getListofFamilyNames = function(event)
+    {
+    	var url = "/UMapUSUI/listoffamilies";
+    	var formdata = null;
+    	$.ajax({
+			type : "GET",
+			url : url,
+			contentType : "application/json",
+			data : JSON.stringify(formdata),
+			success : function(data, textStatus, jqXHR) {
+				console.log("Success");
+				window.alert(data);
+			},
+			error : function(data) {
+				alert("getList" + data);
+			}
+		});
+    };
+    
     self.login = function(event)
     {
     /*	event.preventDefault();
