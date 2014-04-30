@@ -73,11 +73,10 @@ public class UMapUSRefData {
            fis = new FileInputStream(filepath);
            reader = new BufferedReader(new InputStreamReader(fis));
          
-           System.out.println("Reading File line by line using BufferedReader");
-         
+          
            String line = reader.readLine();
            while(line != null){
-               System.out.println(line);
+             
                line = reader.readLine();
                list.add(line);
                }
