@@ -92,10 +92,10 @@ var Account = function() {
 				contentType : "application/json",
 				data : JSON.stringify(formdata),
 				success : function(data, textStatus, jqXHR) {
-					alert("Successful" + data);
+					
 				},
 				error : function(data) {
-					alert("Sign up failure" + data);
+					alert("Unable to fetch familyname list" + data);
 				}
 				
 			});
@@ -163,8 +163,16 @@ var Account = function() {
 			contentType : "application/json",
 			data : JSON.stringify(formdata),
 			success : function(data, textStatus, jqXHR) {
-				console.log("Success");
-				window.alert(data);
+				var optionstring = "";
+				for(var i=0;i<data.length;i++)
+					{
+					    if(data[i].aliasName == null)
+					           optionstring=optionstring+'<option>'+data[i].familyName+'</option>';
+					    else
+					    	   optionstring=optionstring+'<option data-subtext="'+data[i].aliasName+ '">'+data[i].familyName+'</option>';
+					}
+				    $('.selectpicker').append(optionstring);
+				    $('.selectpicker').selectpicker('refresh');
 			},
 			error : function(data) {
 				alert("getList" + data);
