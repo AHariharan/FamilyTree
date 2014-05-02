@@ -6,6 +6,12 @@ body
 	width:1180px !important;
 }
 
+#treetip .btn
+{
+position: absolute;
+top: 77px;
+right: 24px;
+}
 
 .thumbnail
 {
