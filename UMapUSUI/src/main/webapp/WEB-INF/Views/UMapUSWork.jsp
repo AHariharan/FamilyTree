@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="css/vendor/font-awesome.min.css">
 <link rel="stylesheet" href="css/vendor/datepicker.css">
 <link rel="stylesheet" href="css/vendor/animate.css">
+<link rel="stylesheet" href="./css/vendor/bootstrap-select.min.css">
 <script src="js/vendor/modernizr-2.7.1.min.js"></script>
 <script src="js/Validators.js" type="text/javascript"></script>
 <script src="js/Messages.js" type="text/javascript"></script>
@@ -500,13 +501,8 @@
 									<label for="modalfamilyname" class="col-md-2 control-label"><span
 										style="color: red">* </span>Family Name</label>
 									<div class="col-md-10">
-										<select id="modalfamilyname" class="form-control selectpicker">
+										<select id="modalfamilyname" class="form-control selectpicker" data-live-search="true" data-style="btn-primary">
 											<option>-Select-</option>
-											<option>Vaithiyam</option>
-											<option>Kuttuva</option>
-											<option>Nattamai</option>
-											<option>Solai</option>
-											<option>Neelman</option>
 										</select>
 
 									</div>
@@ -768,14 +764,18 @@
 	</script>
 	<script src="./js/vendor/bootstrap-datepicker.js"
 		type="text/javascript"></script>
+	
 	<script src="./js/familytree.js" type="text/javascript"></script>
+	<script src="js/vendor/bootstrap-select.min.js" type="text/javascript"></script>
+	<script src="./js/Utility.js"></script>	
+	
 	<script>
 		enableDatePicker('#birthdatepicker', '#birthdate');
 		enableDatePicker('#Addbirthdatepicker', '#Addbirthdate');
-	</script>
-	<script>
-		familyTree.inithover();
-		familyTree.initTools();
+		UMapUS.familyTree.inithover();
+		UMapUS.familyTree.initTools();
 		$('.addtools').tooltip();
+		UMapUS.refdata.getListofFamilyNames();
 	</script>
+	
 </body>

@@ -1,6 +1,6 @@
+var UMapUS = UMapUS || {};
 
-
-var FamilyTree = function() {
+UMapUS.FamilyTree = function() {
 
 	var self = this;
 
@@ -447,12 +447,10 @@ var FamilyTree = function() {
 		
     };
 	
-	
-	
 };
 
-var ModalSettings = function() {
-	self = this;
+UMapUS.ModalSettings = function() {
+	var self = this;
 	
 	var id = '#AddRelation';
 	var editid = '#EditRelation';
@@ -472,7 +470,6 @@ var ModalSettings = function() {
 			$("#addisPersonExpired").attr('checked', false); 
 		
 	};
-	
 	
 	self.initEditModal = function()
 	{
@@ -644,9 +641,9 @@ var ModalSettings = function() {
     
 };
 
-var modaltesting = new ModalSettings();
-var familyTree = new FamilyTree();
-modaltesting.initModal();
+UMapUS.modaltesting = new UMapUS.ModalSettings();
+UMapUS.familyTree = new UMapUS.FamilyTree();
+UMapUS.modaltesting.initModal();
 
 var testtree = {
 	sessionid : "JSESSIONID2324234A23423423",
@@ -676,7 +673,7 @@ var testtree = {
 
 // jsPlumb related stuff
 
-var NodeConnector = function() {
+UMapUS.NodeConnector = function() {
 	var self = this;
 
 	self.common = {
@@ -800,9 +797,9 @@ var NodeConnector = function() {
   };
 };
 
-var nodeConnector = null;
+UMapUS.nodeConnector = null;
 
 jsPlumb.ready(function() {
-	nodeConnector = new NodeConnector();
+	UMapUS.nodeConnector = new UMapUS.NodeConnector();
 });
 
