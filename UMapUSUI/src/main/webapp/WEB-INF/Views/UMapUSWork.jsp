@@ -373,6 +373,16 @@
 			<!-- end of profile -->
 
 			<div id="familytree" style="display: none;">
+				<div id="FamilyMembers" class="panel panel-primary addData">
+					<div class="panel-heading">
+						<h3 class="panel-title">My Family Members</h3>
+					</div>
+					<div class="panel-body well tree">
+					 <ul>
+					  <li><span><i class="icon-folder-open"></i> Arunkumar Hariharan</span></li>
+					 </ul>
+					</div>
+				</div>
 				<div id="familytreediv" style="margin: auto; text-align: center;">
 					<div id="startTree">
 						<h2>Feeling exicted to create your family tree Lets get
@@ -489,10 +499,9 @@
 				<div class="modal-body">
 					<ul id="AddTab" class="nav nav-tabs">
 						<li class="active"><a href="#AddBasic" data-toggle="tab">Basic
-								Info</a></li>
+								Info (Required)</a></li>
 						<li class=""><a href="#AddAdvanced" data-toggle="tab">Additonal
-								Info</a></li>
-						<li class=""><a href="#AddAddress" data-toggle="tab">Address</a></li>
+								Info (Optional)</a></li>
 					</ul>
 					<div id="AddTabContent" class="tab-content">
 						<div class="tab-pane fade active in" id="AddBasic">
@@ -501,7 +510,8 @@
 									<label for="modalfamilyname" class="col-md-2 control-label"><span
 										style="color: red">* </span>Family Name</label>
 									<div class="col-md-10">
-										<select id="modalfamilyname" class="form-control selectpicker" data-live-search="true" data-style="btn-primary">
+										<select id="modalfamilyname" class="form-control selectpicker"
+											data-live-search="true" data-style="btn-primary">
 											<option>-Select-</option>
 										</select>
 
@@ -550,85 +560,162 @@
 
 							</div>
 						</div>
-						<div class="tab-pane fade" id="AddAdvanced">
-							<div class="form-horizontal">
-								<div class="form-group">
-									<label for="birthdate" class="col-md-2 control-label">Birth
-										Date </label>
-									<div class="col-md-6">
-										<div class="input-group">
-											<input id="Addbirthdate" type="text" class="form-control"
-												readonly=""> <span class="input-group-btn">
-												<button id="Addbirthdatepicker" class="btn btn-warning"
-													data-date="10/10/2010" data-date-format="mm/dd/yyyy"
-													data-date-viewMode="years" type="button">
-													<span class="glyphicon glyphicon-calendar"></span>
-												</button>
-											</span>
+						<div class="tab-pane fade in" id="AddAdvanced">
+							<ul id="AddAdditonalTab" class="nav nav-tabs">
+								<li class="active"><a href="#AddPersonal" data-toggle="tab">Personal
+										Details</a></li>
+								<li class=""><a href="#AddAddress" data-toggle="tab">Contact
+										Information</a></li>
+								<li class=""><a href="#AddVitals" data-toggle="tab">Vitals
+										(Health)</a></li>
+							</ul>
+							<div id="AddAdditonalTabContent" class="tab-content">
+								<div class="tab-pane fade active in" id="AddPersonal">
+									<div class="form-horizontal">
+										<div class="form-group">
+											<label for="birthdate" class="col-md-2 control-label">Birth
+												Date </label>
+											<div class="col-md-6">
+												<div class="input-group">
+													<input id="Addbirthdate" type="text" class="form-control"
+														readonly=""> <span class="input-group-btn">
+														<button id="Addbirthdatepicker" class="btn btn-warning"
+															data-date="10/10/2010" data-date-format="mm/dd/yyyy"
+															data-date-viewMode="years" type="button">
+															<span class="glyphicon glyphicon-calendar"></span>
+														</button>
+													</span>
+												</div>
+											</div>
+
+										</div>
+										<div class="form-group">
+											<label for="addmodalgothru" class="col-md-2 control-label"></span>Gothuram</label>
+											<div class="col-md-3">
+												<input type="text" class="form-control" id="addmodalgothru"
+													placeholder="Gothuru">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addmodaleducation" class="col-md-2 control-label"></span>Education</label>
+											<div class="col-md-6">
+												<input type="text" class="form-control"
+													id="addmodaleducation" placeholder="Education">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addmodalprofession"
+												class="col-md-2 control-label"></span>Profession</label>
+											<div class="col-md-6">
+												<input type="text" class="form-control"
+													id="addmodalprofession" placeholder="Profession">
+											</div>
 										</div>
 									</div>
-
 								</div>
-								<div class="form-group">
-									<label for="addmodalgothru" class="col-md-2 control-label"></span>Gothuram</label>
-									<div class="col-md-3">
-										<input type="text" class="form-control" id="addmodalgothru"
-											placeholder="Gothuru">
+								<div class="tab-pane fade in" id="AddAddress">
+									<div class="form-horizontal">
+										<div class="form-group">
+											<label for="addmodaladdr1" class="col-md-2 control-label">Street
+												#1</label>
+											<div class="col-md-6">
+												<input type="text" class="form-control" id="addmodaladdr1"
+													placeholder="Address 1">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addmodaladdr2" class="col-md-2 control-label">Street
+												#2</label>
+											<div class="col-md-6">
+												<input type="text" class="form-control" id="addmodaladdr2"
+													placeholder="Address 2">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addmodalcity" class="col-md-2 control-label">City</label>
+											<div class="col-md-6">
+												<input type="text" class="form-control" id="addmodalcity"
+													placeholder="City">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addmodalstate" class="col-md-2 control-label">State</label>
+											<div class="col-md-6">
+												<input type="text" class="form-control" id="addmodalstate"
+													placeholder="State">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addmodalcountry" class="col-md-2 control-label">Country</label>
+											<div class="col-md-6">
+												<input type="text" class="form-control" id="addmodalcountry"
+													placeholder="Country">
+											</div>
+										</div>
 									</div>
 								</div>
-								<div class="form-group">
-									<label for="addmodaleducation" class="col-md-2 control-label"></span>Education</label>
-									<div class="col-md-6">
-										<input type="text" class="form-control" id="addmodaleducation"
-											placeholder="Education">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="addmodalprofession" class="col-md-2 control-label"></span>Profession</label>
-									<div class="col-md-6">
-										<input type="text" class="form-control"
-											id="addmodalprofession" placeholder="Profession">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade in" id="AddAddress">
-							<div class="form-horizontal">
-								<div class="form-group">
-									<label for="addmodaladdr1" class="col-md-2 control-label">Street
-										#1</label>
-									<div class="col-md-6">
-										<input type="text" class="form-control" id="addmodaladdr1"
-											placeholder="Address 1">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="addmodaladdr2" class="col-md-2 control-label">Street
-										#2</label>
-									<div class="col-md-6">
-										<input type="text" class="form-control" id="addmodaladdr2"
-											placeholder="Address 2">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="addmodalcity" class="col-md-2 control-label">City</label>
-									<div class="col-md-6">
-										<input type="text" class="form-control" id="addmodalcity"
-											placeholder="City">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="addmodalstate" class="col-md-2 control-label">State</label>
-									<div class="col-md-6">
-										<input type="text" class="form-control" id="addmodalstate"
-											placeholder="State">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="addmodalcountry" class="col-md-2 control-label">Country</label>
-									<div class="col-md-6">
-										<input type="text" class="form-control" id="addmodalcountry"
-											placeholder="Country">
+								<div class="tab-pane fade in" id="AddVitals">
+									<div class="form-horizontal">
+										<div class="form-group">
+											<label for="addmodalheight" class="col-md-2 control-label">Height</label>
+											<div class="col-md-6">
+												<input type="text" class="form-control" id="addmodalheight"
+													placeholder="in cm's">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addmodalheight" class="col-md-2 control-label">Weight</label>
+											<div class="col-md-6">
+												<input type="text" class="form-control" id="addmodalheight"
+													placeholder="in KGs">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addmodalsugar" class="col-md-2 control-label">Blood
+												Sugar</label>
+											<div class="col-md-6">
+												<input type="text" class="form-control" id="addmodalsugar"
+													placeholder="Sugar Levels">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addmodalbplow" class="col-md-2 control-label">BP
+												Low</label>
+											<div class="col-md-6">
+												<input type="text" class="form-control" id="addmodalbplow"
+													placeholder="Blood Pressure Low">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addmodalbphi" class="col-md-2 control-label">BP
+												High</label>
+											<div class="col-md-6">
+												<input type="text" class="form-control" id="addmodalbphi"
+													placeholder="Blood Pressure High">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addmodaltotcol" class="col-md-2 control-label">Total
+												Cholestrol</label>
+											<div class="col-md-6">
+												<input type="text" class="form-control" id="addmodaltotcol"
+													placeholder="Total Cholestrol">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addmodalhdl" class="col-md-2 control-label">HDL</label>
+											<div class="col-md-6">
+												<input type="text" class="form-control" id="addmodalhdl"
+													placeholder="HDL (Good Cholestrol)">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="addmodalldl" class="col-md-2 control-label">LDL</label>
+											<div class="col-md-6">
+												<input type="text" class="form-control" id="addmodalldl"
+													placeholder="LDL (Bad Cholestrol)">
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -764,11 +851,11 @@
 	</script>
 	<script src="./js/vendor/bootstrap-datepicker.js"
 		type="text/javascript"></script>
-	
+
 	<script src="./js/familytree.js" type="text/javascript"></script>
 	<script src="js/vendor/bootstrap-select.min.js" type="text/javascript"></script>
-	<script src="./js/Utility.js"></script>	
-	
+	<script src="./js/Utility.js"></script>
+
 	<script>
 		enableDatePicker('#birthdatepicker', '#birthdate');
 		enableDatePicker('#Addbirthdatepicker', '#Addbirthdate');
@@ -777,5 +864,5 @@
 		$('.addtools').tooltip();
 		UMapUS.refdata.getListofFamilyNames();
 	</script>
-	
+
 </body>

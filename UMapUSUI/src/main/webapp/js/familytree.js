@@ -55,11 +55,13 @@ UMapUS.FamilyTree = function() {
 			$(id + ' .addtools').show();
 			$(id).attr("data-nodeselected", "true");
 			//$(id + '.RIP').hide();
+			//$("#AddRelation").css("display","none");
 			return false;
 		});
 
 		$('html').click(function(eventObject) {
 			self.hideMenu();
+			//$("#AddRelation").css("display","none");
 		});
 
 		self.hideMenu = function() {
@@ -68,6 +70,7 @@ UMapUS.FamilyTree = function() {
 			curselectednode.siblings().filter('.addtools').hide();
 			//curselectednode.siblings().filter('.RIP').show();
 			curselectednode.parent().attr("data-nodeselected", "false");
+		//	
 		};
 	};
 
@@ -76,6 +79,7 @@ UMapUS.FamilyTree = function() {
 			var sourceid = $(this).parent().attr("id");
 			var relation = $(this).children().filter('p').text().trim();
 			self.addRelation(sourceid, relation, "SampleNode");
+			return false;
 		});
 	};
 
@@ -83,6 +87,7 @@ UMapUS.FamilyTree = function() {
 		$(nodeid + " .addtools").on("click", function(event) {
 			var sourceid = $(this).parent().attr("id");
 			var relation = $(this).children().filter('p').text().trim();
+		
 			self.addRelation(sourceid, relation, "SampleNode");
 		});
 		$('.addtools').tooltip();
@@ -96,7 +101,7 @@ UMapUS.FamilyTree = function() {
 		self.inithover();
 		self.initTools();
 		$.each(treeObj.relations, function(index, relationObj) {
-			nodeConnector.connectNodes(relationObj.sourceid, relationObj.targetid, relationObj.relationship);
+			UMapUS.nodeConnector.connectNodes(relationObj.sourceid, relationObj.targetid, relationObj.relationship);
 		});
 	};
 
@@ -412,8 +417,15 @@ UMapUS.FamilyTree = function() {
 	    	return;
 	    }
 		$('#AddRelation').data('datacontent', modelcontent);
+		/*$("#AddRelation").css("display","block");
+		$("#AddRelation .panel-title").html("Add (( " +  modelcontent.RELATION +" )) ");
+		$("#AddRelation").removeClass(["slideInLeft","animation","slideOutRight"]).addClass("slideInLeft" + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            $(this).removeClass("slideInLeft");
+            $(this).removeClass("slideOutRight");
+            $(this).removeClass("animation");
+     });*/
 		$("#AddRelation").modal('show');
-	
+	 
 
 	};
 
@@ -520,7 +532,7 @@ UMapUS.ModalSettings = function() {
 			if (self.checkName()) {
 				$(id).modal('hide');
 				modalcontent.NODENAME = $('#addmodalname').val();
-				var htmlcontent = familyTree.nodeTemplate.replace("UUID", modalcontent.UUID).replace("NODENAME", modalcontent.NODENAME).replace("LEFT", modalcontent.LEFT).replace("TOP", modalcontent.TOP);
+				var htmlcontent = UMapUS.familyTree.nodeTemplate.replace("UUID", modalcontent.UUID).replace("NODENAME", modalcontent.NODENAME).replace("LEFT", modalcontent.LEFT).replace("TOP", modalcontent.TOP);
 				if (modalcontent.RELATION == "Child") {
 					if ($("#addgenderselect").val() == "Male")
 						modalcontent.RELATION = "Son";
@@ -541,9 +553,9 @@ UMapUS.ModalSettings = function() {
 				modalcontent.isEXPIRED = $("#addisPersonExpired").is(":checked");
 				self.updateExpiredStatus(modalcontent);
 				$('#'+modalcontent.UUID).data('datacontent', modalcontent);
-				familyTree.inithover();
-				familyTree.initToolsNewNode("#" + modalcontent.UUID);
-				nodeConnector.connectNodes(modalcontent.SOURCEID, modalcontent.UUID, modalcontent.RELATION);
+				UMapUS.familyTree.inithover();
+				UMapUS.familyTree.initToolsNewNode("#" + modalcontent.UUID);
+				UMapUS.nodeConnector.connectNodes(modalcontent.SOURCEID, modalcontent.UUID, modalcontent.RELATION);
 			} else {
 
 			}
@@ -596,7 +608,7 @@ UMapUS.ModalSettings = function() {
 		$('#DeleteConnectionYes').on("click", function(e) {
 			var modelcontent = $('#DeleteConnectionModal').data('datacontent');
 			var sourceid = modelcontent.sourceid;
-			familyTree.deleteConnection(sourceid);
+			UMapUS.familyTree.deleteConnection(sourceid);
 			$('#DeleteConnectionModal').modal('hide');
 		});
 		
@@ -742,7 +754,7 @@ UMapUS.NodeConnector = function() {
     	    var top = parseInt(srctop.substr(0, srctop.indexOf("px"))) - 87;
 		    if(top-60 <60)
 		    {
-		    	familyTree.moveNodes("Down");
+		    	UMapUS.familyTree.moveNodes("Down");
 		    	srcleft = $('#' + sourcediv).css("left");
 		        srctop = $('#' + sourcediv).css("top");
 		        left = parseInt(srcleft.substr(0, srcleft.indexOf("px")))+ 44;
@@ -750,7 +762,7 @@ UMapUS.NodeConnector = function() {
 		    }
 		    if(left-60 < 100)
 		    {
-		    	familyTree.moveNodes("Right");
+		    	UMapUS.familyTree.moveNodes("Right");
 		    	srcleft = $('#' + sourcediv).css("left");
 		        srctop = $('#' + sourcediv).css("top");
 		        left = parseInt(srcleft.substr(0, srcleft.indexOf("px")))+ 44;
