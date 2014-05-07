@@ -377,10 +377,27 @@
 					<div class="panel-heading">
 						<h3 class="panel-title">My Family Members</h3>
 					</div>
-					<div class="panel-body well tree">
-					 <ul>
-					  <li><span><i class="icon-folder-open"></i> Arunkumar Hariharan</span></li>
-					 </ul>
+					<div id="familymemtree" class="panel-body tree">
+						<ul>
+							<li><span><i
+									class="icon-minus-sign fa fa-plus-square-o"></i> Arunkumar
+									Hariharan</span>
+								<ul>
+									<li><span><i class="icon-minus-sign fa fa-meh-o"></i>
+											My Family</span>
+									     <ul>
+									        <li><span><i class="icon-minus-sign fa fa-meh-o"></i>
+											Deepika solai</span></li>
+									     </ul>		
+									</li>
+											<li><span><i class="icon-minus-sign fa fa-meh-o"></i>
+											My Parents</span></li>
+											<li><span><i class="icon-minus-sign fa fa-meh-o"></i>
+											My GrandParents</span></li>
+
+								</ul>
+							</li>
+						</ul>
 					</div>
 				</div>
 				<div id="familytreediv" style="margin: auto; text-align: center;">
@@ -863,6 +880,7 @@
 		UMapUS.familyTree.initTools();
 		$('.addtools').tooltip();
 		UMapUS.refdata.getListofFamilyNames();
+		displayFamilyMembersTree();
 	</script>
 
 </body>
