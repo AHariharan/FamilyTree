@@ -373,7 +373,7 @@
 			<!-- end of profile -->
 
 			<div id="familytree" style="display: none;">
-				<div id="FamilyMembers" class="panel panel-primary addData">
+				<div id="FamilyMembers" class="panel panel-primary addData" style="display:none">
 					<div class="panel-heading">
 						<h3 class="panel-title">My Family Members</h3>
 					</div>
@@ -546,15 +546,20 @@
 								<div class="form-group">
 									<label for="emailinmodal" class="col-md-2 control-label">
 										Email </label>
-									<div class="col-md-10">
+									<div class="col-md-5">
 										<input type="text" class="form-control" id="addemailinmodal"
 											placeholder="Email">
+									</div>
+									<div class="checkbox col-md-5">
+										<label> <input type="checkbox" id="addisSendInvite">
+										     send Invite ?
+									</label>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="genderinmodal" class="col-md-2 control-label"><span
 										style="color: red">* </span> Gender </label>
-									<div class=" col-md-10">
+									<div class=" col-md-4">
 										<select id="addgenderselect" class="form-control">
 											<option>Male</option>
 											<option>Female</option>
@@ -583,8 +588,8 @@
 										Details</a></li>
 								<li class=""><a href="#AddAddress" data-toggle="tab">Contact
 										Information</a></li>
-								<li class=""><a href="#AddVitals" data-toggle="tab">Vitals
-										(Health)</a></li>
+							<!-- 	<li class=""><a href="#AddVitals" data-toggle="tab">Vitals
+										(Health)</a></li> -->
 							</ul>
 							<div id="AddAdditonalTabContent" class="tab-content">
 								<div class="tab-pane fade active in" id="AddPersonal">
@@ -669,9 +674,16 @@
 													placeholder="Country">
 											</div>
 										</div>
+										<div class="form-group">
+											<label for="addPhone" class="col-md-2 control-label">Mobile</label>
+											<div class="col-md-6">
+												<input type="text" class="form-control" id="addPhone"
+													placeholder="XXX-XX-XXXX">
+											</div>
+										</div>
 									</div>
 								</div>
-								<div class="tab-pane fade in" id="AddVitals">
+								<div class="tab-pane fade in" id="AddVitals" style="display:none">
 									<div class="form-horizontal">
 										<div class="form-group">
 											<label for="addmodalheight" class="col-md-2 control-label">Height</label>
@@ -857,8 +869,7 @@
 				|| document
 						.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>');
 	</script>
-	<script src="js/vendor/jquery-ui-1.10.4.custom.js"
-		type="text/javascript"></script>
+	<script src="js/vendor/jquery-ui-1.10.4.custom.js"	type="text/javascript"></script>
 	<script src="js/Utility.js" type="text/javascript"></script>
 	<script src="js/vendor/jquery.jsPlumb-1.5.5.js" type="text/javascript"></script>
 	<script src="./js/Navigator.js" type="text/javascript"></script>
@@ -866,8 +877,7 @@
 	<script>
 		nav.navigate();
 	</script>
-	<script src="./js/vendor/bootstrap-datepicker.js"
-		type="text/javascript"></script>
+	<script src="./js/vendor/bootstrap-datepicker.js"	type="text/javascript"></script>
 
 	<script src="./js/familytree.js" type="text/javascript"></script>
 	<script src="js/vendor/bootstrap-select.min.js" type="text/javascript"></script>
