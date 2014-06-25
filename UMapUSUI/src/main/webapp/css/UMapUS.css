@@ -375,34 +375,34 @@ background-size: 50px 20px;
 }
 
 .toolmother {
-	margin-top: -90px;
-	margin-left: 115px;
+	margin-top: -75px;
+	margin-left: 119px;
 	background-image: url('../images/tools/Mother.png');
 }
 
 .toolfather {
-	margin-top: 10px;
-	margin-left: 111px;
+	margin-top: 9px;
+	margin-left: 108px;
 	background-image: url('../images/tools/Father.png');
 }
 .toolchild {
-	margin-top: 3px;
-	margin-left: 84px;
+	margin-top: -4px;
+	margin-left: 75px;
 	background-image: url('../images/tools/Child.png');
 }
 .toolspouse {
-	margin-top: -19px;
-	margin-left: 38px;
+	margin-top: -30px;
+	margin-left: 21px;
 	background-image: url('../images/tools/Spouse.png');
 }
 .toolsibling {
-	margin-top: -53px;
-	margin-left: -11px;
+	margin-top: -64px;
+	margin-left: -27px;
 	background-image: url('../images/tools/Siblings.png');
 }
 .toolother {
 	margin-top: -79px;
-	margin-left: -39px;
+	margin-left: -42px;
 	background-image: url('../images/tools/Others.png');
 }
 
@@ -419,7 +419,7 @@ background-size: 50px 20px;
 	background-image: -webkit-radial-gradient(center, ellipse closest-corner, #EF160E 0%, #EF160E 100%);
 	/* W3C Markup, IE10 Release Preview */
 	background-image: radial-gradient(ellipse closest-corner at center, #EF160E 0%, #EF160E 100%);
-	margin-top: -116px;
+	margin-top: -101px;
 	margin-left: 45px;
 	color: #FFFFFF;
 	height: 20px;

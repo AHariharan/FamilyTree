@@ -427,19 +427,20 @@ UMapUS.FamilyTree = function() {
 		$('#EditRelation').data('datacontent', modelcontent);
 		$("#EditRelation").modal('show');
 		
-	}
+	};
 	
     self.checkRelationExists = function(sourcediv,relation,usesource)
     {
+    	var connectionlist = "";
     	if(usesource == true)
     	{
-    	var connectionlist = jsPlumb.getConnections({
+    	 connectionlist = jsPlumb.getConnections({
 			source : sourcediv,
 		});
 		}
 		else
 		{
-			var connectionlist = jsPlumb.getConnections({
+			connectionlist = jsPlumb.getConnections({
 			target : sourcediv,
 		});
 		}
