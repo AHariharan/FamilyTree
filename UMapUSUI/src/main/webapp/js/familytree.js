@@ -1,5 +1,8 @@
 var UMapUS = UMapUS || {};
 
+
+
+
 UMapUS.FamilyTree = function() {
 
 	var self = this;
@@ -78,7 +81,8 @@ UMapUS.FamilyTree = function() {
 		$(".addtools").on("click", function(event) {
 			var sourceid = $(this).parent().attr("id");
 			var relation = $(this).children().filter('p').text().trim();
-			self.addRelation(sourceid, relation, "SampleNode");
+			$(".addtools").hide();
+			self.performToolAction(sourceid, relation, "SampleNode");
 			return false;
 		});
 	};
@@ -87,8 +91,8 @@ UMapUS.FamilyTree = function() {
 		$(nodeid + " .addtools").on("click", function(event) {
 			var sourceid = $(this).parent().attr("id");
 			var relation = $(this).children().filter('p').text().trim();
-		
-			self.addRelation(sourceid, relation, "SampleNode");
+			$(".addtools").hide(); 
+			self.performToolAction(sourceid, relation, "SampleNode");
 		});
 		$('.addtools').tooltip();
 	};
@@ -313,12 +317,9 @@ UMapUS.FamilyTree = function() {
     	});
     };
     
-    
-	self.addRelation = function(sourceid, relation, nodename) {
-		
-		/* adjust nodes */
-		{
-        var srcleft = $('#' + sourceid).css("left");
+    self.adjustNodes = function(sourceid)
+    {
+    	var srcleft = $('#' + sourceid).css("left");
 		var srctop = $('#' + sourceid).css("top");
 		var left = parseInt(srcleft.substr(0, srcleft.indexOf("px"))) + 100;
     	var top = parseInt(srctop.substr(0, srctop.indexOf("px"))) + 300;
@@ -326,109 +327,108 @@ UMapUS.FamilyTree = function() {
     	   self.moveNodes("Right");
     	if(top - 350 < 100)
     	   self.moveNodes("Down");
-       
-         }
-         
-         
+    };
+    
+    
+    self.performToolAction = function(sourceid,relation,nodename)
+    {
+    	
+		if (relation == "Delete") {
+			self.deleteRelation(sourceid);
+     	}
+		else if (relation == "Minimize") {
+			self.minimizeRelation(sourceid);
+		}
+		else if (relation == "Expand") {
+        	self.expandRelation(sourceid);
+		}
+		else if(relation == "Edit")
+		{
+			self.editRelation(sourceid);			
+		}
+		else
+			{
+			   self.addRelation(sourceid,relation,nodename);
+			}
+    };
+    
+	self.addRelation = function(sourceid, relation, nodename) {
+		
 		var targetid = guid();
 		var srcleft = $('#' + sourceid).css("left");
 		var srctop = $('#' + sourceid).css("top");
-		
-		
-		
-		
-		
 		var position = self.getDesiredPostion(sourceid,srctop,srcleft,relation);
-		
-		var left = position.left;
-		var top = position.top;
-		
-		
+		var curnodeleft = position.left;
+		var curnodetop = position.top;
 		var modelcontent = {
 			UUID : targetid,
 			NODENAME : nodename,
-			LEFT : left,
-			TOP : top,
+			LEFT : curnodeleft,
+			TOP : curnodetop,
 			RELATION : relation,
 			SOURCEID : sourceid
 		};
-
-		if (relation == "Delete") {
-			try {
-				var modelcontent = {
-					sourceid : sourceid
-				};
-				$('#DeleteConnectionModal').data('datacontent', modelcontent);
-				$("#DeleteConnectionModal").modal('show');
-				//self.deleteConnection(sourceid);
-			} catch(e) {
-				alert(e);
-			}
-			return;
-		}
-
-        if (relation == "Minimize") {
-			try {
-				var modelcontent = {
-					sourceid : sourceid
-				};
-			    self.minimizeNode(sourceid);
-			} catch(e) {
-				alert(e);
-			}
-			return;
-		}
-
-        if (relation == "Expand") {
-			try {
-				var modelcontent = {
-					sourceid : sourceid
-				};
-			    self.expandNode(sourceid);
-			} catch(e) {
-				alert(e);
-			}
-			return;
-		}
-		
-		if(relation == "Edit")
-		{
-			//alert("SourceID :" + sourceid);
-			var modelcontent =  $('#' + sourceid).data("datacontent");
-			
-			$('#EditRelation').data('datacontent', modelcontent);
-			$("#EditRelation").modal('show');
-			return;
-		}
-	
-	    var usesource = true;
-	    if(modelcontent.RELATION == "Sibling")
-	        usesource = false;
-	    var relObj = self.checkRelationExists(modelcontent.SOURCEID,modelcontent.RELATION,usesource);
-	    if(relObj.result == true)
-	    {
-	    	var existingDiv = relObj.existingdiv;
-	    	var animationtype = "bounce";
-	    	$('#'+existingDiv).removeClass([animationtype,"animation"]).addClass(animationtype + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                   $(this).removeClass(animationtype);
-                   $(this).removeClass("animation");
-            });
-	    	
-	    	return;
-	    }
-		$('#AddRelation').data('datacontent', modelcontent);
-		/*$("#AddRelation").css("display","block");
-		$("#AddRelation .panel-title").html("Add (( " +  modelcontent.RELATION +" )) ");
-		$("#AddRelation").removeClass(["slideInLeft","animation","slideOutRight"]).addClass("slideInLeft" + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-            $(this).removeClass("slideInLeft");
-            $(this).removeClass("slideOutRight");
-            $(this).removeClass("animation");
-     });*/
-		$("#AddRelation").modal('show');
-	 
+		var usesource = true;
+		    if(modelcontent.RELATION == "Sibling")
+		        usesource = false;
+		    var relObj = self.checkRelationExists(modelcontent.SOURCEID,modelcontent.RELATION,usesource);
+		    if(relObj.result == true)
+		    {
+		    	var existingDiv = relObj.existingdiv;
+		    	var animationtype = "bounce";
+		    	$('#'+existingDiv).removeClass([animationtype,"animation"]).addClass(animationtype + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+	                   $(this).removeClass(animationtype);
+	                   $(this).removeClass("animation");
+	            });
+		    	
+		    	return;
+		    }
+			$('#AddRelation').data('datacontent', modelcontent);
+			$("#AddRelation").modal('show');
 
 	};
 
+	self.deleteRelation = function(sourceid)
+	{
+		try {
+			var modelcontent = {
+				sourceid : sourceid
+			};
+			$('#DeleteConnectionModal').data('datacontent', modelcontent);
+			$("#DeleteConnectionModal").modal('show');
+			//self.deleteConnection(sourceid);
+		} catch(e) {
+			alert(e);
+		}
+	};
+	
+	self.minimizeRelation = function(sourceid)
+	{
+		try {
+			 self.minimizeNode(sourceid);
+		} catch(e) {
+			alert(e);
+		}
+	};
+	
+	self.expandRelation = function(sourceid)
+	{
+		try {
+		    self.expandNode(sourceid);
+		} catch(e) {
+			alert(e);
+		}
+	};
+	
+	self.editRelation = function(sourceid)
+	{
+		var modelcontent =  $('#' + sourceid).data("datacontent");
+		
+		$('#EditRelation').data('datacontent', modelcontent);
+		$("#EditRelation").modal('show');
+		
+	}
+	
     self.checkRelationExists = function(sourcediv,relation,usesource)
     {
     	if(usesource == true)
@@ -527,11 +527,23 @@ UMapUS.ModalSettings = function() {
     
     self.onAddRelationConfirm  =  function()
     {
+    	
     	$('#AddRelationConfirm').on("click", function(e) {
+    		var modalcontent = $(id).data('datacontent');
+    		UMapUS.familyTree.adjustNodes(modalcontent.SOURCEID);
+    		//Recalibrate positions
+    		var srcleft = $('#' + modalcontent.SOURCEID).css("left");
+    		var srctop = $('#' + modalcontent.SOURCEID).css("top");
+    		var position = UMapUS.familyTree.getDesiredPostion(modalcontent.SOURCEID,srctop,srcleft,modalcontent.RELATION);
+    		var curnodeleft = position.left;
+    		var curnodetop = position.top;    		
+    		//End Recalibrate positions
 			var modalcontent = $(id).data('datacontent');
 			if (self.checkName()) {
 				$(id).modal('hide');
 				modalcontent.NODENAME = $('#addmodalname').val();
+				modalcontent.LEFT = curnodeleft;
+	    		modalcontent.TOP = curnodetop;
 				var htmlcontent = UMapUS.familyTree.nodeTemplate.replace("UUID", modalcontent.UUID).replace("NODENAME", modalcontent.NODENAME).replace("LEFT", modalcontent.LEFT).replace("TOP", modalcontent.TOP);
 				if (modalcontent.RELATION == "Child") {
 					if ($("#addgenderselect").val() == "Male")
