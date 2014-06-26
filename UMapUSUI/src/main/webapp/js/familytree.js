@@ -216,6 +216,21 @@ UMapUS.FamilyTree = function() {
 
     self.moveNodes = function(movetype)
     {
+    	if(movetype == "Up")
+    	{
+    		$('.treenode').each(function(i,node)
+    		{
+    			var curtop = $(this).parent().css("top");
+    			var newtop = parseInt(curtop.substr(0, curtop.indexOf("px")))-200;
+    			$(this).parent().css("top",newtop+"px");
+    		});
+    		$('.connectornode').each(function(i,node)
+    		{
+    			var curtop = $(this).css("top");
+    			var newtop = parseInt(curtop.substr(0, curtop.indexOf("px")))-200;
+    			$(this).css("top",newtop+"px");
+    		});
+       	}
     	if(movetype == "Down")
     	{
     		$('.treenode').each(function(i,node)
@@ -311,10 +326,13 @@ UMapUS.FamilyTree = function() {
     
     self.getMinimumHeight = function()
     {
-    	
+    	var arr = new Array();
     	$('.node').each(function(i,node){
-    	        	
+    		var top = parseInt($(this).css("top").split("px")[0]);
+    		arr.push(top);
     	});
+    	arr.sort(function(a, b){return a-b;});
+    	return arr[0];
     };
     
     self.adjustNodes = function(sourceid)
@@ -622,6 +640,14 @@ UMapUS.ModalSettings = function() {
 			var modelcontent = $('#DeleteConnectionModal').data('datacontent');
 			var sourceid = modelcontent.sourceid;
 			UMapUS.familyTree.deleteConnection(sourceid);
+			while(true)
+				{
+				    var minheight = UMapUS.familyTree.getMinimumHeight();
+			        if(minheight > 200)
+				       UMapUS.familyTree.moveNodes("Up");
+			        else
+			          break;
+				}
 			$('#DeleteConnectionModal').modal('hide');
 		});
 		
