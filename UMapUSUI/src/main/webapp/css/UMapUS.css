@@ -6,11 +6,17 @@ body
 	width:1180px !important;
 }
 
+.nav-column
+{
+	width:150px;
+	display:inline-block;
+	margin-left:20px;
+}
+
 #treetip .btn
 {
-position: absolute;
-top: 77px;
-right: 24px;
+float: right;
+margin-top: -32px;
 }
 
 .addData
@@ -136,10 +142,33 @@ top: 150px;
 }
 
 .leftpane {
-/*position:fixed !important;*/
+display: inline-block;
+/* position: fixed; */
+z-index: 20000;
+width: inherit;
+margin-top: -20px;
+padding-left: 69px;
+/* background: rgb(248, 248, 248); */
+padding-top: 6px;
+/* box-shadow: 0px 0px 8px 4px rgb(185, 184, 184); */
 }
+
 .workpane-after {
- /*margin-top: -33px; */
+margin-top: 13px;
+width: inherit;
+box-shadow: 0px 0px 8px 4px rgb(185, 184, 184);
+overflow:auto;
+min-height:800px;
+position:relative;
+border: 2px solid rgb(12,212,323);
+border-radius:20px;
+}
+
+.workpane
+{
+width: 97%;
+margin: 0 auto;
+padding-top: 15px;
 }
 
 .radioinput {
@@ -153,10 +182,15 @@ top: 150px;
 }
 
 .icongroup {
-	margin-top: -15px;
-	min-height: 100px;
 	color: #FFFFFF !important;
+    margin-bottom: 7px !important;
 }
+
+.icongroup .thumbnail
+{
+	margin-bottom:5px !important;
+}
+
 
 .fileUpload {
 	position: relative;
@@ -197,6 +231,13 @@ top: 150px;
  border:2px solid;
  overflow: scroll;
  } */
+ 
+ .familytools
+ {
+   background:grey;
+   min-height:30px;
+ 
+ }
 
 .node {#padding:50px;
 	position: absolute;

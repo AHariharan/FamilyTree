@@ -78,8 +78,9 @@
 	<div id="mainnav" class="container">
 
 
-		<div id="leftpane" class="row">
-			<div class="col-md-2">
+		<div id="leftpane" class="leftpane">
+
+			<div class="nav-column">
 				<div class="icongroup">
 					<a href="#" id="familynewsnav" class="thumbnail"> <img
 						src="./images/FamilyUpdates.png" width="32px" height="32px"
@@ -88,8 +89,7 @@
 					</a>
 				</div>
 			</div>
-
-			<div class="col-md-2">
+			<div class="nav-column">
 				<div class="icongroup">
 					<a href="#" id="profilenav" class="thumbnail"> <img
 						src="./images/Profile.png" width="32px" height="32px" alt="...">
@@ -97,7 +97,7 @@
 					</a>
 				</div>
 			</div>
-			<div class="col-md-2">
+			<div class="nav-column">
 				<div class="icongroup ">
 					<a href="#" id="familytreenav" class="thumbnail"> <img
 						src="./images/FamilyTree.png" width="32px" height="32px" alt="...">
@@ -105,7 +105,7 @@
 					</a>
 				</div>
 			</div>
-			<div class="col-md-2">
+			<div class="nav-column">
 				<div class="icongroup ">
 					<a href="#" id="lookupnav" class="thumbnail"> <img
 						src="./images/Discover.png" width="32px" height="32px" alt="...">
@@ -113,7 +113,7 @@
 					</a>
 				</div>
 			</div>
-			<div class="col-md-2">
+			<div class="nav-column">
 				<div class="icongroup ">
 					<a href="#" id="invitenav" class="thumbnail"> <img
 						src="./images/Invite.png" width="32px" height="32px" alt="...">
@@ -121,7 +121,7 @@
 					</a>
 				</div>
 			</div>
-			<div class="col-md-2">
+			<div class="nav-column">
 				<div class="icongroup ">
 					<a href="#" id="helpnav" class="thumbnail"> <img
 						src="./images/Collaborate.png" width="32px" height="32px"
@@ -130,250 +130,257 @@
 					</a>
 				</div>
 			</div>
+
 		</div>
 		<!-- end of leftpane -->
 
-		<div id="workpane" class="row col-md-12 workpane-after">
-			<div id="familynews" style="display: none;"
-				class="panel panel-primary">
+		<div id="workpane" class="workpane-after">
+			<div id="familynews" style="display: none;" class="workpane">
+				<div class="panel panel-primary">
 
-				<div id="familynewshead" class="panel-heading">
-					<h5 class="panel-title">Family feeds</h5>
-				</div>
-				<div class="panel-body">
-					<div id="myfamilyupdate" class="row">
-						<div class="col-md-2 familynewsimgalign">
+					<div id="familynewshead" class="panel-heading">
+						<h5 class="panel-title">Family feeds</h5>
+					</div>
+					<div class="panel-body">
+						<div id="myfamilyupdate" class="row">
+							<div class="col-md-2 familynewsimgalign">
 
-							<a href="#" id="helpnav"> <img
-								src="./images/ProfileDefault.png" width="96px" height="96px"
-								alt="...">
-								<p style="text-align: center; padding-top: 3px;">Arunkumar
-									Nattamai Hariharan</p>
-							</a>
+								<a href="#" id="helpnav"> <img
+									src="./images/ProfileDefault.png" width="96px" height="96px"
+									alt="...">
+									<p style="text-align: center; padding-top: 3px;">Arunkumar
+										Nattamai Hariharan</p>
+								</a>
 
-						</div>
-						<div id="sharecontent" class="col-md-10 row">
-							<div class="popover right">
-								<div class="arrow"></div>
-
-								<div class="popover-content" style="padding-bottom: 20px">
-									<div class="col-md-7" style="padding-bottom: 7px;">
-										<textarea class="form-control" style="resize: none;" rows="4"
-											placeholder="Share your family news / Updates"></textarea>
-									</div>
-									<div class="col-md-5">
-										<div class="col-md-12">
-											<button class="col-md-offset-4 col-md-6 btn btn-primary">
-												Share message</button>
-										</div>
-										<div class="col-md-offset-1 col-md-11"
-											style="margin-top: 15px; padding-left: 10px">
-											<span> <input type="checkbox" class="chkboxinput">
-												My family
-											</span> <span> <input type="checkbox" class="chkboxinput">
-												Extended family
-											</span> <span> <input type="checkbox" class="chkboxinput">
-												Everyone
-											</span>
-
-										</div>
-									</div>
-								</div>
 							</div>
-						</div>
-						<hr />
-						<div id="sharedmessages" class="row">
-							<div id="sharedmessage1" class="col-md-12"
-								style="border: 2px; margin-top: 10px">
-								<div class="col-md-2 familynewsimgalign">
-									<a href="#" id="helpnav"> <img
-										src="./images/ProfileDefault.png" width="32px" height="32px"
-										alt="...">
-										<p style="text-align: center; padding-top: 3px;">Nikitha
-											Nattamai Arunkumar</p>
-									</a>
-								</div>
+							<div id="sharecontent" class="col-md-10 row">
 								<div class="popover right">
 									<div class="arrow"></div>
-									<div class="popover-content">
-										<div class="col-md-12" style="padding: 10px">
-											<p style="word-wrap: break-word;">Shared messages 1 .....
-												Shared messages 1 ..... Shared messages 1 ..... Shared
-												messages 1 ..... Shared messages 1 .....</p>
+
+									<div class="popover-content" style="padding-bottom: 20px">
+										<div class="col-md-7" style="padding-bottom: 7px;">
+											<textarea class="form-control" style="resize: none;" rows="4"
+												placeholder="Share your family news / Updates"></textarea>
 										</div>
-										<div class="col-md-offset-2 col-md-10" style="padding: 10px">
-											<a href="#" class="col-md-3"> <span> <i
-													class="fa fa-thumbs-o-up"></i> Thumbs up
-											</span>
-											</a> <a href="#" class="col-md-2"> <span> <i
-													class="fa fa-heart-o"></i> Love
-											</span>
-											</a> <a href="#" class="col-md-3"> <span> <i
-													class="fa fa-comment-o"></i> Comment
-											</span>
-											</a> <a href="#" class="col-md-2"> <span> <i
-													class="fa fa-group"></i> Share
-											</span>
-											</a>
+										<div class="col-md-5">
+											<div class="col-md-12">
+												<button class="col-md-offset-4 col-md-6 btn btn-primary">
+													Share message</button>
+											</div>
+											<div class="col-md-offset-1 col-md-11"
+												style="margin-top: 15px; padding-left: 10px">
+												<span> <input type="checkbox" class="chkboxinput">
+													My family
+												</span> <span> <input type="checkbox" class="chkboxinput">
+													Extended family
+												</span> <span> <input type="checkbox" class="chkboxinput">
+													Everyone
+												</span>
+
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+							<hr />
+							<div id="sharedmessages" class="row">
+								<div id="sharedmessage1" class="col-md-12"
+									style="border: 2px; margin-top: 10px">
+									<div class="col-md-2 familynewsimgalign">
+										<a href="#" id="helpnav"> <img
+											src="./images/ProfileDefault.png" width="32px" height="32px"
+											alt="...">
+											<p style="text-align: center; padding-top: 3px;">Nikitha
+												Nattamai Arunkumar</p>
+										</a>
+									</div>
+									<div class="popover right">
+										<div class="arrow"></div>
+										<div class="popover-content">
+											<div class="col-md-12" style="padding: 10px">
+												<p style="word-wrap: break-word;">Shared messages 1
+													..... Shared messages 1 ..... Shared messages 1 .....
+													Shared messages 1 ..... Shared messages 1 .....</p>
+											</div>
+											<div class="col-md-offset-2 col-md-10" style="padding: 10px">
+												<a href="#" class="col-md-3"> <span> <i
+														class="fa fa-thumbs-o-up"></i> Thumbs up
+												</span>
+												</a> <a href="#" class="col-md-2"> <span> <i
+														class="fa fa-heart-o"></i> Love
+												</span>
+												</a> <a href="#" class="col-md-3"> <span> <i
+														class="fa fa-comment-o"></i> Comment
+												</span>
+												</a> <a href="#" class="col-md-2"> <span> <i
+														class="fa fa-group"></i> Share
+												</span>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<hr />
+
 						</div>
-
-						<hr />
-
+						<!-- SharedMessages End -->
 					</div>
-					<!-- SharedMessages End -->
-				</div>
 
+				</div>
 			</div>
-
 			<!-- end of family news -->
-			<div id="profile" style="display: none;" class="panel panel-primary">
-				<div id="profilehead" class="panel-heading">
-					<h5 class="panel-title">Profile data</h5>
-				</div>
-				<div class="panel-body">
-					<div id="profilecontent">
-						<div id="profilepic" class="col-md-2">
-							<img src="./images/ProfileDefault.png" width="200px"
-								height="200px" alt="profile default" />
-							<div id="uploadpic" style="margin-left: 42px">
-								<div id="uploader" class="btn btn-primary fileUpload">
-									<span> Update Pic</span> <input type="file" class="upload" />
-								</div>
-							</div>
-						</div>
-						<!-- profile pic -->
-						<div id="profiledata" class="form-horizontal col-md-10">
-							<div>
-								<div class="form-group">
-									<label for="familyname" class="col-md-2 control-label">Family
-										Name</label>
-									<div class="col-md-10">
-										<input type="text" class="form-control" disabled="disabled"
-											id="familyname" placeholder="Family Name">
-
-									</div>
-								</div>
-							</div>
-							<div>
-								<div class="form-group col-md-6">
-									<label for="firstname" class="col-md-4 control-label">First
-										Name</label>
-									<div class="col-md-8">
-										<input type="text" class="form-control" id="firstname"
-											placeholder="First Name">
-
-									</div>
-								</div>
-								<div class="form-group col-md-6">
-									<label for="lastname" class="col-md-4 control-label">Last
-										Name</label>
-									<div class="col-md-8">
-										<input type="text" class="form-control" id="lastname"
-											placeholder="Last Name">
-									</div>
-								</div>
-							</div>
-							<div>
-								<div class="form-group col-md-6">
-									<label for="emailprofile" class="col-md-4 control-label">
-										Email </label>
-									<div class="col-md-8">
-										<input type="text" class="form-control" disabled="disabled"
-											id="emailprofile" placeholder="Email">
-									</div>
-								</div>
-								<div class="form-group col-md-6">
-									<label for="passwdprofile" class="col-md-4 control-label">Password</label>
-									<div class="col-md-8">
-										<input type="password" class="form-control" id="passwdprofile"
-											placeholder="Password">
-									</div>
-								</div>
-							</div>
-
-							<div>
-								<div class="form-group col-md-6">
-									<label for="Gender" class="col-md-4 control-label">Gender</label>
-									<div data-toggle="buttons" class="col-md-8"
-										style="padding-top: 6px;">
-										<label> <input class="radioinput" type="radio"
-											name="gender" id="sexm" value="Male" checked> Male
-										</label> <label> <input class="radioinput" type="radio"
-											name="gender" id="sexf" value="Female"> Female
-										</label>
-
-									</div>
-								</div>
-								<div class="form-group col-md-6">
-									<label for="birthdate" class="col-md-4 control-label">Birth
-										Date </label>
-									<div class="col-md-6">
-										<div class="input-group">
-											<input id="birthdate" type="text" class="form-control"
-												readonly=""> <span class="input-group-btn">
-												<button id="birthdatepicker" class="btn btn-warning"
-													data-date="10/10/2010" data-date-format="mm/dd/yyyy"
-													data-date-viewMode="years" type="button">
-													<span class="glyphicon glyphicon-calendar"></span>
-												</button>
-										</div>
-									</div>
-									<div class="col-md-2">
-										<button class="btn btn-link" style="margin-left: -26px">
-											why we need this ?</button>
-									</div>
-								</div>
-							</div>
-
-							<div>
-								<div class="form-group ">
-									<label for="geolocation" class="control-label col-md-2">Geo
-										Location</label>
-									<div class="col-md-10">
-										<div>
-											<div class="col-md-4">
-												<input type="text" class="form-control" id="City"
-													placeholder="City">
-
-											</div>
-
-											<div class="col-md-3">
-												<input type="text" class="form-control" id="State"
-													placeholder="State">
-											</div>
-
-											<div class="col-md-5">
-												<input type="text" class="form-control" id="Country"
-													placeholder="Country" style="width: 233px;">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div>
-								<div class="col-md-offset-7 col-md-5">
-									<div class="row">
-										<button class="btn btn-primary col-md-offset-3 col-md-3">
-											Save</button>
-										<button class="btn btn-danger  col-md-3"
-											style="margin-left: 12px">Cancel</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- profile data -->
+			<div id="profile" style="display: none;" class="workpane">
+				<div class="panel panel-primary">
+					<div id="profilehead" class="panel-heading">
+						<h5 class="panel-title">Profile data</h5>
 					</div>
-					<!-- end of profile content -->
+					<div class="panel-body">
+						<div id="profilecontent">
+							<div id="profilepic" class="col-md-2">
+								<img src="./images/ProfileDefault.png" width="200px"
+									height="200px" alt="profile default" />
+								<div id="uploadpic" style="margin-left: 42px">
+									<div id="uploader" class="btn btn-primary fileUpload">
+										<span> Update Pic</span> <input type="file" class="upload" />
+									</div>
+								</div>
+							</div>
+							<!-- profile pic -->
+							<div id="profiledata" class="form-horizontal col-md-10">
+								<div>
+									<div class="form-group">
+										<label for="familyname" class="col-md-2 control-label">Family
+											Name</label>
+										<div class="col-md-10">
+											<input type="text" class="form-control" disabled="disabled"
+												id="familyname" placeholder="Family Name">
+
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="form-group col-md-6">
+										<label for="firstname" class="col-md-4 control-label">First
+											Name</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" id="firstname"
+												placeholder="First Name">
+
+										</div>
+									</div>
+									<div class="form-group col-md-6">
+										<label for="lastname" class="col-md-4 control-label">Last
+											Name</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" id="lastname"
+												placeholder="Last Name">
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="form-group col-md-6">
+										<label for="emailprofile" class="col-md-4 control-label">
+											Email </label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" disabled="disabled"
+												id="emailprofile" placeholder="Email">
+										</div>
+									</div>
+									<div class="form-group col-md-6">
+										<label for="passwdprofile" class="col-md-4 control-label">Password</label>
+										<div class="col-md-8">
+											<input type="password" class="form-control"
+												id="passwdprofile" placeholder="Password">
+										</div>
+									</div>
+								</div>
+
+								<div>
+									<div class="form-group col-md-6">
+										<label for="Gender" class="col-md-4 control-label">Gender</label>
+										<div data-toggle="buttons" class="col-md-8"
+											style="padding-top: 6px;">
+											<label> <input class="radioinput" type="radio"
+												name="gender" id="sexm" value="Male" checked> Male
+											</label> <label> <input class="radioinput" type="radio"
+												name="gender" id="sexf" value="Female"> Female
+											</label>
+
+										</div>
+									</div>
+									<div class="form-group col-md-6">
+										<label for="birthdate" class="col-md-4 control-label">Birth
+											Date </label>
+										<div class="col-md-6">
+											<div class="input-group">
+												<input id="birthdate" type="text" class="form-control"
+													readonly=""> <span class="input-group-btn">
+													<button id="birthdatepicker" class="btn btn-warning"
+														data-date="10/10/2010" data-date-format="mm/dd/yyyy"
+														data-date-viewMode="years" type="button">
+														<span class="glyphicon glyphicon-calendar"></span>
+													</button>
+											</div>
+										</div>
+										<div class="col-md-2">
+											<button class="btn btn-link" style="margin-left: -26px">
+												why we need this ?</button>
+										</div>
+									</div>
+								</div>
+
+								<div>
+									<div class="form-group ">
+										<label for="geolocation" class="control-label col-md-2">Geo
+											Location</label>
+										<div class="col-md-10">
+											<div>
+												<div class="col-md-4">
+													<input type="text" class="form-control" id="City"
+														placeholder="City">
+
+												</div>
+
+												<div class="col-md-3">
+													<input type="text" class="form-control" id="State"
+														placeholder="State">
+												</div>
+
+												<div class="col-md-5">
+													<input type="text" class="form-control" id="Country"
+														placeholder="Country" style="width: 233px;">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="col-md-offset-7 col-md-5">
+										<div class="row">
+											<button class="btn btn-primary col-md-offset-3 col-md-3">
+												Save</button>
+											<button class="btn btn-danger  col-md-3"
+												style="margin-left: 12px">Cancel</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- profile data -->
+						</div>
+						<!-- end of profile content -->
+					</div>
 				</div>
 			</div>
 			<!-- end of profile -->
 
-			<div id="familytree" style="display: none;">
-				<div id="FamilyMembers" class="panel panel-primary addData" style="display:none">
+			<div id="familytree" style="display: none;" class="workpane">
+				<div id="familytreetools" class="familytools">
+				       <i class="fa fa-floppy-o"></i>
+				</div>
+				<div id="FamilyMembers" class="panel panel-primary addData"
+					style="display: none">
 					<div class="panel-heading">
 						<h3 class="panel-title">My Family Members</h3>
 					</div>
@@ -385,18 +392,16 @@
 								<ul>
 									<li><span><i class="icon-minus-sign fa fa-meh-o"></i>
 											My Family</span>
-									     <ul>
-									        <li><span><i class="icon-minus-sign fa fa-meh-o"></i>
-											Deepika solai</span></li>
-									     </ul>		
-									</li>
+										<ul>
 											<li><span><i class="icon-minus-sign fa fa-meh-o"></i>
+													Deepika solai</span></li>
+										</ul></li>
+									<li><span><i class="icon-minus-sign fa fa-meh-o"></i>
 											My Parents</span></li>
-											<li><span><i class="icon-minus-sign fa fa-meh-o"></i>
+									<li><span><i class="icon-minus-sign fa fa-meh-o"></i>
 											My GrandParents</span></li>
 
-								</ul>
-							</li>
+								</ul></li>
 						</ul>
 					</div>
 				</div>
@@ -432,7 +437,7 @@
 
 					</div>
 					<div id="theTree" style="display: none">
-						<div id="treenode1" class="node" style="left: 600px; top: 150px">
+						<div id="treenode1" class="node">
 							<div id="mainnode" class="treenode">
 								<!-- <img src="./images/ProfileDefault.png" width="50px" height="50px" class="image-rounded"> -->
 								<p id="primarynodename">Arunkumar Hariharan</p>
@@ -484,15 +489,15 @@
 				</div>
 			</div>
 			<!-- end of family tree -->
-			<div id="lookup" style="display: none;">
+			<div id="lookup" style="display: none;" class="workpane">
 				<span> test this lookup</span>
 			</div>
 			<!-- end of lookup -->
-			<div id="invite" style="display: none;">
+			<div id="invite" style="display: none;" class="workpane">
 				<span> test this invite</span>
 			</div>
 			<!-- end of invite -->
-			<div id="help" style="display: none;">
+			<div id="help" style="display: none;" class="workpane">
 				<span> test this Help</span>
 			</div>
 			<!-- end of collaborate -->
@@ -552,8 +557,8 @@
 									</div>
 									<div class="checkbox col-md-5">
 										<label> <input type="checkbox" id="addisSendInvite">
-										     send Invite ?
-									</label>
+											send Invite ?
+										</label>
 									</div>
 								</div>
 								<div class="form-group">
@@ -588,7 +593,7 @@
 										Details</a></li>
 								<li class=""><a href="#AddAddress" data-toggle="tab">Contact
 										Information</a></li>
-							<!-- 	<li class=""><a href="#AddVitals" data-toggle="tab">Vitals
+								<!-- 	<li class=""><a href="#AddVitals" data-toggle="tab">Vitals
 										(Health)</a></li> -->
 							</ul>
 							<div id="AddAdditonalTabContent" class="tab-content">
@@ -683,7 +688,8 @@
 										</div>
 									</div>
 								</div>
-								<div class="tab-pane fade in" id="AddVitals" style="display:none">
+								<div class="tab-pane fade in" id="AddVitals"
+									style="display: none">
 									<div class="form-horizontal">
 										<div class="form-group">
 											<label for="addmodalheight" class="col-md-2 control-label">Height</label>
@@ -869,7 +875,8 @@
 				|| document
 						.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>');
 	</script>
-	<script src="js/vendor/jquery-ui-1.10.4.custom.js"	type="text/javascript"></script>
+	<script src="js/vendor/jquery-ui-1.10.4.custom.js"
+		type="text/javascript"></script>
 	<script src="js/Utility.js" type="text/javascript"></script>
 	<script src="js/vendor/jquery.jsPlumb-1.5.5.js" type="text/javascript"></script>
 	<script src="./js/Navigator.js" type="text/javascript"></script>
@@ -877,7 +884,8 @@
 	<script>
 		nav.navigate();
 	</script>
-	<script src="./js/vendor/bootstrap-datepicker.js"	type="text/javascript"></script>
+	<script src="./js/vendor/bootstrap-datepicker.js"
+		type="text/javascript"></script>
 
 	<script src="./js/familytree.js" type="text/javascript"></script>
 	<script src="js/vendor/bootstrap-select.min.js" type="text/javascript"></script>

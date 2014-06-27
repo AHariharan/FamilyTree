@@ -261,6 +261,21 @@ UMapUS.FamilyTree = function() {
     			$(this).css("left",newleft+"px");
     		});
        	}
+    	if(movetype == "Left")
+    	{
+    		$('.treenode').each(function(i,node)
+    		{
+    			var curleft = $(this).parent().css("left");
+    			var newleft = parseInt(curleft.substr(0, curleft.indexOf("px")))-300;
+    			$(this).parent().css("left",newleft+"px");
+    		});
+    		$('.connectornode').each(function(i,node)
+    		{
+    			var curleft = $(this).css("left");
+    			var newleft = parseInt(curleft.substr(0, curleft.indexOf("px")))-300;
+    			$(this).css("left",newleft+"px");
+    		});
+       	}
     	jsPlumb.repaintEverything();
     };
 
@@ -335,16 +350,30 @@ UMapUS.FamilyTree = function() {
     	return arr[0];
     };
     
-    self.adjustNodes = function(sourceid)
+    self.getMinimumBreadth = function()
     {
-    	var srcleft = $('#' + sourceid).css("left");
-		var srctop = $('#' + sourceid).css("top");
-		var left = parseInt(srcleft.substr(0, srcleft.indexOf("px"))) + 100;
-    	var top = parseInt(srctop.substr(0, srctop.indexOf("px"))) + 300;
-        if(left - 300 < 100)
-    	   self.moveNodes("Right");
-    	if(top - 350 < 100)
-    	   self.moveNodes("Down");
+    	var arr = new Array();
+    	$('.node').each(function(i,node){
+    		var top = parseInt($(this).css("left").split("px")[0]);
+    		arr.push(top);
+    	});
+    	arr.sort(function(a, b){return a-b;});
+    	return arr[0];
+    };
+    
+    self.adjustNodes = function(sourceid,relation)
+    {
+    	if(relation == "Mom" || relation == "Dad")
+		   {
+		    	var srcleft = $('#' + sourceid).css("left");
+				var srctop = $('#' + sourceid).css("top");
+				var left = parseInt(srcleft.substr(0, srcleft.indexOf("px"))) + 100;
+		    	var top = parseInt(srctop.substr(0, srctop.indexOf("px"))) ;
+		        if(left - 300 < 100)
+		    	   self.moveNodes("Right");
+		    	if(top < 200)
+		    	   self.moveNodes("Down");
+    		}
     };
     
     
@@ -549,7 +578,7 @@ UMapUS.ModalSettings = function() {
     	
     	$('#AddRelationConfirm').on("click", function(e) {
     		var modalcontent = $(id).data('datacontent');
-    		UMapUS.familyTree.adjustNodes(modalcontent.SOURCEID);
+    		UMapUS.familyTree.adjustNodes(modalcontent.SOURCEID,modalcontent.RELATION);
     		//Recalibrate positions
     		var srcleft = $('#' + modalcontent.SOURCEID).css("left");
     		var srctop = $('#' + modalcontent.SOURCEID).css("top");
@@ -648,6 +677,14 @@ UMapUS.ModalSettings = function() {
 			        else
 			          break;
 				}
+			while(true)
+			{
+			    var minbreadth = UMapUS.familyTree.getMinimumBreadth();
+		        if(minbreadth > 600)
+			       UMapUS.familyTree.moveNodes("Left");
+		        else
+		          break;
+			}
 			$('#DeleteConnectionModal').modal('hide');
 		});
 		
