@@ -10,12 +10,18 @@
 	<context:annotation-config />
 	<!-- <bean name="/login" class="com.umapus.service.UMapUsService"></bean> -->
 
-	<!-- <bean id="user" class="com.umapus.domain.entity.User" /> -->
-	<import resource="classpath*:applicationcontext-umapuscommon.xml"/>
+<!-- <bean id="user" class="com.umapus.domain.entity.User" /> -->
+<!-- <import resource="classpath*:applicationcontext-umapuscommon.xml"/> -->
 
 	<bean id="mapper" class="com.umapus.domain.util.UMapUsMapper" />
 
 <!-- 	<bean id="ldapDao" class="com.umapus.infrastructure.dao.LdapDaoImpl" /> -->
+<bean id="ldapTemplate" class="org.springframework.ldap.LdapTemplate">
+		<constructor-arg ref="contextSource" />
+	</bean>
+	<bean id="ldapDao" class="com.umapus.infrastructure.dao.LdapDaoImpl">
+		<property name="ldapTemplate" ref="ldapTemplate" />
+	</bean>
 
 	<bean id="sessionRepoDao" class="com.umapus.controller.infrastructure.dao.SessionRepositoryDaoImpl" />
 
@@ -50,11 +56,6 @@
 		<property name="userName" value="${ldap.username}" />
 		<property name="password" value="${ldap.password}" />
 	</bean>
-	<bean id="ldapTemplate" class="org.springframework.ldap.LdapTemplate">
-		<constructor-arg ref="contextSource" />
-	</bean>
-	<bean id="ldapDao" class="com.umapus.infrastructure.dao.LdapDaoImpl">
-		<property name="ldapTemplate" ref="ldapTemplate" />
-	</bean>
+	
 
 </beans>

@@ -10,7 +10,7 @@
     <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>/WEB-INF/Spring/applicationcontext-umapus.xml</param-value>
-  </context-param>
+  </context-param> 
   <servlet>
     <description> umapus Servlet</description>
     <servlet-name>umapus-controller-service</servlet-name>
@@ -23,7 +23,7 @@
   </servlet>
    <servlet-mapping>
     <servlet-name>umapus-controller-service</servlet-name>
-    <url-pattern>/*</url-pattern>
+    <url-pattern>/controller/*</url-pattern>
   </servlet-mapping>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
