@@ -1,4 +1,4 @@
-package com.umapus.domain.util;
+package com.umapus.controller.domain.util;
 
 import javax.naming.NamingException;
 import javax.naming.directory.Attributes;

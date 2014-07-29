@@ -19,7 +19,7 @@
 <!-- <bean id="user" class="com.umapus.domain.entity.User" /> -->
 <!-- <import resource="classpath*:applicationcontext-umapuscommon.xml"/> -->
 
-	<bean id="mapper" class="com.umapus.domain.util.UMapUsMapper" />
+	<bean id="mapper" class="com.umapus.controller.domain.util.UMapUsMapper" />
 
 <!-- 	<bean id="ldapDao" class="com.umapus.infrastructure.dao.LdapDaoImpl" /> -->
     <!-- <bean id="ldapTemplate" class="org.springframework.ldap.LdapTemplate">

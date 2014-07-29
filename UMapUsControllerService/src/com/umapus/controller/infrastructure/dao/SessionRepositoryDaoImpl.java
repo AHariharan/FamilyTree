@@ -10,8 +10,8 @@ import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import com.umapus.domain.util.UMapUsMapper;
 import com.umapus.common.domain.entity.UMapUsConstants;
+import com.umapus.controller.domain.util.UMapUsMapper;
 
 public class SessionRepositoryDaoImpl implements SessionRepositoryDao {
 
