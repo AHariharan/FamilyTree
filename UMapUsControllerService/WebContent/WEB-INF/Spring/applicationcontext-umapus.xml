@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:ldap="http://www.springframework.org/schema/ldap"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="
-			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+			http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans.xsd 
+			http://www.springframework.org/schema/context 
+			http://www.springframework.org/schema/context/spring-context.xsd 
+			http://www.springframework.org/schema/ldap 
+			http://www.springframework.org/schema/ldap/spring-ldap.xsd">
 	<context:component-scan base-package="com.umapus.service" />
 	<context:property-placeholder location="/WEB-INF/Spring/umapus.properties" />
 	<context:annotation-config />
@@ -16,21 +22,24 @@
 	<bean id="mapper" class="com.umapus.domain.util.UMapUsMapper" />
 
 <!-- 	<bean id="ldapDao" class="com.umapus.infrastructure.dao.LdapDaoImpl" /> -->
-<bean id="ldapTemplate" class="org.springframework.ldap.LdapTemplate">
+    <!-- <bean id="ldapTemplate" class="org.springframework.ldap.LdapTemplate">
 		<constructor-arg ref="contextSource" />
-	</bean>
-	<bean id="ldapDao" class="com.umapus.infrastructure.dao.LdapDaoImpl">
+	</bean> -->
+	<ldap:ldap-template id="ldapTemplate" context-source-ref="contextSource"/>
+	<bean id="ldapDao" class="com.umapus.controller.infrastructure.dao.LdapDaoImpl">
 		<property name="ldapTemplate" ref="ldapTemplate" />
 	</bean>
 
-	<bean id="sessionRepoDao" class="com.umapus.controller.infrastructure.dao.SessionRepositoryDaoImpl" />
+	<bean id="sessionRepositoryDao" class="com.umapus.controller.infrastructure.dao.SessionRepositoryDaoImpl" />
 
 	<bean id="daoFactory" class="com.umapus.controller.infrastructure.dao.DAOFactory">
 		<property name="ldapDao" ref="ldapDao"></property>
-		<property name="sessionRepoDao" ref="sessionRepoDao"></property>
+		<property name="sessionRepositoryDao" ref="sessionRepositoryDao"></property>
 	</bean>
 
 	<bean id="loginRequest" class="com.umapus.common.domain.entity.LoginRequest" />
+	
+	<bean id="user" class="com.umapus.common.domain.entity.User" />
 
 	<bean id="signUpRequest" class="com.umapus.common.domain.entity.SignUpRequest" />
 
@@ -50,12 +59,13 @@
 		p:hashValueSerializer-ref="stringRedisSerializer"
 		p:valueSerializer-ref="stringRedisSerializer">
 	</bean>
-	<bean id="contextSource" class="org.springframework.ldap.core.support.LdapContextSource">
-		<property name="url" value="${ldap.url}" />
-		<property name="base" value="${ldap.base}" />
-		<property name="userName" value="${ldap.username}" />
-		<property name="password" value="${ldap.password}" />
-	</bean>
+	
+	<ldap:context-source id="contextSource"
+		url ="${ldap.url}" 
+		base="${ldap.base}" 
+		username="${ldap.username}" 
+		password="${ldap.password}"/>
+	
 	
 
 </beans>
