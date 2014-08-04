@@ -35,8 +35,14 @@
 	<bean id="user" class="com.umapus.common.domain.entity.User" />
 
 	<bean id="signUpRequest" class="com.umapus.common.domain.entity.SignUpRequest" />
-	
-	
+	<bean id="signUpResponse" class="com.umapus.common.domain.entity.SignUpResponse" 
+	factory-method="valueOf">
+		<constructor-arg>
+			<value>SUCCESS</value>
+		</constructor-arg>
+	</bean>
+
+
 
 	<bean id="stringRedisSerializer"
 		class="org.springframework.data.redis.serializer.StringRedisSerializer" />
@@ -57,9 +63,10 @@
 
 	<ldap:context-source id="contextSource" url="${ldap.url}"
 		base="${ldap.base}" username="${ldap.username}" password="${ldap.password}" />
-		
-	<bean id="cntlComp" class="com.umapus.controller.component.UMapUsComponent" />
 
+	<bean id="cntlComp" class="com.umapus.controller.component.UMapUsComponent" />
+	<bean id="umapsusConstants" class="com.umapus.common.domain.entity.UMapUsConstants"/>
+		
 
 
 </beans>
