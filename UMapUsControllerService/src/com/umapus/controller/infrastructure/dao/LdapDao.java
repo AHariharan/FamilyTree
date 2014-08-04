@@ -12,6 +12,6 @@ import com.umapus.common.domain.entity.SignUpResponse;
 public interface LdapDao {
 
 	
-	public String CreateLDAPUser(SignUpRequest signuprequest) throws NamingException;
+	public String CreateLDAPUser(SignUpRequest signUpRequest) throws NamingException;
 	
 }

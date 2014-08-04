@@ -35,11 +35,11 @@ public class LdapDaoImpl implements LdapDao {
         this.ldapTemplate = ldapTemplate;
     }
 	
-	public String CreateLDAPUser(SignUpRequest signuprequest) throws NamingException{
+	public String CreateLDAPUser(SignUpRequest signUpRequest) throws NamingException{
 		
 		DirContext ldapCtx            = getDirContext(UMapUsConstants.LDAP_JNDI);
 
-		NamingEnumeration<SearchResult> result = findLDAPUserByUserId(ldapCtx,UMapUsConstants.LDAPSEARCHBASE,signuprequest.getEmail());
+		NamingEnumeration<SearchResult> result = findLDAPUserByUserId(ldapCtx,UMapUsConstants.LDAPSEARCHBASE,signUpRequest.getEmail());
 
 		if(result.hasMoreElements()) {
 			System.out.println("User already exists");
@@ -54,12 +54,12 @@ public class LdapDaoImpl implements LdapDao {
     	      }*/
 		String assign_GraphId         = UUID.randomUUID().toString();
 
-		String entryDN                = "uid="+signuprequest.getEmail()+","+UMapUsConstants.LDAPSEARCHBASE; 
-		Attribute cn                  = new BasicAttribute(UMapUsConstants.CN, signuprequest.getEmail());  
-		Attribute sn                  = new BasicAttribute(UMapUsConstants.SN, signuprequest.getFamilyName());  
-		Attribute uid                 = new BasicAttribute(UMapUsConstants.UID, signuprequest.getEmail());  
-		Attribute mail                = new BasicAttribute(UMapUsConstants.MAIL, signuprequest.getEmail());    
-		Attribute userPassword        = new BasicAttribute(UMapUsConstants.USERPASSWORD, signuprequest.getPassWord());  
+		String entryDN                = "uid="+signUpRequest.getEmail()+","+UMapUsConstants.LDAPSEARCHBASE; 
+		Attribute cn                  = new BasicAttribute(UMapUsConstants.CN, signUpRequest.getEmail());  
+		Attribute sn                  = new BasicAttribute(UMapUsConstants.SN, signUpRequest.getFamilyName());  
+		Attribute uid                 = new BasicAttribute(UMapUsConstants.UID, signUpRequest.getEmail());  
+		Attribute mail                = new BasicAttribute(UMapUsConstants.MAIL, signUpRequest.getEmail());    
+		Attribute userPassword        = new BasicAttribute(UMapUsConstants.USERPASSWORD, signUpRequest.getPassWord());  
 		Attribute graphid             = new BasicAttribute(UMapUsConstants.GRAPHID, assign_GraphId);  
 		Attribute oc                  = new BasicAttribute(UMapUsConstants.OBJECTCLASS);
 
