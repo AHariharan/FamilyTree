@@ -15,7 +15,8 @@
 	<context:annotation-config />
 
 	<bean id="mapper" class="com.umapus.controller.domain.util.UMapUsMapper" />
-
+	<ldap:context-source id="contextSource" url="${ldap.url}"
+		base="${ldap.base}" username="${ldap.username}" password="${ldap.password}" />
 	<ldap:ldap-template id="ldapTemplate"
 		context-source-ref="contextSource" />
 	<bean id="ldapDao" class="com.umapus.controller.infrastructure.dao.LdapDaoImpl">
@@ -35,8 +36,8 @@
 	<bean id="user" class="com.umapus.common.domain.entity.User" />
 
 	<bean id="signUpRequest" class="com.umapus.common.domain.entity.SignUpRequest" />
-	<bean id="signUpResponse" class="com.umapus.common.domain.entity.SignUpResponse" 
-	factory-method="valueOf">
+	<bean id="signUpResponse" class="com.umapus.common.domain.entity.SignUpResponse"
+		factory-method="valueOf">
 		<constructor-arg>
 			<value>SUCCESS</value>
 		</constructor-arg>
@@ -61,12 +62,11 @@
 		p:valueSerializer-ref="stringRedisSerializer">
 	</bean>
 
-	<ldap:context-source id="contextSource" url="${ldap.url}"
-		base="${ldap.base}" username="${ldap.username}" password="${ldap.password}" />
+
 
 	<bean id="cntlComp" class="com.umapus.controller.component.UMapUsComponent" />
-	<bean id="umapsusConstants" class="com.umapus.common.domain.entity.UMapUsConstants"/>
-		
+	<bean id="umapsusConstants" class="com.umapus.common.domain.entity.UMapUsConstants" />
+
 
 
 </beans>

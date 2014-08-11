@@ -49,8 +49,15 @@ public class UMapUsControllerTest {
 				"classpath:applicationcontext-umapuscontroller.xml");
 
 	     UMapUsComponent cntlcomp = (UMapUsComponent) ctx.getBean("cntlComp");
+	     SignUpRequest signUpRequest = (SignUpRequest) ctx.getBean("signUpRequest");
 		
 		cntlcomp.SetSignUpFirstName("Chari");
+		signUpRequest.setEmail("t2vglvishnu@yahoo.com");
+		signUpRequest.setFamilyName("Vaitiyam");
+		signUpRequest.setLastName("Vaitiyam Gunasekaran");
+		signUpRequest.setPassWord("Test@123");
+		signUpRequest.setFirstName("Vishnu");
+		cntlcomp.SignUp(signUpRequest);
 	    
 	}
 

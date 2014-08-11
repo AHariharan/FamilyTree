@@ -34,14 +34,16 @@ public class UMapUsComponent {
 	}
 	
 	public SignUpResponse SignUp(SignUpRequest signUpRequest){
+		String status= null;
 		
 		try {
-			String status = dao.getLdapDao().CreateLDAPUser(signUpRequest);
+			 status = dao.getLdapDao().CreateLDAPUser(signUpRequest);
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		System.out.println("SignUpResponse=" + status);
 			
 		return null;
 	}
