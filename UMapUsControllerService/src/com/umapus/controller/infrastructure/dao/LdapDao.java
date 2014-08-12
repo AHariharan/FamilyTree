@@ -13,5 +13,6 @@ public interface LdapDao {
 
 	
 	public String CreateLDAPUser(SignUpRequest signUpRequest) throws NamingException;
+	public LoginResponse AuthenticateUser(LoginRequest loginRequest) throws NamingException;
 	
 }

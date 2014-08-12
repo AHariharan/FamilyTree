@@ -21,8 +21,11 @@ import org.springframework.ldap.core.AttributesMapper;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.filter.AndFilter;
 import org.springframework.ldap.filter.EqualsFilter;
+import org.springframework.ldap.filter.Filter;
 import org.springframework.ldap.query.LdapQuery;
 
+import com.umapus.common.domain.entity.LoginRequest;
+import com.umapus.common.domain.entity.LoginResponse;
 import com.umapus.common.domain.entity.SignUpRequest;
 import com.umapus.common.domain.entity.SignUpResponse;
 import com.umapus.common.domain.entity.UMapUsConstants;
@@ -35,6 +38,9 @@ public class LdapDaoImpl implements LdapDao {
 
 	@Autowired
 	private SignUpResponse signUpResponse;
+	
+	@Autowired
+	private LoginResponse loginResponse;
 
 	public void setLdapTemplate(LdapTemplate ldapTemplate) {
 		this.ldapTemplate = ldapTemplate;
@@ -136,11 +142,24 @@ public class LdapDaoImpl implements LdapDao {
 		});
 	}
 
-	private boolean lookupUserByUserId(String userId) {
+	public LoginResponse AuthenticateUser(LoginRequest loginRequest) throws NamingException {
+		loginResponse.setLoggedin(this.AuthenticateLDAPUser(loginRequest));
+		
+		
+		return null;
+	}
+	private boolean AuthenticateLDAPUser(LoginRequest loginRequest) throws NamingException {
+		Filter f = new EqualsFilter("uid", loginRequest.getuserName());
+		boolean isLoggedin = ldapTemplate.authenticate("", f.toString(), 
+				loginRequest.getPassWord());
+		
+		return isLoggedin;
+	}
+	private boolean lookupUserAttributesByUserId(String userId) {
 
 //		Object obj = ldapTemplate.lookup(UMapUsConstants.UID + "=" + userId
 //				+ "," + UMapUsConstants.LDAPSEARCHBASE);
-		
+		String[] attributes = {UMapUsConstants.SN,UMapUsConstants.GN,UMapUsConstants.GRAPHID};
 		Object obj = ldapTemplate.lookup(UMapUsConstants.UID+"=" + userId);
 		
 	
