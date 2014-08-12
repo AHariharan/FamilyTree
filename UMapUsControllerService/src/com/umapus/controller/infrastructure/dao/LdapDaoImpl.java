@@ -145,8 +145,8 @@ public class LdapDaoImpl implements LdapDao {
 	public LoginResponse AuthenticateUser(LoginRequest loginRequest) throws NamingException {
 		loginResponse.setLoggedin(this.AuthenticateLDAPUser(loginRequest));
 		
-		
-		return null;
+		System.out.println("Authentication=" + loginResponse.isLoggedin());
+		return loginResponse;
 	}
 	private boolean AuthenticateLDAPUser(LoginRequest loginRequest) throws NamingException {
 		Filter f = new EqualsFilter("uid", loginRequest.getuserName());

@@ -17,6 +17,8 @@ public class UMapUsComponent {
 	@Autowired
 	private DAOFactory dao;
 	
+	@Autowired
+	private LoginResponse  loginResponse;
 	//Dummy method used for testing the approach
 	//TODO: To be deleted
 	public void SetSignUpFirstName(String firstName){
@@ -30,7 +32,15 @@ public class UMapUsComponent {
 	
 	public LoginResponse Login (LoginRequest loginRequest) {
 		
-		return null;
+		
+			try {
+				loginResponse = dao.getLdapDao().AuthenticateUser(loginRequest);
+			} catch (NamingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+			return loginResponse;
 	}
 	
 	public SignUpResponse SignUp(SignUpRequest signUpRequest){

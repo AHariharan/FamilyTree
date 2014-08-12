@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import scala.annotation.meta.companionClass;
 
+import com.umapus.common.domain.entity.LoginRequest;
 import com.umapus.common.domain.entity.SignUpRequest;
 import com.umapus.controller.component.UMapUsComponent;
 // This class is a testonly class
@@ -50,6 +51,13 @@ public class UMapUsControllerTest {
 
 	     UMapUsComponent cntlcomp = (UMapUsComponent) ctx.getBean("cntlComp");
 	     SignUpRequest signUpRequest = (SignUpRequest) ctx.getBean("signUpRequest");
+		 LoginRequest loginRequest = (LoginRequest) ctx.getBean("loginRequest");
+		 Login(cntlcomp,loginRequest);
+	 
+	}
+
+	
+	public static void SignUp(UMapUsComponent cntlcomp, SignUpRequest signUpRequest){
 		
 		cntlcomp.SetSignUpFirstName("Chari");
 		signUpRequest.setEmail("t2vglvishnu@yahoo.com");
@@ -58,9 +66,12 @@ public class UMapUsControllerTest {
 		signUpRequest.setPassWord("Test@123");
 		signUpRequest.setFirstName("Vishnu");
 		cntlcomp.SignUp(signUpRequest);
-	    
 	}
 
-	
-
+	private static void Login(UMapUsComponent cntlcomp, LoginRequest loginRequest){
+		
+		loginRequest.setUserName("vglvishnu@yahoo.com");
+		loginRequest.setPassWord("Test@123");
+		cntlcomp.Login(loginRequest);
+	}
 }
