@@ -18,6 +18,7 @@ import javax.naming.directory.SearchResult;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ldap.core.AttributesMapper;
+import org.springframework.ldap.core.DirContextAdapter;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.filter.AndFilter;
 import org.springframework.ldap.filter.EqualsFilter;
@@ -29,6 +30,7 @@ import com.umapus.common.domain.entity.LoginResponse;
 import com.umapus.common.domain.entity.SignUpRequest;
 import com.umapus.common.domain.entity.SignUpResponse;
 import com.umapus.common.domain.entity.UMapUsConstants;
+import com.umapus.controller.domain.util.UMapUsMapper;
 
 public class LdapDaoImpl implements LdapDao {
 	private LdapTemplate ldapTemplate;
@@ -37,10 +39,12 @@ public class LdapDaoImpl implements LdapDao {
 	private UMapUsConstants umapsusConstants;
 
 	@Autowired
-	private SignUpResponse signUpResponse;
+	private UMapUsMapper umapsusMapper;
 	
 	@Autowired
-	private LoginResponse loginResponse;
+	private SignUpResponse signUpResponse;
+	
+
 
 	public void setLdapTemplate(LdapTemplate ldapTemplate) {
 		this.ldapTemplate = ldapTemplate;
@@ -49,7 +53,7 @@ public class LdapDaoImpl implements LdapDao {
 	public String CreateLDAPUser(SignUpRequest signUpRequest)
 			 {
         
-         
+		
 		List userList = this.findUserByUserId(signUpRequest.getEmail());
 		// DirContext ldapCtx = getDirContext(umapsusConstants.LDAP_JNDI);
         
@@ -100,31 +104,7 @@ public class LdapDaoImpl implements LdapDao {
 		// return null;
 	}
 
-//	private DirContext getDirContext(String jndiName) throws NamingException {
-//		Context initCtx = null;
-//		initCtx = new InitialContext();
-//		Context envCtx = (Context) initCtx.lookup(umapsusConstants.ENV);
-//		DirContext ldapCtx = (DirContext) envCtx
-//				.lookup(umapsusConstants.LDAP_JNDI);
-//		return ldapCtx;
-//	}
-//
-//	private NamingEnumeration<SearchResult> findLDAPUserByUserId(
-//			DirContext ctx, String ldapSearchBase, String userId)
-//			throws NamingException {
-//
-//		String searchFilter = "(&(" + UMapUsConstants.OBJECTCLASS + "="
-//				+ UMapUsConstants.UMAPUSMEMBERS + ")(" + UMapUsConstants.UID
-//				+ "=" + userId + "))";
-//
-//		SearchControls searchControls = new SearchControls();
-//		searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
-//
-//		NamingEnumeration<SearchResult> results = ctx.search(ldapSearchBase,
-//				searchFilter, searchControls);
-//
-//		return results;
-//	}
+
 
 	private List findUserByUserId(String userId) {
 
@@ -143,11 +123,23 @@ public class LdapDaoImpl implements LdapDao {
 	}
 
 	public LoginResponse AuthenticateUser(LoginRequest loginRequest) throws NamingException {
-		loginResponse.setLoggedin(this.AuthenticateLDAPUser(loginRequest));
 		
-		System.out.println("Authentication=" + loginResponse.isLoggedin());
-		return loginResponse;
+		if (this.AuthenticateLDAPUser(loginRequest)){
+			
+			DirContextAdapter dc = lookupUserAttributesByUserId(loginRequest.getuserName());
+			LoginResponse loginResponse = umapsusMapper.MapLDAPAttributeToLoginResponse(dc, true);
+			System.out.println("Authentication=" + loginResponse.isLoggedin());
+			System.out.println("GraphId=" + loginResponse.getGraphId());
+			System.out.println("Authentication=" + loginResponse.isLoggedin());
+			System.out.println("SurName=" + loginResponse.getSurname());
+			return loginResponse;
+		}
+		
+		
+		
+		return null;
 	}
+	
 	private boolean AuthenticateLDAPUser(LoginRequest loginRequest) throws NamingException {
 		Filter f = new EqualsFilter("uid", loginRequest.getuserName());
 		boolean isLoggedin = ldapTemplate.authenticate("", f.toString(), 
@@ -155,16 +147,15 @@ public class LdapDaoImpl implements LdapDao {
 		
 		return isLoggedin;
 	}
-	private boolean lookupUserAttributesByUserId(String userId) {
+	
+	private DirContextAdapter lookupUserAttributesByUserId(String userId) {
 
-//		Object obj = ldapTemplate.lookup(UMapUsConstants.UID + "=" + userId
+//	Object obj = ldapTemplate.lookup(UMapUsConstants.UID + "=" + userId
 //				+ "," + UMapUsConstants.LDAPSEARCHBASE);
 		String[] attributes = {UMapUsConstants.SN,UMapUsConstants.GN,UMapUsConstants.GRAPHID};
-		Object obj = ldapTemplate.lookup(UMapUsConstants.UID+"=" + userId);
+		DirContextAdapter dc = (DirContextAdapter) ldapTemplate.lookup(UMapUsConstants.UID+"=" + userId);
 		
-	
-		
-		return true;
+		return dc;
 	}
 
 }
