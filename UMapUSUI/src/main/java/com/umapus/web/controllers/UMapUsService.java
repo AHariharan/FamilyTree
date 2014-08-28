@@ -1,12 +1,8 @@
 package com.umapus.web.controllers;
 
-import java.util.HashMap;
-import java.util.Map;
 
-import javax.naming.NamingException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -14,39 +10,37 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.NewCookie;
-import javax.ws.rs.core.Response;
 
-import org.json.JSONException;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.umapus.domain.entity.LoginRequest;
-import com.umapus.domain.entity.SignUpResponse;
-import com.umapus.domain.entity.UMapUsConstants;
-import com.umapus.domain.entity.User;
-import com.umapus.domain.util.UMapUsMapper;
-import com.umapus.infrastructure.dao.DAOFactory;
+
+import com.umapus.common.domain.entity.LoginRequest;
+import com.umapus.common.domain.entity.LoginResponse;
+
+import com.umapus.common.domain.entity.User;
+import com.umapus.controller.component.UMapUsComponent;
+
 
 @Controller
 //@Path("umapusservice")
 //@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 public class UMapUsService {
 
-	@Autowired
-	private DAOFactory daoFactory;
-
-	@Autowired
-	private UMapUsMapper mapper;
 
 	@Autowired
 	private User user;
+	
+	@Autowired
+	private UMapUsComponent component;
 	
 
 
@@ -60,34 +54,11 @@ public class UMapUsService {
 		if(loginrequest != null)
 		           model.addAttribute("message",loginrequest.getuserName());
 		           
-		           
-		NewCookie cookie = null;
-
-		String loginResponse = "{\"status\": \"OUT\"}";
-		/*try {
-			// String loginUser =
-			// mapper.MapJsonToLoginRequest(jsonBody).getuserName();
-
-			user = LoginUser(mapper.MapJsonToLoginRequest(jsonBody), req);
-
-			if (user.isLoggedin()) {
-				HashMap<String, String> attrbs = new HashMap<String, String>();
-				System.out.println("user.getEmailId()="+user.getEmailId());
-				attrbs.put("username", user.getEmailId());
-				attrbs.put("sn", user.getSurname());
-				attrbs.put("graphid", user.getGraphId());
-
-				HttpSession session = createSession(req, attrbs);
-				// session.setAttribute("username", loginUser);
-				cookie = createCookie(session);
-
-			}
-		} catch (NamingException | JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} */
-
-		return "UMapUSWork";
+		LoginResponse response = component.Login(loginrequest);
+		if(response !=  null)
+				return "UMapUSWork";
+		else
+			return "";
 	}
 
 	
@@ -106,29 +77,10 @@ public class UMapUsService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String SignUp(String jsonBody, @Context HttpServletRequest req) {
 
-		String signupstatus = "Success";
-		String rep = null;
-		try {
-			signupstatus = daoFactory.getLdapDao().CreateLDAPUser(
-					mapper.MapJsonToSignupRequest(jsonBody));
-			if (signupstatus.equals(SignUpResponse.SUCCESS.getStatus())) {
-			//	rep = Login(jsonBody, req);
-			} else {
-//				return Response
-//						.status(201)
-//						.entity(mapper.MakeSignUpStatusToJson(signupstatus)
-//								.toString()).build();
-
-			}
-		} catch (NamingException | JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return rep;
+		return null;
 	}
 
-	private HttpSession createSession(HttpServletRequest req,
+	/*private HttpSession createSession(HttpServletRequest req,
 			HashMap<String, String> attributesmap) {
 
 		HttpSession session = req.getSession(true);
@@ -141,27 +93,27 @@ public class UMapUsService {
 				attributesmap);
 		
 		return session;
-	}
+	}*/
 
-	private void addSessionToRepository(String sessionId,
+	/*private void addSessionToRepository(String sessionId,
 			HashMap<String, String> hv) {
 
 		 daoFactory.getSessionRepoDao().AddToRedis(
 				"Session:"+sessionId, hv);
 		
-	}
+	}*/
 
 	private NewCookie createCookie(HttpSession session) {
 
 		return new NewCookie("id", session.getId());
 	}
 
-	private User LoginUser(LoginRequest loginRequest, HttpServletRequest req)
+	/*private User LoginUser(LoginRequest loginRequest, HttpServletRequest req)
 			throws NamingException {
 
 		user = daoFactory.getLdapDao().LoginUser(loginRequest);
 		return user;
 
-	}
+	}*/
 
 }

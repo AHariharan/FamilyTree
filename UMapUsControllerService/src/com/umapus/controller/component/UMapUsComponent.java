@@ -15,7 +15,7 @@ public class UMapUsComponent {
 	@Autowired
 	private  SignUpRequest signUpRequest;
 	@Autowired
-	private DAOFactory dao;
+	private DAOFactory dao; 
 	
 	@Autowired
 	private LoginResponse  loginResponse;

@@ -28,6 +28,5 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/UMapUsCommon"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

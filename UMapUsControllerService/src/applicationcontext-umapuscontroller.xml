@@ -10,18 +10,25 @@
 			http://www.springframework.org/schema/ldap 
 			http://www.springframework.org/schema/ldap/spring-ldap.xsd">
 
-	<context:component-scan base-package="com.umapus.controller.service" />
+	<context:component-scan base-package="com.umapus.controller" />
 	<context:property-placeholder location="classpath*:umapus.properties" />
 	<context:annotation-config />
 
 	<bean id="mapper" class="com.umapus.controller.domain.util.UMapUsMapper" />
+	
 	<ldap:context-source id="contextSource" url="${ldap.url}"
 		base="${ldap.base}" username="${ldap.username}" password="${ldap.password}" />
-	<ldap:ldap-template id="ldapTemplate"
-		context-source-ref="contextSource" />
+	
+	<ldap:ldap-template id="ldapTemplate"	context-source-ref="contextSource" />
+	
+	<bean id="umapsusConstants" class="com.umapus.common.domain.entity.UMapUsConstants"/>
+	
+	
 	<bean id="ldapDao" class="com.umapus.controller.infrastructure.dao.LdapDaoImpl">
 		<property name="ldapTemplate" ref="ldapTemplate" />
 	</bean>
+	
+	
 
 	<bean id="sessionRepositoryDao"
 		class="com.umapus.controller.infrastructure.dao.SessionRepositoryDaoImpl" />

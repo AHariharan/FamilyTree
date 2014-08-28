@@ -16,6 +16,7 @@
 		<redis.spring.version>1.0.0.RELEASE</redis.spring.version>
 		<jedis.version>2.0.0</jedis.version>
 		<log4j.version>1.2.16</log4j.version>
+		<spring.ldap.version>2.0.2.RELEASE</spring.ldap.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -160,6 +161,27 @@
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.13</version>
+		</dependency>
+		<dependency>
+			<groupId>com.umapus.entity</groupId>
+			<artifactId>umapuscommon</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.umapus.controller</groupId>
+			<artifactId>umapuscontroller</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.ldap</groupId>
+			<artifactId>spring-ldap-core</artifactId>
+			<version>${spring.ldap.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.ldap</groupId>
+			<artifactId>spring-ldap-core-tiger</artifactId>
+			<version>${spring.ldap.version}</version>
 		</dependency>
 	</dependencies>
 	<!-- <repositories> <repository> <id>springsource-milestones</id> <name>SpringSource 

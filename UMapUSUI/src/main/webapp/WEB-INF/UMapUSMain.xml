@@ -9,15 +9,21 @@ http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context-3.0.xsd 
 http://www.springframework.org/schema/mvc 
 http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+	
+	<!--  Import controller service into main servlet -->
+<!--  	 <import resource="classpath*:/applicationcontext-umapuscontroller.xml" />  -->
+	
+	
 	<context:annotation-config />
 	<context:component-scan base-package="com.umapus.web.controllers" />
+    <context:component-scan base-package="com.umapus.controller.component" />
+<!--  	<context:component-scan base-package=" com.umapus.common.domain.entity" /> -->
 
 	<mvc:default-servlet-handler />
 	<mvc:annotation-driven />
 
-<!-- 	<import resource="classpath*:/applicationcontext-umapus.xml" />
-	<import resource="classpath*:/UMapUSCommon-Spring.xml"/>
- -->
+    
+
 	<!-- Enable annotation-based controllers using @Controller annotations -->
 	<bean id="annotationUrlMapping"
 		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
@@ -42,8 +48,18 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 		<property name="suffix" value=".jsp" />
 	</bean>
 
+      <bean id="user" class="com.umapus.common.domain.entity.User" />
+      <bean id="signUpRequest" class="com.umapus.common.domain.entity.SignUpRequest"/>	
+	  <bean id="loginResponse" class="com.umapus.common.domain.entity.LoginResponse"/>
+      
+      <bean id="component" class="com.umapus.controller.component.UMapUsComponent"/>
 
-	<bean id="user" class="com.umapus.domain.entity.User" />
+
+  <!--   <bean id="UMapUSComponent" class="com.umapus.controller.component.UMapUSComponent">
+    </bean>
+  -->
+
+	<!--  <bean id="user" class="com.umapus.domain.entity.User" />
 
 
 
@@ -77,5 +93,5 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 		p:hashKeySerializer-ref="stringRedisSerializer"
 		p:hashValueSerializer-ref="stringRedisSerializer"
 		p:valueSerializer-ref="stringRedisSerializer">
-	</bean>
+	</bean> -->
 </beans>
