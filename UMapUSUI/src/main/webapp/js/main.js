@@ -1,5 +1,18 @@
 var Account = function() {
 	var self = this;
+	
+	$("#forgotpasswd").on("click",function(e)
+			{
+		       $("#ForgotPasswordPopup").css("display", "block");
+		       $('#ForgotPasswordPopup').addClass('animated bounceInDown');
+		       e.preventDefault();
+		       e.stopPropagation();
+			});
+
+	/*$('html').click(function(eventObject) {
+		
+		$("#ForgotPasswordPopup").css("display", "none");
+	});*/
 
 	self.signUpValidation = function() {
 		var valid = true;
@@ -221,3 +234,17 @@ var Account = function() {
 
 // create Objects to be referred from html
 var account = new Account();
+
+
+var CustomPopup = function()
+{
+	var self = this;
+	self.close = function(event)
+	{
+		$("#ForgotPasswordPopup").css("display", "none");
+		$('#ForgotPasswordPopup').removeClass('animated bounceInDown');
+	}
+
+};
+
+var customPopup = new CustomPopup();

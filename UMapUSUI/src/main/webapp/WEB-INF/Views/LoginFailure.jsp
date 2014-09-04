@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="./css/vendor/bootstrap-theme.css">
 <link rel="stylesheet" href="./css/vendor/bootstrap.min.css">
 <link rel="stylesheet" href="./css/vendor/bootstrap-select.min.css">
-<link rel="stylesheet" href="css/vendor/animate.css">
 <script src="js/vendor/modernizr-2.7.1.min.js"></script>
 <script src="js/Validators.js" type="text/javascript"></script>
 <script src="js/Messages.js" type="text/javascript"></script>
@@ -36,17 +35,17 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"> <img src="./images/Logo.png"
+				<a class="navbar-brand" href="/UMapUSUI"> <img src="./images/Logo.png"
 					height="50px" width="100px"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="#">Home</a></li>
+					<li><a href="/UMapUSUI">Home</a></li>
 					<li><a href="#about">About</a></li>
 					<li><a href="#contact">Contact</a></li>
 				</ul>
 
-				<form action="/UMapUSUI/login"
+			<!-- 	<form action="/UMapUSUI/login"
 					onsubmit="return account.loginValidation();"
 					class="navbar-form navbar-right" role="form" method="post"
 					enctype="application/x-www-form-urlencoded">
@@ -60,46 +59,27 @@
 					</div>
 					<button type="submit" value="Submit" class="btn btn-success">Sign
 						in</button>
-					<button id="forgotpasswd" type="button" class="btn btn-link">
-						Forgot Password ?</button>
-				</form>
+
+				</form> -->
 				<div style="margin-top: 5px;" class="navbar-right"
 					id="loginerrpanel"></div>
-				
+
 			</div>
 			<!--/.navbar-collapse -->
 		</div>
 	</div>
 
-	<div class="modal fade" id="forgotpasswdModal">
-		<div class="modal-dialog modal-backdrop.in">
-			<div class="modal-content">
-				<div class="modal-header modal-alter-header">
-					<button type="button" class="close" data-dismiss="modal">
-						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-					</button>
-					<h4 class="modal-title">Forgot Password ?</h4>
-				</div>
-				<div class="modal-body">
-					<p>One fine body&hellip;</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-				</div>
-			</div>
-			<!-- /.modal-content -->
-		</div>
-		<!-- /.modal-dialog -->
-	</div>
-	<!-- /.modal -->
-
 	<div id="maincontainer">
 
 		<section id="Container" class="container  ">
+        <div id="loginfailure">
+           <h3> Login failed invalid username/password</h3>
+           <h2> Please enter the register email id to retreive the password</h2>
+           <input id="RegisteredEmailId" type="text" placeholder="Email Address"/>
+         
+        </div>
 
-
-			<div id="intro" class="row holder breadcrumb">
+			<!-- <div id="intro" class="row holder breadcrumb">
 				<h2>
 					Welcome to <span style="color: rgba(212, 57, 57, 1);">U</span>Map<span
 						style="color: rgba(212, 57, 57, 1);">Us</span>
@@ -119,33 +99,13 @@
 								<button class="btn btn-default" type="button">Lookup</button>
 							</span>
 						</div>
-						<div id="ForgotPasswordPopup" class="custom-popup"
-							style="display: none">
-							<div>
-								<button type="button" class="close" style="margin-right: -10px;"
-									onclick="customPopup.close(event);">
-									<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-								</button>
-							</div>
-							<form role="form">
-								<label>Please provide registered email address to
-									retrieve the password</label>
-								<div class="form-group">
-									<!-- <label for="exampleInputEmail1">Email address</label> -->
-									<input type="email" class="form-control" id="retrieveemail"
-										placeholder="Registered Email Address">
-								</div>
-								<button class="btn btn-primary" style="float: right;">
-									Submit</button>
-							</form>
-						</div>
 					</div>
 
 				</div>
 
 			</div>
-
-			<div id="midsection" class="row">
+ -->
+			<!-- <div id="midsection" class="row">
 				<div class="col-md-6">
 					<div id="myCarousel" class="carousel slide">
 						<div class="carousel-inner">
@@ -202,10 +162,10 @@
 							<label for="familyname" class="col-sm-4 control-label"><span
 								style="color: red">* </span>Family Name</label>
 							<div class="col-offset-1 col-sm-7">
-								<select id="familyname" data-live-search="true"
-									data-style="btn-primary" class="form-control selectpicker">
+								<select id="familyname" data-live-search="true" data-style="btn-primary"
+									class="form-control selectpicker">
 									<option>-Select-</option>
-
+									
 								</select>
 							</div>
 						</div>
@@ -258,7 +218,7 @@
 					</form>
 
 				</div>
-			</div>
+			</div> -->
 
 			<div id="footer" class="row">
 				<div id="copyright" class="col-md-3" style="color: black">
@@ -316,8 +276,6 @@
 		-->
 
 	<!--  Modals for Sign up -->
-
-
 </body>
 
 </html>

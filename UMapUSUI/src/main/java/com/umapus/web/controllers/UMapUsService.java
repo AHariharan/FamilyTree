@@ -54,11 +54,19 @@ public class UMapUsService {
 		if(loginrequest != null)
 		           model.addAttribute("message",loginrequest.getuserName());
 		           
+		try
+		{
 		LoginResponse response = component.Login(loginrequest);
 		if(response !=  null)
-				return "UMapUSWork";
-		else
-			return "";
+			return "UMapUSWork";
+	    else
+		    return "LoginFailure";
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+			return "LoginFailure";
+		}
+		
 	}
 
 	
