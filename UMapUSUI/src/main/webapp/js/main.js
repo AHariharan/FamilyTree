@@ -4,6 +4,7 @@ var Account = function() {
 	$("#forgotpasswd").on("click",function(e)
 			{
 		       $("#ForgotPasswordPopup").css("display", "block");
+		       $('#ForgotPasswordPopup').removeClass('animated bounceOutUp');
 		       $('#ForgotPasswordPopup').addClass('animated bounceInDown');
 		       e.preventDefault();
 		       e.stopPropagation();
@@ -241,8 +242,10 @@ var CustomPopup = function()
 	var self = this;
 	self.close = function(event)
 	{
-		$("#ForgotPasswordPopup").css("display", "none");
+		
 		$('#ForgotPasswordPopup').removeClass('animated bounceInDown');
+		$('#ForgotPasswordPopup').addClass('animated bounceOutUp');
+	//	$("#ForgotPasswordPopup").css("display", "none");
 	}
 
 };
