@@ -87,26 +87,28 @@ var Account = function() {
 			var lastname = $('#lastname').val();
 			var email = $('#emailsignup').val();
 			var passwd = $('#passwdsignup').val();
-
+			
+		
 			var formdata = {
-				familyname : familyname,
-				firstname : firstname,
-				lastname : lastname,
-				email : email,
-				passwd : passwd
+					familyName : familyname,
+					firstName : firstname,
+					lastName : lastname,
+				    email : email,
+				    password : passwd
 			};
 
 			console.log(JSON.stringify(formdata));
 			// Add Test
 
-			var url = "http://localhost:9094/UMapUsService/umapusservice/signup";
+			var url = "/UMapUSUI/signup";
 			$.ajax({
 				type : "POST",
 				url : url,
 				contentType : "application/json",
 				data : JSON.stringify(formdata),
+				consumes : "application/json",
 				success : function(data, textStatus, jqXHR) {
-					
+					alert("Sign up successful");
 				},
 				error : function(data) {
 					alert("Unable to fetch familyname list" + data);

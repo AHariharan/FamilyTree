@@ -76,7 +76,7 @@ public class LdapDaoImpl implements LdapDao {
 		Attribute mail = new BasicAttribute(UMapUsConstants.MAIL,
 				signUpRequest.getEmail());
 		Attribute userPassword = new BasicAttribute(
-				UMapUsConstants.USERPASSWORD, signUpRequest.getPassWord());
+				UMapUsConstants.USERPASSWORD, signUpRequest.getPassword());
 		Attribute graphid = new BasicAttribute(UMapUsConstants.GRAPHID,
 				assign_GraphId);
 		Attribute oc = new BasicAttribute(UMapUsConstants.OBJECTCLASS);

@@ -2,7 +2,6 @@ package com.umapus.web.controllers;
 
 
 import javax.servlet.http.HttpServletRequest;
-
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -13,19 +12,21 @@ import javax.ws.rs.core.NewCookie;
 
 
 
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-
 import org.springframework.web.bind.annotation.ModelAttribute;
-
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.umapus.common.domain.entity.LoginRequest;
 import com.umapus.common.domain.entity.LoginResponse;
-
+import com.umapus.common.domain.entity.SignUpRequest;
 import com.umapus.common.domain.entity.User;
 import com.umapus.controller.component.UMapUsComponent;
 
@@ -81,11 +82,24 @@ public class UMapUsService {
 	
 	
 	@POST
-	@Path("/signup")
+	@RequestMapping(value = { "/signup"},method = RequestMethod.POST)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String SignUp(String jsonBody, @Context HttpServletRequest req) {
-
-		return null;
+	public @ResponseBody Object SignUp(@RequestBody SignUpRequest signUpRequest ) {
+        System.out.println("Sign up request getFamilyName :" + signUpRequest.getFamilyName());
+        System.out.println("Sign up request getFirstName :" + signUpRequest.getFirstName());
+        System.out.println("Sign up request getLastName :" + signUpRequest.getLastName());
+        System.out.println("Sign up request getEmail :" + signUpRequest.getEmail());
+        System.out.println("Sign up request getPassWord :" + signUpRequest.getPassword());
+		component.SetSignUpFirstName(signUpRequest.getFirstName());
+		try
+		{
+		   component.SignUp(signUpRequest);
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return "Success";
 	}
 
 	/*private HttpSession createSession(HttpServletRequest req,

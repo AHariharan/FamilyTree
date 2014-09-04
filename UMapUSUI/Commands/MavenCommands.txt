@@ -1,6 +1,6 @@
 # Install UMapUSCommon.jar ( Export jar from UMapUSCommon )
 
-mvn install:install-file -Dfile=UMapsUSCommon.jar -DgroupId=com.umapus.entity -DartifactId=umapuscommon -Dversion=1.0 -Dpackaging=jar
+mvn install:install-file -Dfile=UMapUSCommon.jar -DgroupId=com.umapus.entity -DartifactId=umapuscommon -Dversion=1.0 -Dpackaging=jar
 
 # Install UMapUSController.jar ( Export jar from UMapUSControllerService )
 mvn install:install-file -Dfile=UMapUSController.jar -DgroupId=com.umapus.controller -DartifactId=umapuscontroller -Dversion=1.0 -Dpackaging=jar

@@ -63,7 +63,7 @@ public class UMapUsControllerTest {
 		signUpRequest.setEmail("t2vglvishnu@yahoo.com");
 		signUpRequest.setFamilyName("Vaitiyam");
 		signUpRequest.setLastName("Vaitiyam Gunasekaran");
-		signUpRequest.setPassWord("Test@123");
+		signUpRequest.setPassword("Test@123");
 		signUpRequest.setFirstName("Vishnu");
 		cntlcomp.SignUp(signUpRequest);
 	}
