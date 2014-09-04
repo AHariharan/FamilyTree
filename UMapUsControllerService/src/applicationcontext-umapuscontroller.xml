@@ -72,8 +72,8 @@
 
 
 
-	<bean id="cntlComp" class="com.umapus.controller.component.UMapUsComponent" />
-	<bean id="umapsusConstants" class="com.umapus.common.domain.entity.UMapUsConstants" />
+<!-- 	<bean id="cntlComp" class="com.umapus.controller.component.UMapUsComponent" /> -->
+	<!-- <bean id="umapsusConstants" class="com.umapus.common.domain.entity.UMapUsConstants" /> -->
 
 
 
