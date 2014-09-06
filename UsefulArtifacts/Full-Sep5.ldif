@@ -1,0 +1,9 @@
+version: 1
+
+dn: o=umapus
+objectclass: extensibleObject
+objectclass: top
+objectclass: domain
+dc: umapus
+o: umapus
+
