@@ -46,10 +46,10 @@ public class UMapUsService {
 
 
 	@RequestMapping(value = { "/login"},method = RequestMethod.POST)
-	public String Login(@ModelAttribute("loginrequest") LoginRequest loginrequest,ModelMap model)
+	public String Login(@ModelAttribute("loginrequest") LoginRequest loginrequest,ModelMap model,HttpServletRequest request)
 			throws Exception {
 
-		
+		System.out.println("Session is : " + request.getSession().getId());
 		System.out.println("Login request username :- " + loginrequest.getuserName());
 		System.out.println("Login request password :- " + loginrequest.getPassWord());
 		if(loginrequest != null)
@@ -84,7 +84,8 @@ public class UMapUsService {
 	@POST
 	@RequestMapping(value = { "/signup"},method = RequestMethod.POST)
 	@Produces(MediaType.APPLICATION_JSON)
-	public @ResponseBody Object SignUp(@RequestBody SignUpRequest signUpRequest ) {
+	public @ResponseBody Object SignUp(@RequestBody SignUpRequest signUpRequest , HttpServletRequest request) {
+		System.out.println("Session is : " + request.getSession().getId());
         System.out.println("Sign up request getFamilyName :" + signUpRequest.getFamilyName());
         System.out.println("Sign up request getFirstName :" + signUpRequest.getFirstName());
         System.out.println("Sign up request getLastName :" + signUpRequest.getLastName());
