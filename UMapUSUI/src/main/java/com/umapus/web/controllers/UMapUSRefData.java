@@ -67,7 +67,7 @@ public class UMapUSRefData {
       try
       {
        Map<String, String> env = System.getenv();
-       String REF_FILE_PATH = env.get("REF_DATA_HOME");
+       String REF_FILE_PATH = env.get("UMAPUS_REF_DATA_HOME");
        String filepath = REF_FILE_PATH+"/FamilyNames.txt";
        System.out.println("File Path : " + filepath);
            fis = new FileInputStream(filepath);

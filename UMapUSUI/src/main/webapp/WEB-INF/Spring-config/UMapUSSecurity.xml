@@ -15,6 +15,7 @@
         <security:intercept-url pattern="/index.html" access="IS_AUTHENTICATED_ANONYMOUSLY" />
         <security:intercept-url pattern="/logoutSuccess*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
         <security:intercept-url pattern="/signup*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <security:intercept-url pattern="/listoffamilies" access="IS_AUTHENTICATED_ANONYMOUSLY" />
         
         <security:intercept-url pattern="/css/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
         <security:intercept-url pattern="/js/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
@@ -35,7 +36,7 @@
     
 
     <security:authentication-manager>
-       <security:ldap-authentication-provider user-dn-pattern="uid={0}"/>
+       <security:ldap-authentication-provider user-dn-pattern="uid={0},cn=USER" group-search-base="cn=USER"/>
     </security:authentication-manager>
 
     <security:ldap-server url="ldap://localhost:10389/dc=umapus,dc=com"/>

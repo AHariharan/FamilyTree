@@ -68,7 +68,7 @@ public class LdapDaoImpl implements LdapDao {
 		String entryDN = "uid=" + signUpRequest.getEmail() ;
 				
 		Attribute cn = new BasicAttribute(UMapUsConstants.CN,
-				signUpRequest.getEmail());
+				"USER");
 		Attribute sn = new BasicAttribute(UMapUsConstants.SN,
 				signUpRequest.getFamilyName());
 		Attribute uid = new BasicAttribute(UMapUsConstants.UID,
