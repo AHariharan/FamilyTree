@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.naming.Name;
 import javax.naming.NameNotFoundException;
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
@@ -13,17 +14,26 @@ import javax.naming.directory.Attributes;
 import javax.naming.directory.BasicAttribute;
 import javax.naming.directory.BasicAttributes;
 import javax.naming.directory.DirContext;
+import javax.naming.directory.ModificationItem;
 import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
+import javax.naming.ldap.LdapName;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ldap.core.AttributesMapper;
 import org.springframework.ldap.core.DirContextAdapter;
+import org.springframework.ldap.core.DirContextOperations;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.filter.AndFilter;
 import org.springframework.ldap.filter.EqualsFilter;
 import org.springframework.ldap.filter.Filter;
 import org.springframework.ldap.query.LdapQuery;
+
+
+
+
+
+import org.springframework.ldap.support.LdapNameBuilder;
 
 import com.umapus.common.domain.entity.LoginRequest;
 import com.umapus.common.domain.entity.LoginResponse;
@@ -43,6 +53,8 @@ public class LdapDaoImpl implements LdapDao {
 	
 	@Autowired
 	private SignUpResponse signUpResponse;
+	
+	private LdapTemplate groupldapTemplate;
 	
 
 
@@ -96,14 +108,34 @@ public class LdapDaoImpl implements LdapDao {
 		attributes.put(graphid);
 		attributes.put(oc);
 
-		//ldapCtx.createSubcontext(entryDN, entry);
+		
 		  ldapTemplate.bind(entryDN,null,attributes);
+		  addUsertoGroup(signUpRequest.getEmail());
 
 		return signUpResponse.SUCCESS.getStatus();
 
-		// return null;
+
 	}
 
+	
+	/*public String CreateLDAPUser(SignUpRequest signUpRequest)
+	{
+		addUsertoGroup(signUpRequest.getEmail());
+		return null;
+	}
+	*/
+	private void addUsertoGroup(String uid)
+	{
+	
+	    String DN = "uid="+uid+ ",dc=umapus,dc=com";       
+		String baseDn = "cn=umapusmembers";
+		
+		Name dn = LdapNameBuilder.newInstance().add("cn","umapusmembers").build();	
+		Attribute attr = new BasicAttribute(UMapUsConstants.UNIQUEMEMBER, DN);
+		ModificationItem item = new ModificationItem(DirContext.ADD_ATTRIBUTE, attr);
+		ldapTemplate.modifyAttributes(dn,new ModificationItem[] { item });	
+	}
+	
 
 
 	private List findUserByUserId(String userId) {

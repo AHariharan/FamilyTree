@@ -52,19 +52,20 @@ public class UMapUsControllerTest {
 	     UMapUsComponent cntlcomp = (UMapUsComponent) ctx.getBean("cntlComp");
 	     SignUpRequest signUpRequest = (SignUpRequest) ctx.getBean("signUpRequest");
 		 LoginRequest loginRequest = (LoginRequest) ctx.getBean("loginRequest");
-		 Login(cntlcomp,loginRequest);
-	 
+		 //Login(cntlcomp,loginRequest);
+	     SignUp(cntlcomp, signUpRequest);
+		 
 	}
 
 	
 	public static void SignUp(UMapUsComponent cntlcomp, SignUpRequest signUpRequest){
 		
-		cntlcomp.SetSignUpFirstName("Chari");
-		signUpRequest.setEmail("t2vglvishnu@yahoo.com");
+		cntlcomp.SetSignUpFirstName("test");
+		signUpRequest.setEmail("test@yahoo.com");
 		signUpRequest.setFamilyName("Vaitiyam");
 		signUpRequest.setLastName("Vaitiyam Gunasekaran");
-		signUpRequest.setPassword("Test@123");
-		signUpRequest.setFirstName("Vishnu");
+		signUpRequest.setPassword("abcd1234");
+		signUpRequest.setFirstName("test");
 		cntlcomp.SignUp(signUpRequest);
 	}
 

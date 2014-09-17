@@ -9,6 +9,7 @@ public class UMapUsConstants {
 	public static final String ORGANIZATIONALPERSON = "organizationalPerson";
 	public static final String INETORGPERSON = "inetOrgPerson";
 	public static final String UMAPUSMEMBERS = "umapusmembers";
+	
 
 
 	public static final String CN = "cn";
@@ -19,6 +20,7 @@ public class UMapUsConstants {
 	public static final String GRAPHID = "graphid";
 	public static final String OBJECTCLASS = "objectClass";
 	public static final String GN = "givenName";
+	public static final String UNIQUEMEMBER = "uniqueMember";
 
 	public static final String LDAPSEARCHBASE = "dc=umapus,dc=com";
 	

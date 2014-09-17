@@ -21,6 +21,14 @@
 	
 	<ldap:ldap-template id="ldapTemplate"	context-source-ref="contextSource" />
 	
+	<!--  Add to LDAP Group -->
+	
+	<ldap:context-source id="GroupContextSource" url="${ldap.url}"
+		base="${ldap.groupbase}" username="${ldap.username}" password="${ldap.password}" />
+	
+	<ldap:ldap-template id="groupldapTemplate"	context-source-ref="GroupContextSource" />
+	
+	
 	<bean id="umapsusConstants" class="com.umapus.common.domain.entity.UMapUsConstants"/>
 	
 	
@@ -72,7 +80,7 @@
 
 
 
-<!-- 	<bean id="cntlComp" class="com.umapus.controller.component.UMapUsComponent" /> -->
+ 	<!-- <bean id="cntlComp" class="com.umapus.controller.component.UMapUsComponent" /> -->
 	<!-- <bean id="umapsusConstants" class="com.umapus.common.domain.entity.UMapUsConstants" /> -->
 
 
