@@ -18,32 +18,32 @@
 	
 
 	<category name="org.springframework">
-		<priority value="DEBUG" />		
+		<priority value="WARN" />		
 	</category>
 
 	<category name="org.springframework.beans">
-		<priority value="DEBUG" />
+		<priority value="WARN" />
 	</category>
 
 	<category name="org.springframework.security">
-		<priority value="DEBUG" />
+		<priority value="WARN" />
 	</category>
 
 	<category name="org.springframework.beans.CachedIntrospectionResults">
-		<priority value="DEBUG" />
+		<priority value="WARN" />
 	</category>
 
 	<category name="org.springframework.jdbc.core">
-		<priority value="DEBUG" />
+		<priority value="WARN" />
 	</category>
 
 	<category
 		name="org.springframework.transaction.support.TransactionSynchronizationManager">
-		<priority value="DEBUG" />
+		<priority value="WARN" />
 	</category>
 
 	<root>
-		<priority value="DEBUG" />
+		<priority value="WARN" />
 	    <appender-ref ref="springAppender" /> 
 		<appender-ref ref="console" />			
 	</root>

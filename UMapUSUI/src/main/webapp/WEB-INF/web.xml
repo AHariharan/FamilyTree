@@ -23,7 +23,12 @@
         </param-value>
 	</context-param>
 	
-	
+	<!--  Spring security concurrency control -->
+	<listener>
+          <listener-class>
+                  org.springframework.security.web.session.HttpSessionEventPublisher
+         </listener-class>
+   </listener>
 	
 	<!--  Spring security related start -->
 	

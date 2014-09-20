@@ -60,7 +60,7 @@
 							<li><a href="#">Messages</a></li>
 
 							<li class="divider"></li>
-							<li><a href="#">Logout</a></li>
+							<li><a id="acctlogout" href="UMapUSUI/logout">Logout</a></li>
 						</ul>
 
 					</div>

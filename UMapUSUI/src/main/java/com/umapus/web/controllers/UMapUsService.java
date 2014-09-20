@@ -15,6 +15,7 @@ import javax.ws.rs.core.NewCookie;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.umapus.common.domain.entity.LoginRequest;
@@ -73,9 +75,9 @@ public class UMapUsService {
 	
 	// Don't comment this method I am using this as a stub for direct access to fix html and js
 	@RequestMapping(value = { "/UMapUSWork"},method = RequestMethod.GET)
-	public String myStubDontDelete(ModelMap model)
+	public String myStubDontDelete(ModelMap model,@RequestParam("LastName") String LastName , @RequestParam("Email") String email)
 	{
-		model.addAttribute("message","Arunkumar Hariharan");
+		model.addAttribute("message",email + " :: " + LastName);
 		return "UMapUSWork";
 	}
 	

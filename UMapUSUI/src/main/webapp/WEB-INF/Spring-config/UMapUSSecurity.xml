@@ -9,6 +9,11 @@
 	<security:global-method-security
 		secured-annotations="enabled" />
 
+
+    <!--  Bypass security for these -->
+    <security:http pattern="/css/**" security="none"/>
+    <security:http pattern="/index.html*" security="none"/>
+
 	<security:http auto-config="true">
 		<!-- Restrict URLs based on role -->
 		<security:intercept-url pattern="/login*"
@@ -32,24 +37,85 @@
 		<security:intercept-url pattern="/UMapUS*"
 			access="ROLE_UMAPUSMEMBERS" />
 
+
+        
+
 		<!-- Override default login and logout pages -->
 		<security:form-login login-page="/index.html"
-			login-processing-url="/login" username-parameter="userName"
+			login-processing-url="/login" username-parameter="userName" authentication-success-handler-ref="UMapUSAuthSuccessHandler"
 			password-parameter="passWord" default-target-url="/UMapUSWork"
-			authentication-failure-url="/LoginFailure" />
+			authentication-failure-url="/LoginFailure" 
+			always-use-default-target="true"/>
+			
 		<security:logout logout-url="/logout"
-			logout-success-url="/logoutSuccess.html" />
+			logout-success-url="/index.html" delete-cookies="JSESSIONID"/>
+		
+		
+		<security:session-management session-fixation-protection="newSession">
+		    <!-- Allow only 2 concurrent sessions -->
+		    <security:concurrency-control max-sessions="2" />
+		    
+		 </security:session-management>
+		 
+		 
 	</security:http>
 
 
+ <!--  Additonal LDAP Details -->
+ 
+<!-- <bean id="LDAPContextSource"
+        class="org.springframework.security.ldap.DefaultSpringSecurityContextSource">
+  <constructor-arg value="ldap://localhost:10389/dc=umapus,dc=com"/>
+  <property name="userDn" value="uid=admin,ou=system"/>
+  <property name="password" value="Letmein123"/>
+</bean>
+
+<bean id="ldapAuthProvider" class="org.springframework.security.ldap.authentication.LdapAuthenticationProvider">
+  <constructor-arg>
+       <bean class="org.springframework.security.ldap.authentication.BindAuthenticator">
+          <constructor-arg ref="LDAPContextSource"/>
+             <property name="userDnPatterns">
+             <list>
+                  <value>uid={0}</value>
+             </list>
+     </property>
+   </bean>
+ </constructor-arg>
+ <constructor-arg>
+   <bean class="org.springframework.security.ldap.userdetails.DefaultLdapAuthoritiesPopulator">
+     <constructor-arg ref="LDAPContextSource"/>
+     <constructor-arg value="cn=umapusmembers"/>
+     <property name="groupRoleAttribute" value="ou"/>   
+   </bean>
+ </constructor-arg>
+ <property name="userDetailsContextMapper">
+       <bean class="com.umapus.internal.utilities.UMapUSUserPropertyMapper" />
+ </property>
+</bean>
+
+
+<security:authentication-manager>
+   <security:authentication-provider ref="ldapAuthProvider"/>
+</security:authentication-manager> -->
+
+    <!--  This class is for auth success -->
+    <bean id="UMapUSAuthSuccessHandler" class="com.umapus.internal.utilities.UMapUSAuthSuccessHandler"/>
+
+    <!--  This class is to autopopulate LDAP attributes of the authenticated user -->
+    <bean id="userDetailsContextMapper" class="com.umapus.internal.utilities.UMapUSUserPropertyMapper"/>
 
 	<security:authentication-manager>
 		<security:ldap-authentication-provider
 			user-dn-pattern="uid={0}" 
 			group-search-base="cn=umapusmembers"
 			group-role-attribute="ou"
-			role-prefix="ROLE_"/>
+			role-prefix="ROLE_"
+			user-context-mapper-ref="userDetailsContextMapper"
+			/>
 	</security:authentication-manager>
 
-	<security:ldap-server url="ldap://localhost:10389/dc=umapus,dc=com" />
+	<security:ldap-server url="ldap://localhost:10389/dc=umapus,dc=com" /> 
+	
+	<!--  -->
+	
 </beans>
