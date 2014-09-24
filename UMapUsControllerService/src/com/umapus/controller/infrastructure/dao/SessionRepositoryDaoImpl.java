@@ -23,7 +23,7 @@ public class SessionRepositoryDaoImpl implements SessionRepositoryDao {
 
 	private HashOperations<String, Object, Object> hashOps;
 
-	public void AddToRedis(String key, HashMap<String, String> hashvalue) {
+	public void addToRedis(String key, HashMap<String, String> hashvalue) {
        
 		redisTemplate.opsForHash().putAll(key, hashvalue);
 		
@@ -32,7 +32,7 @@ public class SessionRepositoryDaoImpl implements SessionRepositoryDao {
 
 	}
 
-	public HashMap<String, String> ReadFromRedis(String key) {
+	public HashMap<String, String> readFromRedis(String key) {
 
 		BoundHashOperations<String, String, String> userOps = redisTemplate
 				.boundHashOps(key);
@@ -41,7 +41,7 @@ public class SessionRepositoryDaoImpl implements SessionRepositoryDao {
 		return (HashMap<String, String>) userOps.entries();
 	}
 
-	public void UpdateToRedis(String key, HashMap<String, String> hashValue) {
+	public void updateToRedis(String key, HashMap<String, String> hashValue) {
 		BoundHashOperations<String, String, String> userOps = redisTemplate
 				.boundHashOps(key);
 		Map<String, String> hm = (HashMap<String, String>) userOps.entries();
@@ -52,7 +52,7 @@ public class SessionRepositoryDaoImpl implements SessionRepositoryDao {
 		redisTemplate.opsForHash().putAll(key, hm);
 	}
 
-	public void DeleteFromRedis(String key) {
+	public void deleteFromRedis(String key) {
 
 		redisTemplate.delete(key);
 	}

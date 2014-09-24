@@ -47,13 +47,13 @@
 			authentication-failure-url="/LoginFailure" 
 			always-use-default-target="true"/>
 			
-		<security:logout logout-url="/logout"
-			logout-success-url="/index.html" delete-cookies="JSESSIONID"/>
+		<security:logout logout-url="/logout" success-handler-ref="UMapUSLogoutSuccessHandler"
+			delete-cookies="JSESSIONID,SID"/>
 		
 		
 		<security:session-management session-fixation-protection="newSession">
 		    <!-- Allow only 2 concurrent sessions -->
-		    <security:concurrency-control max-sessions="2" />
+		    <security:concurrency-control max-sessions="1" />
 		    
 		 </security:session-management>
 		 
@@ -103,9 +103,13 @@
 
     <!--  This class is to autopopulate LDAP attributes of the authenticated user -->
     <bean id="userDetailsContextMapper" class="com.umapus.internal.utilities.UMapUSUserPropertyMapper"/>
+    
+    <!-- This class to handle logouts -->
+    <bean id="UMapUSLogoutSuccessHandler" class="com.umapus.internal.utilities.UMapUSLogoutSuccessHandler"/>
+ 
 
 	<security:authentication-manager>
-		<security:ldap-authentication-provider
+		<security:ldap-authentication-provider 
 			user-dn-pattern="uid={0}" 
 			group-search-base="cn=umapusmembers"
 			group-role-attribute="ou"

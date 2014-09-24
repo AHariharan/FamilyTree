@@ -16,7 +16,10 @@ import javax.ws.rs.core.NewCookie;
 
 
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.umapus.common.domain.entity.LoginRequest;
 import com.umapus.common.domain.entity.LoginResponse;
@@ -81,6 +85,15 @@ public class UMapUsService {
 		return "UMapUSWork";
 	}
 	
+	@RequestMapping(value = {"/logout_sucess"},method = RequestMethod.GET)
+	public ModelAndView logout(ModelMap model)
+	{
+		System.out.println("Logout invoked for user" + SecurityContextHolder.getContext().getAuthentication().getPrincipal());		
+		SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false);
+	
+		return new ModelAndView("redirect:index.html");
+	
+	}
 	
 	
 	@POST
