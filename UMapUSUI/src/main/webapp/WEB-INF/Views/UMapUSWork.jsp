@@ -25,8 +25,9 @@
 <script src="js/vendor/modernizr-2.7.1.min.js"></script>
 <script src="js/Validators.js" type="text/javascript"></script>
 <script src="js/Messages.js" type="text/javascript"></script>
+<script src="js/SessionHandler.js" type="text/javascript"></script>
 </head>
-<body>
+<body onload="UMapUS.sessionHandler.initSession();">
 	<div id="header" class="navbar navbar-default navbar-fixed-top"
 		role="navigation">
 		<div class="container">

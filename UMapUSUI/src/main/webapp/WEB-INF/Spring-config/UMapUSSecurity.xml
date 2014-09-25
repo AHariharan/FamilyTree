@@ -15,6 +15,11 @@
     <security:http pattern="/index.html*" security="none"/>
 
 	<security:http auto-config="true">
+	    
+	    <!--  this line below is needed for SessionTimeout for CSRF -->
+	    <security:access-denied-handler error-page="/"/>
+	    
+	    
 		<!-- Restrict URLs based on role -->
 		<security:intercept-url pattern="/login*"
 			access="IS_AUTHENTICATED_ANONYMOUSLY" />

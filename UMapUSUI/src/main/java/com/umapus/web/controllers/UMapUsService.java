@@ -88,7 +88,8 @@ public class UMapUsService {
 	@RequestMapping(value = { "/UMapUSWork"},method = RequestMethod.GET)
 	public String landingPage(ModelMap model,HttpServletRequest request)
 	{
-	    System.out.println("Request" + request.getSession().getAttribute("UMapUSUserDetails").getClass());	
+		
+	    System.out.println("Request" + request.getSession().getId());	
 	    AuthUserDTO userdto = (AuthUserDTO) request.getSession().getAttribute("UMapUSUserDetails");
 	 	model.addAttribute("message",userdto.getEmail() + " :: " + userdto.getLastname());
 		return "UMapUSWork";
