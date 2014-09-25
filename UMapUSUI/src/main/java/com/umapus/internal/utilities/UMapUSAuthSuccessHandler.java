@@ -15,6 +15,8 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.csrf.DefaultCsrfToken;
 
+import com.umapus.umapusui.dto.AuthUserDTO;
+
 public class UMapUSAuthSuccessHandler implements AuthenticationSuccessHandler {
 
 	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
@@ -65,14 +67,14 @@ public class UMapUSAuthSuccessHandler implements AuthenticationSuccessHandler {
 		     
 		     HttpSession session = req.getSession(false);
 		   //save message in session
-		    TestPojo testpojo = new TestPojo();
-		    testpojo.setEmail(userdetails.getFirstName());
-		    testpojo.setLastname(userdetails.getLastName());
-		    testpojo.setGraphid(userdetails.getGraphId());
+		    AuthUserDTO userdto = new AuthUserDTO();
+		    userdto.setEmail(userdetails.getFirstName());
+		    userdto.setLastname(userdetails.getLastName());
+		    userdto.setGraphid(userdetails.getGraphId());
 		     
 		    
 		    
-		   session.setAttribute("UMapUSUserDetails", testpojo);		
+		   session.setAttribute("UMapUSUserDetails", userdto);		
 		   redirectStrategy.sendRedirect(req,resp,targetURL);
 		     
 		    

@@ -1,6 +1,6 @@
-package com.umapus.internal.utilities;
+package com.umapus.umapusui.dto;
 
-public class TestPojo {
+public class AuthUserDTO {
 
 	private String firstname;
 	private String lastname;
@@ -9,12 +9,12 @@ public class TestPojo {
 	
 	
 	
-	public TestPojo() {
+	public AuthUserDTO() {
 		super();
 		
 	}
 	
-	public TestPojo(String firstname, String lastname, String email,
+	public AuthUserDTO(String firstname, String lastname, String email,
 			String graphid) {
 		super();
 		this.firstname = firstname;

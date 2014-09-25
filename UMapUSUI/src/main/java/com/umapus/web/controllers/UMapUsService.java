@@ -20,7 +20,10 @@ import javax.ws.rs.core.NewCookie;
 
 
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -37,8 +40,8 @@ import com.umapus.common.domain.entity.LoginResponse;
 import com.umapus.common.domain.entity.SignUpRequest;
 import com.umapus.common.domain.entity.User;
 import com.umapus.controller.component.UMapUsComponent;
-import com.umapus.internal.utilities.TestPojo;
 import com.umapus.internal.utilities.UMapUSUserDetails;
+import com.umapus.umapusui.dto.AuthUserDTO;
 
 
 @Controller
@@ -81,13 +84,13 @@ public class UMapUsService {
 	}
 
 	
-	// Don't comment this method I am using this as a stub for direct access to fix html and js
+	
 	@RequestMapping(value = { "/UMapUSWork"},method = RequestMethod.GET)
-	public String myStubDontDelete(ModelMap model,HttpServletRequest request)
+	public String landingPage(ModelMap model,HttpServletRequest request)
 	{
 	    System.out.println("Request" + request.getSession().getAttribute("UMapUSUserDetails").getClass());	
-	    TestPojo testdata = (TestPojo) request.getSession().getAttribute("UMapUSUserDetails");
-	 	model.addAttribute("message",testdata.getEmail() + " :: " + testdata.getLastname());
+	    AuthUserDTO userdto = (AuthUserDTO) request.getSession().getAttribute("UMapUSUserDetails");
+	 	model.addAttribute("message",userdto.getEmail() + " :: " + userdto.getLastname());
 		return "UMapUSWork";
 	}
 	
