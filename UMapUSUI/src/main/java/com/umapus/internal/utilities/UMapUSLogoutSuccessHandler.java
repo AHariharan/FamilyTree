@@ -16,9 +16,15 @@ public class UMapUSLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler im
 	public void onLogoutSuccess(HttpServletRequest req,
 			HttpServletResponse response, Authentication auth) throws IOException,
 			ServletException {
-		    auth.setAuthenticated(false);
 		    System.out.println("Logout invoked for  : "+ auth.getPrincipal());
-		   // response.sendRedirect("/UMapUSUI");
+		    if(auth == null)
+		    {
+		    	System.out.println("Authentication object null");
+		    	super.onLogoutSuccess(req, response, auth);
+		    	return;
+		    }	
+		    System.out.println("Logout invoked for  : "+ auth.getPrincipal());
+		    response.sendRedirect("");
 		    super.onLogoutSuccess(req, response, auth);
 		  
 

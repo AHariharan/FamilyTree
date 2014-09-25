@@ -18,6 +18,8 @@ import javax.ws.rs.core.NewCookie;
 
 
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -35,6 +37,8 @@ import com.umapus.common.domain.entity.LoginResponse;
 import com.umapus.common.domain.entity.SignUpRequest;
 import com.umapus.common.domain.entity.User;
 import com.umapus.controller.component.UMapUsComponent;
+import com.umapus.internal.utilities.TestPojo;
+import com.umapus.internal.utilities.UMapUSUserDetails;
 
 
 @Controller
@@ -79,9 +83,11 @@ public class UMapUsService {
 	
 	// Don't comment this method I am using this as a stub for direct access to fix html and js
 	@RequestMapping(value = { "/UMapUSWork"},method = RequestMethod.GET)
-	public String myStubDontDelete(ModelMap model,@RequestParam("LastName") String LastName , @RequestParam("Email") String email)
+	public String myStubDontDelete(ModelMap model,HttpServletRequest request)
 	{
-		model.addAttribute("message",email + " :: " + LastName);
+	    System.out.println("Request" + request.getSession().getAttribute("UMapUSUserDetails").getClass());	
+	    TestPojo testdata = (TestPojo) request.getSession().getAttribute("UMapUSUserDetails");
+	 	model.addAttribute("message",testdata.getEmail() + " :: " + testdata.getLastname());
 		return "UMapUSWork";
 	}
 	
@@ -91,7 +97,7 @@ public class UMapUsService {
 		System.out.println("Logout invoked for user" + SecurityContextHolder.getContext().getAuthentication().getPrincipal());		
 		SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false);
 	
-		return new ModelAndView("redirect:index.html");
+		return new ModelAndView("redirect:/");
 	
 	}
 	

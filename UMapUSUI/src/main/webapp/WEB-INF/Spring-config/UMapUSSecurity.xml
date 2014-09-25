@@ -41,7 +41,7 @@
         
 
 		<!-- Override default login and logout pages -->
-		<security:form-login login-page="/index.html"
+		<security:form-login login-page="/"
 			login-processing-url="/login" username-parameter="userName" authentication-success-handler-ref="UMapUSAuthSuccessHandler"
 			password-parameter="passWord" default-target-url="/UMapUSWork"
 			authentication-failure-url="/LoginFailure" 
@@ -52,12 +52,10 @@
 		
 		
 		<security:session-management session-fixation-protection="newSession">
-		    <!-- Allow only 2 concurrent sessions -->
-		    <security:concurrency-control max-sessions="1" />
-		    
-		 </security:session-management>
+		    		    <security:concurrency-control max-sessions="1" expired-url="/UMapUSUI"/>		    
+		</security:session-management>
 		 
-		 
+		<security:csrf />
 	</security:http>
 
 

@@ -1,5 +1,6 @@
 package com.umapus.internal.utilities;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -13,6 +14,8 @@ public class UMapUSUserDetails extends User {
 	private String firstName;
 	private String lastName;
 	private String graphId;
+	
+
 	
 	public UMapUSUserDetails(String username, String password, boolean enabled,
 			boolean accountNonExpired, boolean credentialsNonExpired,

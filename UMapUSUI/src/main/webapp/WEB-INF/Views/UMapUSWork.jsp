@@ -1,9 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html class="no-js">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="_csrf" content="${_csrf.token}"/>
+<meta name="_csrf_header" content="${_csrf.headerName}"/>
 <title>UMapUS</title>
 <meta name="description" content="">
 <!--	<meta name="viewport" content="width=device-width, initial-scale=1"> -->
@@ -43,6 +46,12 @@
 					<li><a href="#about">About</a></li>
 					<li><a href="#contact">Contact</a></li>
 				</ul>
+				<div id="logout" class="navbar-right" style="padding-top:8px;margin-left:30px;">
+					      <form:form action="/UMapUSUI/logout" role="form" method="post"  ctype="application/x-www-form-urlencoded">
+					              <button class="btn btn-success" type="submit"> Logout </button>
+					              <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+					      </form:form>
+				</div>
 				<div id="login" class="navbar-right">
 					<div class="btn-group" style="padding-top: 8px">
 						<button type="button" class="btn btn-success">${message}</button>
@@ -60,13 +69,15 @@
 							<li><a href="#">Messages</a></li>
 
 							<li class="divider"></li>
-							<li><a id="acctlogout" href="UMapUSUI/logout">Logout</a></li>
+							<!-- <li><a id="acctlogout" href="/UMapUSUI/logout">Logout</a></li> -->
 						</ul>
 
 					</div>
+					
 
 
 				</div>
+				
 				<div style="margin-top: 5px;" class="navbar-right"
 					id="loginerrpanel"></div>
 

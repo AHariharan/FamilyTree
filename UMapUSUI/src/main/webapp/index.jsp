@@ -193,8 +193,8 @@
 							</div>
 						</div>
 						<a class="left carousel-control" href="#myCarousel"
-							data-slide="prev">‹</a> <a class="right carousel-control"
-							href="#myCarousel" data-slide="next">›</a>
+							data-slide="prev">&lt;</a> <a class="right carousel-control"
+							href="#myCarousel" data-slide="next">&gt;</a>
 					</div>
 				</div>
 				<div id="signup" class="col-md-6 holder breadcrumb">
@@ -266,7 +266,7 @@
 
 			<div id="footer" class="row">
 				<div id="copyright" class="col-md-3" style="color: black">
-					Copyright � 2014 UMapUS Inc.</div>
+					Copyright 2014 UMapUS Inc.</div>
 				<div id="social-block" class="col-md-offset-5 col-md-4">
 					<div class="single-block">
 						<h3>Stay Connected</h3>
