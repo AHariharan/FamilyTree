@@ -101,12 +101,18 @@ var Account = function() {
 			// Add Test
 
 			var url = "/UMapUSUI/signup";
+			var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
 			$.ajax({
 				type : "POST",
 				url : url,
 				contentType : "application/json",
 				data : JSON.stringify(formdata),
 				consumes : "application/json",
+				beforeSend: function (request)
+	            {
+	                request.setRequestHeader(header, token);
+	            },
 				success : function(data, textStatus, jqXHR) {
 					alert("Sign up successful");
 				},

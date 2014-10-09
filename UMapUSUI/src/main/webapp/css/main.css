@@ -236,6 +236,11 @@ display:inline-table;*/
 	margin-left: 1951px;
 }
 
+#loginfailure > h4
+{
+	color:red;
+}
+
 /*#loginerrpanel
 {
 	float: right;

@@ -73,9 +73,15 @@
 
 		<section id="Container" class="container  ">
         <div id="loginfailure">
-           <h3> Login failed invalid username/password</h3>
-           <h2> Please enter the register email id to retreive the password</h2>
-           <input id="RegisteredEmailId" type="text" placeholder="Email Address"/>
+           <h4> Login failed invalid username/password</h4>
+                    <div class="form-group">
+						<input id="loginemail" name="userName" placeholder="Email"
+							class="form-control" type="text" />
+					</div>
+					<div class="form-group">
+						<input id="loginpasswd" name="passWord" placeholder="Password"
+							class="form-control" type="password" />
+					</div>
          
         </div>
 
@@ -222,7 +228,7 @@
 
 			<div id="footer" class="row">
 				<div id="copyright" class="col-md-3" style="color: black">
-					Copyright � 2014 UMapUS Inc.</div>
+					Copyright @ 2014 UMapUS Inc.</div>
 				<div id="social-block" class="col-md-offset-5 col-md-4">
 					<div class="single-block">
 						<h3>Stay Connected</h3>

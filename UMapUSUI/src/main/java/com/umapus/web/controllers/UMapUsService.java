@@ -105,6 +105,13 @@ public class UMapUsService {
 	
 	}
 	
+	@RequestMapping(value = { "/LoginFailure"},method = RequestMethod.GET)
+	public String loginFailure(ModelMap model,HttpServletRequest request)
+	{
+		return "LoginFailure";
+				
+	}
+	
 	
 	@POST
 	@RequestMapping(value = { "/signup"},method = RequestMethod.POST)
