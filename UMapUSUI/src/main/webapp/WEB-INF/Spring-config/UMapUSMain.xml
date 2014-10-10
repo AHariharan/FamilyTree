@@ -62,6 +62,33 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
       <bean id="component" class="com.umapus.controller.component.UMapUsComponent"/>
 
 
+   <!--  Email Settings --> <!-- As of now not working from Office will try at home -->
+   <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+       <property name="host" value="smtp.gmail.com"/>
+       <property name="port" value="465"/>
+       <property name="username" value="umapusinc@gmail.com"/>
+       <property name="password" value="EAIinFR@101"/>
+       <property name="javaMailProperties">
+           <props>
+               <prop key="mail.smtp.auth">true</prop>
+               <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+               <prop key="mail.smtp.socketFactory.port"></prop>
+               <prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>               
+               <prop key="mail.smtp.starttls.enable">true</prop>
+               <prop key="mail.debug">true</prop>
+           </props>
+       </property>    
+   </bean>
+   
+   <bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
+        <property name="from" value="support@umapus.com"/>
+        <property name="subject" value="Sign up Confirmation !!!"/>
+   </bean>
+   
+   <bean id="emailManager" class="com.umapus.external.mail.EmailManager"/>
+   
+ <!--  End Email Settings -->
+
   <!--   <bean id="UMapUSComponent" class="com.umapus.controller.component.UMapUSComponent">
     </bean>
   -->

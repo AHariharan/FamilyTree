@@ -22,6 +22,7 @@ import javax.ws.rs.core.NewCookie;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -40,6 +41,7 @@ import com.umapus.common.domain.entity.LoginResponse;
 import com.umapus.common.domain.entity.SignUpRequest;
 import com.umapus.common.domain.entity.User;
 import com.umapus.controller.component.UMapUsComponent;
+import com.umapus.external.mail.EmailManager;
 import com.umapus.internal.utilities.UMapUSUserDetails;
 import com.umapus.umapusui.dto.AuthUserDTO;
 
@@ -56,6 +58,8 @@ public class UMapUsService {
 	@Autowired
 	private UMapUsComponent component;
 	
+	@Autowired
+	private EmailManager emailManager;
 
 
 	@RequestMapping(value = { "/login"},method = RequestMethod.POST)
@@ -127,6 +131,8 @@ public class UMapUsService {
 		try
 		{
 		   component.SignUp(signUpRequest);
+		   emailManager.setEmailReceiver(signUpRequest.getEmail());
+		   emailManager.sendSignUpConfirmation();
 		}catch(Exception e)
 		{
 			e.printStackTrace();

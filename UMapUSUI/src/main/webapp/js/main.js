@@ -109,10 +109,10 @@ var Account = function() {
 				contentType : "application/json",
 				data : JSON.stringify(formdata),
 				consumes : "application/json",
-				beforeSend: function (request)
+				beforeSend: function (request) // This is to include CSRF token.
 	            {
 	                request.setRequestHeader(header, token);
-	            },
+	            }, 
 				success : function(data, textStatus, jqXHR) {
 					alert("Sign up successful");
 				},
