@@ -15,35 +15,75 @@
 	<context:annotation-config />
 
 	<bean id="mapper" class="com.umapus.controller.domain.util.UMapUsMapper" />
-	
+
 	<ldap:context-source id="contextSource" url="${ldap.url}"
 		base="${ldap.base}" username="${ldap.username}" password="${ldap.password}" />
-	
-	<ldap:ldap-template id="ldapTemplate"	context-source-ref="contextSource" />
-	
-	<!--  Add to LDAP Group -->
-	
+
+	<ldap:ldap-template id="ldapTemplate"
+		context-source-ref="contextSource" />
+
+	<!-- Add to LDAP Group -->
+
 	<ldap:context-source id="GroupContextSource" url="${ldap.url}"
 		base="${ldap.groupbase}" username="${ldap.username}" password="${ldap.password}" />
-	
-	<ldap:ldap-template id="groupldapTemplate"	context-source-ref="GroupContextSource" />
-	
-	
-	<bean id="umapsusConstants" class="com.umapus.common.domain.entity.UMapUsConstants"/>
-	
-	
+
+	<ldap:ldap-template id="groupldapTemplate"
+		context-source-ref="GroupContextSource" />
+	<!-- Email Settings --> <!-- As of now not working from Office will try at home -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="465" />
+		<property name="username" value="umapusinc@gmail.com" />
+		<property name="password" value="EAIinFR@101" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+				<prop key="mail.smtp.socketFactory.port"></prop>
+				<prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
+		<property name="from" value="support@umapus.com" />
+		<property name="subject" value="Sign up Confirmation !!!" />
+	</bean>
+
+	<!-- End Email Settings -->
+
+	<bean id="umapsusConstants" class="com.umapus.common.domain.entity.UMapUsConstants" />
+
+	<bean id="taskExecutor"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="2" />
+		<property name="maxPoolSize" value="5" />
+		<property name="queueCapacity" value="15" />
+	</bean>
+
+
 	<bean id="ldapDao" class="com.umapus.controller.infrastructure.dao.LdapDaoImpl">
 		<property name="ldapTemplate" ref="ldapTemplate" />
 	</bean>
-	
-	
+
+
 
 	<bean id="sessionRepositoryDao"
 		class="com.umapus.controller.infrastructure.dao.SessionRepositoryDaoImpl" />
 
+	<bean id="emailManagerDao"
+		class="com.umapus.controller.infrastructure.dao.EmailManagerDaoImpl">
+		<constructor-arg ref="taskExecutor" />
+	</bean>
+
+
 	<bean id="daoFactory" class="com.umapus.controller.infrastructure.dao.DAOFactory">
 		<property name="ldapDao" ref="ldapDao"></property>
 		<property name="sessionRepositoryDao" ref="sessionRepositoryDao"></property>
+		<property name="emailManagerDao" ref="emailManagerDao"></property>
+
 	</bean>
 
 	<bean id="loginRequest" class="com.umapus.common.domain.entity.LoginRequest" />
@@ -80,7 +120,8 @@
 
 
 
- 	<!-- <bean id="cntlComp" class="com.umapus.controller.component.UMapUsComponent" /> -->
+	<!-- <bean id="cntlComp" class="com.umapus.controller.component.UMapUsComponent" />  --> 
+
 	<!-- <bean id="umapsusConstants" class="com.umapus.common.domain.entity.UMapUsConstants" /> -->
 
 

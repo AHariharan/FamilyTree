@@ -48,6 +48,12 @@ public class UMapUsComponent {
 		
 		try {
 			 status = dao.getLdapDao().CreateLDAPUser(signUpRequest);
+			 System.out.println("status= " + status);
+			 if(status.equalsIgnoreCase("SUCCESS")){
+				 
+				 dao.getEmailManagerDao().SendEmail(signUpRequest.getEmail(), "Thank you for Signing up @ UMapUS");
+			 }
+			 
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
