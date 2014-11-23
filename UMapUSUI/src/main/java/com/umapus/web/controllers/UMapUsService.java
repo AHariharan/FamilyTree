@@ -95,7 +95,8 @@ public class UMapUsService {
 		
 	    System.out.println("Request" + request.getSession().getId());	
 	    AuthUserDTO userdto = (AuthUserDTO) request.getSession().getAttribute("UMapUSUserDetails");
-	 	model.addAttribute("message",userdto.getEmail() + " :: " + userdto.getLastname());
+	 	if(userdto !=null)
+	        model.addAttribute("message",userdto.getEmail() + " :: " + userdto.getLastname());
 		return "UMapUSWork";
 	}
 	

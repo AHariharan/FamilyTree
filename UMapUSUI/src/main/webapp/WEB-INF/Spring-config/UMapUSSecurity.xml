@@ -39,9 +39,12 @@
 		<security:intercept-url pattern="/images/**"
 			access="IS_AUTHENTICATED_ANONYMOUSLY" />
 
-		<security:intercept-url pattern="/UMapUS*"
+	 	<security:intercept-url pattern="/UMapUS*"
 			access="ROLE_UMAPUSMEMBERS" />
-
+ 
+ 	<!-- <security:intercept-url pattern="/UMapUSWork"
+			access="IS_AUTHENTICATED_ANONYMOUSLY" />
+  -->
 
         
 
