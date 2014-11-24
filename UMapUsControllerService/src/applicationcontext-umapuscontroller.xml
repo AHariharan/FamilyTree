@@ -125,5 +125,19 @@
 	<!-- <bean id="umapsusConstants" class="com.umapus.common.domain.entity.UMapUsConstants" /> -->
 
 
+    	<!-- redis configuration -->
+
+	<bean id="jedisConnFactory"
+		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+	    p:host-name="${redis.host}" p:port="${redis.port}" 
+		p:use-pool="true" />
+
+	<!-- redis template definition -->
+	<bean id="activationTemplate" class="org.springframework.data.redis.core.RedisTemplate"
+		p:connection-factory-ref="jedisConnFactory" />
+		
+	<!-- Initialize Cache Manager -->	
+	<bean id="cacheManager" class="com.umapus.controller.redisoperations.CacheManager"/>
+
 
 </beans>

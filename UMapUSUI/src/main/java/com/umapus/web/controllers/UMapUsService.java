@@ -23,6 +23,8 @@ import javax.ws.rs.core.NewCookie;
 
 
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -42,6 +44,8 @@ import com.umapus.common.domain.entity.SignUpRequest;
 import com.umapus.common.domain.entity.User;
 import com.umapus.controller.component.UMapUsComponent;
 import com.umapus.external.mail.EmailManager;
+import com.umapus.internal.utilities.UMapUSLoginUtilities;
+import com.umapus.internal.utilities.UMapUSLogoutSuccessHandler;
 import com.umapus.internal.utilities.UMapUSUserDetails;
 import com.umapus.umapusui.dto.AuthUserDTO;
 
@@ -58,8 +62,6 @@ public class UMapUsService {
 	@Autowired
 	private UMapUsComponent component;
 	
-	@Autowired
-	private EmailManager emailManager;
 
 
 	@RequestMapping(value = { "/login"},method = RequestMethod.POST)
@@ -117,6 +119,24 @@ public class UMapUsService {
 				
 	}
 	
+
+	
+	@RequestMapping(value = { "/activateAccount"},method = RequestMethod.GET)
+	public String activateAccount(@RequestParam(value="email") String emailid,@RequestParam(value="activationCode") String activationCode)
+	{
+		System.out.println("Test Activation link click with emailid :- " + emailid + " activationCode :" + activationCode);
+		boolean result = component.activateAccount(emailid,activationCode);
+		if(result == true)
+		{
+			System.out.println("Activate Account successful");
+		}
+		else
+		{
+			System.out.println("Activate Account failed");
+		}
+		return "Loginfailure";
+	}
+	
 	
 	@POST
 	@RequestMapping(value = { "/signup"},method = RequestMethod.POST)
@@ -131,9 +151,11 @@ public class UMapUsService {
 		component.SetSignUpFirstName(signUpRequest.getFirstName());
 		try
 		{
-		   component.SignUp(signUpRequest);
-		   emailManager.setEmailReceiver(signUpRequest.getEmail());
-		   emailManager.sendSignUpConfirmation();
+			 String encodedString = UMapUSLoginUtilities.generateActivationLink();
+			 System.out.println("Encoded String :- " + encodedString);
+			 String activationCode = encodedString;
+		     component.SignUp(signUpRequest,activationCode);
+		  
 		}catch(Exception e)
 		{
 			e.printStackTrace();

@@ -41,6 +41,9 @@
 
 	 	<security:intercept-url pattern="/UMapUS*"
 			access="ROLE_UMAPUSMEMBERS" />
+		<security:intercept-url pattern="/activateAccount"
+			access="IS_AUTHENTICATED_ANONYMOUSLY" />
+			
  
  	<!-- <security:intercept-url pattern="/UMapUSWork"
 			access="IS_AUTHENTICATED_ANONYMOUSLY" />

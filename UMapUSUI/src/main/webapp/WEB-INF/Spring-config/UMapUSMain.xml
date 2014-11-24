@@ -85,8 +85,9 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
         <property name="subject" value="Sign up Confirmation !!!"/>
    </bean>
    
-   <bean id="emailManager" class="com.umapus.external.mail.EmailManager"/>
+   <!-- <bean id="emailManager" class="com.umapus.external.mail.EmailManager"/> -->
    
+   <bean id="umapusLoginUtilities" class="com.umapus.internal.utilities.UMapUSLoginUtilities"/>   
  <!--  End Email Settings -->
 
   <!--   <bean id="UMapUSComponent" class="com.umapus.controller.component.UMapUSComponent">

@@ -1,5 +1,6 @@
 package com.umapus.internal.utilities;
 
+import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.UUID;
 
@@ -22,9 +23,15 @@ public class UMapUSLoginUtilities {
 
 	public static String generateActivationLink()
 	{
-		String genid = UUID.randomUUID().toString();
+		String genid = UUID.randomUUID().toString()+UUID.randomUUID().toString()+UUID.randomUUID().toString();
 		byte[] encodedString = encoder.digest(genid.getBytes());
-		return new String(encodedString);
+		BigInteger number = new BigInteger(1, encodedString);
+        String hashtext = number.toString(16);
+        while (hashtext.length() < 32) {
+            hashtext = "0" + hashtext;
+        }
+        return hashtext;
+		
 	}
 	
 }

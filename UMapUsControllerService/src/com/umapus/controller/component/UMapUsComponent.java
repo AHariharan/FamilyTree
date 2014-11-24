@@ -9,6 +9,7 @@ import com.umapus.common.domain.entity.LoginResponse;
 import com.umapus.common.domain.entity.SignUpRequest;
 import com.umapus.common.domain.entity.SignUpResponse;
 import com.umapus.controller.infrastructure.dao.DAOFactory;
+import com.umapus.controller.redisoperations.CacheManager;
 
 public class UMapUsComponent {
 
@@ -19,6 +20,10 @@ public class UMapUsComponent {
 	
 	@Autowired
 	private LoginResponse  loginResponse;
+	
+	@Autowired
+	private CacheManager cacheManager;
+	
 	//Dummy method used for testing the approach
 	//TODO: To be deleted
 	public void SetSignUpFirstName(String firstName){
@@ -43,15 +48,26 @@ public class UMapUsComponent {
 			return loginResponse;
 	}
 	
-	public SignUpResponse SignUp(SignUpRequest signUpRequest){
+	
+	public boolean activateAccount(String emailid,String activationCode)
+	{
+		boolean result = false;
+		if(cacheManager.getActivationLinkValue(emailid) != null)
+			  result = true;		
+		// Still work on this to add group
+		return result;
+	}
+	
+	public SignUpResponse SignUp(SignUpRequest signUpRequest,String activationCode){
 		String status= null;
-		
+		String activationurl = "http://localhost:18080/UMapUSUI/activateAccount?email="+signUpRequest.getEmail()+"&activationCode="+activationCode;
 		try {
 			 status = dao.getLdapDao().CreateLDAPUser(signUpRequest);
+			 cacheManager.addActivationLink(signUpRequest.getEmail(), activationCode);
 			 System.out.println("status= " + status);
 			 if(status.equalsIgnoreCase("SUCCESS")){
 				 
-				 dao.getEmailManagerDao().SendEmail(signUpRequest.getEmail(), "Thank you for Signing up @ UMapUS");
+				 dao.getEmailManagerDao().SendEmail(signUpRequest.getEmail(), "Thank you for Signing up @ UMapUS  \n\n  Please click on the following link to activate your account   \n\n"+ activationurl );
 			 }
 			 
 		} catch (NamingException e) {

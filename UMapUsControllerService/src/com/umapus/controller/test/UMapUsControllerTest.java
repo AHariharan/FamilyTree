@@ -66,7 +66,7 @@ public class UMapUsControllerTest {
 		signUpRequest.setLastName("Vaitiyam Gunasekaran");
 		signUpRequest.setPassword("abcd1234");
 		signUpRequest.setFirstName("test");
-		cntlcomp.SignUp(signUpRequest);
+		cntlcomp.SignUp(signUpRequest,null);
 	}
 
 	private static void Login(UMapUsComponent cntlcomp, LoginRequest loginRequest){
