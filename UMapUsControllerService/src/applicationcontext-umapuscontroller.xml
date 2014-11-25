@@ -33,12 +33,14 @@
 	<!-- Velocity begin -->
 	<bean id="velocityEngine"
 		class="org.springframework.ui.velocity.VelocityEngineFactoryBean"
-		p:resourceLoaderPath="classpath:/EmailTemplate/"
+		p:resourceLoaderPath="classpath:com/umapus/controller/EmailTemplate"
 		p:preferFileSystemAccess="false" />
 	<!-- Velocity End -->
 	<bean id="emailHelper" class="com.umapus.controller.domain.util.EmailHelper">
 		<constructor-arg ref="velocityEngine" />
 	</bean>
+	
+	
 	<!-- Email Settings --> <!-- As of now not working from Office will try at home -->
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" />
@@ -129,9 +131,9 @@
 	</bean>
 
 
-
-	<!--  <bean id="cntlComp" class="com.umapus.controller.component.UMapUsComponent" 
-		/>  -->
+      <!--  This is a test bean -->
+	  <bean id="cntlComp" class="com.umapus.controller.component.UMapUsComponent" 
+		/>  
 
 	<!-- <bean id="umapsusConstants" class="com.umapus.common.domain.entity.UMapUsConstants" 
 		/> -->
