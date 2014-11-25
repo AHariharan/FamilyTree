@@ -34,5 +34,8 @@ public class UMapUsConstants {
 	public static final int SessionMaxInActiveTimeinSec = 5 * 60;
 	public static final int RedisKeyTTLInHrs = 24;
 	
+	
+	public static final String EmailSignUpSubject = "UMapUs - Sign Up Confirmation";
+	
 }
 

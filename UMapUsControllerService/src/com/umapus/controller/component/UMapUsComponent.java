@@ -1,5 +1,7 @@
 package com.umapus.controller.component;
 
+import java.util.HashMap;
+
 import javax.naming.NamingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,8 @@ import com.umapus.common.domain.entity.LoginRequest;
 import com.umapus.common.domain.entity.LoginResponse;
 import com.umapus.common.domain.entity.SignUpRequest;
 import com.umapus.common.domain.entity.SignUpResponse;
+import com.umapus.common.domain.entity.UMapUsConstants;
+import com.umapus.controller.domain.util.EmailHelper;
 import com.umapus.controller.infrastructure.dao.DAOFactory;
 import com.umapus.controller.redisoperations.CacheManager;
 
@@ -17,13 +21,16 @@ public class UMapUsComponent {
 	private  SignUpRequest signUpRequest;
 	@Autowired
 	private DAOFactory dao; 
+	@Autowired
+	private UMapUsConstants con;
 	
 	@Autowired
 	private LoginResponse  loginResponse;
 	
 	@Autowired
 	private CacheManager cacheManager;
-	
+	@Autowired
+	private EmailHelper emailHelper;
 	//Dummy method used for testing the approach
 	//TODO: To be deleted
 	public void SetSignUpFirstName(String firstName){
@@ -66,8 +73,11 @@ public class UMapUsComponent {
 			 cacheManager.addActivationLink(signUpRequest.getEmail(), activationCode);
 			 System.out.println("status= " + status);
 			 if(status.equalsIgnoreCase("SUCCESS")){
-				 
-				 dao.getEmailManagerDao().SendEmail(signUpRequest.getEmail(), "Thank you for Signing up @ UMapUS  \n\n  Please click on the following link to activate your account   \n\n"+ activationurl );
+				 HashMap<String,Object> map = new HashMap<String,Object>();
+				 map.put("activationurl", activationurl);
+				 map.put("fname", signUpRequest.getFirstName());
+				 dao.getEmailManagerDao().SendEmail(signUpRequest.getEmail(), 
+						 emailHelper.CreateSignUpEmail(map),"UMapUs - Sign Up Confirmation");
 			 }
 			 
 		} catch (NamingException e) {

@@ -16,6 +16,7 @@
 		<redis.spring.version>1.0.0.RELEASE</redis.spring.version>
 		<jedis.version>2.0.0</jedis.version>
 		<log4j.version>1.2.16</log4j.version>
+		<velocity.version>1.7</velocity.version>
 		<spring.ldap.version>2.0.2.RELEASE</spring.ldap.version>
 	</properties>
 	<dependencies>
@@ -162,7 +163,11 @@
 			<version>1.4</version>
 			<scope>compile</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>${velocity.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>com.umapus.entity</groupId>
 			<artifactId>umapuscommon</artifactId>

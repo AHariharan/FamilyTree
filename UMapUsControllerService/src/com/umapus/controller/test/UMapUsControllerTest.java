@@ -60,13 +60,13 @@ public class UMapUsControllerTest {
 	
 	public static void SignUp(UMapUsComponent cntlcomp, SignUpRequest signUpRequest){
 		
-		cntlcomp.SetSignUpFirstName("test");
-		signUpRequest.setEmail("test@yahoo.com");
-		signUpRequest.setFamilyName("Vaitiyam");
-		signUpRequest.setLastName("Vaitiyam Gunasekaran");
-		signUpRequest.setPassword("abcd1234");
-		signUpRequest.setFirstName("test");
-		cntlcomp.SignUp(signUpRequest,null);
+		cntlcomp.SetSignUpFirstName("Arun Kumar");
+		signUpRequest.setEmail("arun_nh@yahoo.com");
+		signUpRequest.setFamilyName("Natamai");
+		signUpRequest.setLastName("NH");
+		signUpRequest.setPassword("test123");
+		signUpRequest.setFirstName("Arun Kumar");
+		cntlcomp.SignUp(signUpRequest,"activationcode");
 	}
 
 	private static void Login(UMapUsComponent cntlcomp, LoginRequest loginRequest){

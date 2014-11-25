@@ -16,6 +16,7 @@
 
 	<bean id="mapper" class="com.umapus.controller.domain.util.UMapUsMapper" />
 
+
 	<ldap:context-source id="contextSource" url="${ldap.url}"
 		base="${ldap.base}" username="${ldap.username}" password="${ldap.password}" />
 
@@ -29,6 +30,15 @@
 
 	<ldap:ldap-template id="groupldapTemplate"
 		context-source-ref="GroupContextSource" />
+	<!-- Velocity begin -->
+	<bean id="velocityEngine"
+		class="org.springframework.ui.velocity.VelocityEngineFactoryBean"
+		p:resourceLoaderPath="classpath:/EmailTemplate/"
+		p:preferFileSystemAccess="false" />
+	<!-- Velocity End -->
+	<bean id="emailHelper" class="com.umapus.controller.domain.util.EmailHelper">
+		<constructor-arg ref="velocityEngine" />
+	</bean>
 	<!-- Email Settings --> <!-- As of now not working from Office will try at home -->
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" />
@@ -120,24 +130,25 @@
 
 
 
-	<!-- <bean id="cntlComp" class="com.umapus.controller.component.UMapUsComponent" />  --> 
+	<!--  <bean id="cntlComp" class="com.umapus.controller.component.UMapUsComponent" 
+		/>  -->
 
-	<!-- <bean id="umapsusConstants" class="com.umapus.common.domain.entity.UMapUsConstants" /> -->
+	<!-- <bean id="umapsusConstants" class="com.umapus.common.domain.entity.UMapUsConstants" 
+		/> -->
 
 
-    	<!-- redis configuration -->
+	<!-- redis configuration -->
 
 	<bean id="jedisConnFactory"
 		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
-	    p:host-name="${redis.host}" p:port="${redis.port}" 
-		p:use-pool="true" />
+		p:host-name="${redis.host}" p:port="${redis.port}" p:use-pool="true" />
 
 	<!-- redis template definition -->
 	<bean id="activationTemplate" class="org.springframework.data.redis.core.RedisTemplate"
 		p:connection-factory-ref="jedisConnFactory" />
-		
-	<!-- Initialize Cache Manager -->	
-	<bean id="cacheManager" class="com.umapus.controller.redisoperations.CacheManager"/>
+
+	<!-- Initialize Cache Manager -->
+	<bean id="cacheManager" class="com.umapus.controller.redisoperations.CacheManager" />
 
 
 </beans>
