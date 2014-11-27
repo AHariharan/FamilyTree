@@ -16,31 +16,6 @@ import com.umapus.controller.component.UMapUsComponent;
 
 public class UMapUsControllerTest {
 
-	// static{
-	//
-	// ApplicationContext appcontext =
-	// new ClassPathXmlApplicationContext
-	// ("classpath:applicationcontext-umapuscontroller.xml");
-	// }
-
-//	static ApplicationContext ctx = new ClassPathXmlApplicationContext(
-//			"classpath:applicationcontext-umapuscontroller.xml");
-//
-//    static UMapUsComponent cntlcomp = (UMapUsComponent) ctx.getBean("cntlComp");
-//    
-
-//	public UMapUsController() {
-//		System.out.println("In constructor");
-//
-//		if (applicationContext != null) {
-//			applicationContext = new AnnotationConfigApplicationContext(
-//					"classpath:applicationcontext-umapuscontroller.xml");
-//		}
-//      
-//		
-//		 signUpRequest.setFirstName("Vishnu");
-//			System.out.println("FirstName==" + signUpRequest.getFamilyName());
-//	}
 
 	private static ApplicationContext ctx;
 
