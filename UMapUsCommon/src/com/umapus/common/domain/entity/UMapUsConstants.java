@@ -18,6 +18,8 @@ public class UMapUsConstants {
 	public static final String MAIL = "mail";
 	public static final String USERPASSWORD = "userPassword";
 	public static final String GRAPHID = "graphid";
+	public static final String ACTIVATIONCODE = "activationcode";
+	public static final String ISUSERACTIVE = "isuseractive";
 	public static final String OBJECTCLASS = "objectClass";
 	public static final String GN = "givenName";
 	public static final String UNIQUEMEMBER = "uniqueMember";
@@ -35,7 +37,9 @@ public class UMapUsConstants {
 	public static final int RedisKeyTTLInHrs = 24;
 	
 	
-	public static final String EmailSignUpSubject = "UMapUs - Sign Up Confirmation";
+	public static final String EmailSignUpSubject = "Welcome to UMapUs - Sign Up Confirmation";
+	public static final String ActivationAuthHashType = "MD5";
+	
 	
 }
 
