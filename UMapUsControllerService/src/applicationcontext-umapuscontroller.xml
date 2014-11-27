@@ -15,7 +15,10 @@
 	<context:annotation-config />
 
 	<bean id="mapper" class="com.umapus.controller.domain.util.UMapUsMapper" />
-
+	
+	<bean id="helper" class="com.umapus.controller.domain.util.HelperTools">
+		<property name="baseActivationUrl" value="${activation.baseuri}" />
+	</bean>
 
 	<ldap:context-source id="contextSource" url="${ldap.url}"
 		base="${ldap.base}" username="${ldap.username}" password="${ldap.password}" />
@@ -39,14 +42,14 @@
 	<bean id="emailHelper" class="com.umapus.controller.domain.util.EmailHelper">
 		<constructor-arg ref="velocityEngine" />
 	</bean>
-	
-	
+
+
 	<!-- Email Settings --> <!-- As of now not working from Office will try at home -->
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="smtp.gmail.com" />
-		<property name="port" value="465" />
-		<property name="username" value="umapusinc@gmail.com" />
-		<property name="password" value="EAIinFR@101" />
+		<property name="host" value="${email.host}" />
+		<property name="port" value="${email.port}" />
+		<property name="username" value="${email.sender.account}" />
+		<property name="password" value="${email.sender.password}" />
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.smtp.auth">true</prop>
@@ -54,7 +57,7 @@
 				<prop key="mail.smtp.socketFactory.port"></prop>
 				<prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
 				<prop key="mail.smtp.starttls.enable">true</prop>
-				<prop key="mail.debug">true</prop>
+				<prop key="mail.debug">${email.debug.mode}</prop>
 			</props>
 		</property>
 	</bean>
@@ -131,9 +134,8 @@
 	</bean>
 
 
-      <!--  This is a test bean -->
-	  <bean id="cntlComp" class="com.umapus.controller.component.UMapUsComponent" 
-		/>  
+	<!-- This is a test bean -->
+	<bean id="cntlComp" class="com.umapus.controller.component.UMapUsComponent" />
 
 	<!-- <bean id="umapsusConstants" class="com.umapus.common.domain.entity.UMapUsConstants" 
 		/> -->

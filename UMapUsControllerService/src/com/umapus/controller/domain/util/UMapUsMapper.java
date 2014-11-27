@@ -1,5 +1,7 @@
 package com.umapus.controller.domain.util;
 
+import java.security.MessageDigest;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.ldap.core.DirContextAdapter;
@@ -14,6 +16,8 @@ public class UMapUsMapper {
 	
 	
 	
+
+
 	public LoginResponse MapLDAPAttributeToLoginResponse(DirContextAdapter dc, boolean isLoggedIn ) {
 		
 		LoginResponse loginResponse = new LoginResponse();

@@ -3,11 +3,7 @@ package com.umapus.controller.infrastructure.dao;
 import java.util.List;
 import java.util.UUID;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
 import javax.naming.Name;
-import javax.naming.NameNotFoundException;
-import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
 import javax.naming.directory.Attribute;
 import javax.naming.directory.Attributes;
@@ -15,31 +11,20 @@ import javax.naming.directory.BasicAttribute;
 import javax.naming.directory.BasicAttributes;
 import javax.naming.directory.DirContext;
 import javax.naming.directory.ModificationItem;
-import javax.naming.directory.SearchControls;
-import javax.naming.directory.SearchResult;
-import javax.naming.ldap.LdapName;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ldap.core.AttributesMapper;
-import org.springframework.ldap.core.DirContextAdapter;
-import org.springframework.ldap.core.DirContextOperations;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.filter.AndFilter;
 import org.springframework.ldap.filter.EqualsFilter;
-import org.springframework.ldap.filter.Filter;
-import org.springframework.ldap.query.LdapQuery;
-
-
-
-
-
 import org.springframework.ldap.support.LdapNameBuilder;
 
-import com.umapus.common.domain.entity.LoginRequest;
-import com.umapus.common.domain.entity.LoginResponse;
 import com.umapus.common.domain.entity.SignUpRequest;
 import com.umapus.common.domain.entity.SignUpResponse;
 import com.umapus.common.domain.entity.UMapUsConstants;
+import com.umapus.controller.domain.entity.LDAPUser;
+import com.umapus.controller.domain.entity.SignUpStatus;
+import com.umapus.controller.domain.util.HelperTools;
 import com.umapus.controller.domain.util.UMapUsMapper;
 
 public class LdapDaoImpl implements LdapDao {
@@ -50,37 +35,53 @@ public class LdapDaoImpl implements LdapDao {
 
 	@Autowired
 	private UMapUsMapper umapsusMapper;
-	
+
 	@Autowired
 	private SignUpResponse signUpResponse;
-	
-	private LdapTemplate groupldapTemplate;
-	
 
+	@Autowired
+	private HelperTools helper;
+
+	private LdapTemplate groupldapTemplate;
 
 	public void setLdapTemplate(LdapTemplate ldapTemplate) {
 		this.ldapTemplate = ldapTemplate;
 	}
 
-	public String CreateLDAPUser(SignUpRequest signUpRequest)
-			 {
-        
-		
-		List userList = this.findUserByUserId(signUpRequest.getEmail());
-		// DirContext ldapCtx = getDirContext(umapsusConstants.LDAP_JNDI);
-        
-		if (userList.size() != 0 )
-		{
-			System.out.println("User already exist");
-			return signUpResponse.ALREADY_EXISTS.getStatus();
+	public SignUpStatus CreateLDAPUser(SignUpRequest signUpRequest) {
+
+		// List userList = this.findUserByUserId(signUpRequest.getEmail());
+		List<LDAPUser> userList = this.findUserByLDAPUserId(signUpRequest
+				.getEmail());
+
+		if (userList.size() != 0) {
+
+			int i = 0;
+
+			while (userList.iterator().hasNext()) {
+
+				LDAPUser ldapuser = (LDAPUser) userList.get(i);
+				i++;
+
+				if (ldapuser.getMail().equalsIgnoreCase(
+						signUpRequest.getEmail())) {
+					if (ldapuser.getIsuseractive().equalsIgnoreCase("false")) {
+						System.out.println("User already exist and inactive");
+						return new SignUpStatus(
+								signUpResponse.ALREADY_EXISTS_INACTIVE, null);
+					} else {
+						System.out.println("User already exist and active");
+
+						return new SignUpStatus(signUpResponse.ALREADY_EXISTS,
+								null);
+					}
+				}
+			}
 		}
 
-		String assign_GraphId = UUID.randomUUID().toString();
+		String entryDN = "uid=" + signUpRequest.getEmail();
 
-		String entryDN = "uid=" + signUpRequest.getEmail() ;
-				
-		Attribute cn = new BasicAttribute(UMapUsConstants.CN,
-				"USER");
+		Attribute cn = new BasicAttribute(UMapUsConstants.CN, "USER");
 		Attribute sn = new BasicAttribute(UMapUsConstants.SN,
 				signUpRequest.getFamilyName());
 		Attribute uid = new BasicAttribute(UMapUsConstants.UID,
@@ -89,8 +90,14 @@ public class LdapDaoImpl implements LdapDao {
 				signUpRequest.getEmail());
 		Attribute userPassword = new BasicAttribute(
 				UMapUsConstants.USERPASSWORD, signUpRequest.getPassword());
-		Attribute graphid = new BasicAttribute(UMapUsConstants.GRAPHID,
-				assign_GraphId);
+		Attribute graphid = new BasicAttribute(UMapUsConstants.GRAPHID, UUID
+				.randomUUID().toString());
+		String activationCode = helper.generateActivationCode();
+		Attribute activationcode = new BasicAttribute(
+				UMapUsConstants.ACTIVATIONCODE, activationCode);
+		Attribute isuseractive = new BasicAttribute(
+				UMapUsConstants.ISUSERACTIVE, "false");
+
 		Attribute oc = new BasicAttribute(UMapUsConstants.OBJECTCLASS);
 
 		oc.add(UMapUsConstants.TOP);
@@ -106,88 +113,92 @@ public class LdapDaoImpl implements LdapDao {
 		attributes.put(uid);
 		attributes.put(userPassword);
 		attributes.put(graphid);
+		attributes.put(activationcode);
+		attributes.put(isuseractive);
 		attributes.put(oc);
 
-		
-		  ldapTemplate.bind(entryDN,null,attributes);
-		  addUsertoGroup(signUpRequest.getEmail());
+		ldapTemplate.bind(entryDN, null, attributes);
+		//addUsertoGroup(signUpRequest.getEmail());
 
-		return signUpResponse.SUCCESS.getStatus();
-
+		return new SignUpStatus(signUpResponse.SUCCESS, activationCode);
 
 	}
+    public boolean activateUser(String uid, String activationCode){
+    	List<LDAPUser> userList = this.findUserByLDAPUserId(uid);
 
-	
-	/*public String CreateLDAPUser(SignUpRequest signUpRequest)
-	{
-		addUsertoGroup(signUpRequest.getEmail());
-		return null;
-	}
-	*/
-	private void addUsertoGroup(String uid)
-	{
-	
-	    String DN = "uid="+uid+ ",dc=umapus,dc=com";       
+		if (userList.size() != 0) {
+
+			int i = 0;
+
+			while (userList.iterator().hasNext()) {
+
+				LDAPUser ldapuser = (LDAPUser) userList.get(i);
+				i++;
+
+				if (ldapuser.getMail().equalsIgnoreCase(
+						uid)) {
+					if (ldapuser.getIsuseractive().equalsIgnoreCase("false")){
+						
+						addUsertoGroup( uid);
+						updateActivationAttribute( uid);
+						return true;
+					}
+				}
+			}
+		}
+    	return false;
+    }
+	private void addUsertoGroup(String uid) {
+
+		String DN = "uid=" + uid + ",dc=umapus,dc=com";
 		String baseDn = "cn=umapusmembers";
-		
-		Name dn = LdapNameBuilder.newInstance().add("cn","umapusmembers").build();	
+
+		Name dn = LdapNameBuilder.newInstance().add("cn", "umapusmembers")
+				.build();
 		Attribute attr = new BasicAttribute(UMapUsConstants.UNIQUEMEMBER, DN);
-		ModificationItem item = new ModificationItem(DirContext.ADD_ATTRIBUTE, attr);
-		ldapTemplate.modifyAttributes(dn,new ModificationItem[] { item });	
+		ModificationItem item = new ModificationItem(DirContext.ADD_ATTRIBUTE,
+				attr);
+		ldapTemplate.modifyAttributes(dn, new ModificationItem[] { item });
 	}
 	
+	private void updateActivationAttribute(String uid) {
 
+		String 	userdn = "uid=" + uid ;
+			//	+ ",dc=umapus,dc=com";
+		//String baseDn = "cn=umapusmembers";
 
-	private List findUserByUserId(String userId) {
+		Name dn = LdapNameBuilder.newInstance().add(userdn)
+				.build();
+		Attribute attr = new BasicAttribute(UMapUsConstants.ISUSERACTIVE, "true");
+		ModificationItem item = new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
+				attr);
+		ldapTemplate.modifyAttributes(dn, new ModificationItem[] { item });
+	}
 
-		
+	private List findUserByLDAPUserId(String userId) {
+
 		AndFilter filter = new AndFilter();
 		filter.and(new EqualsFilter(UMapUsConstants.OBJECTCLASS,
 				UMapUsConstants.UMAPUSMEMBERS));
 		filter.and(new EqualsFilter(UMapUsConstants.UID, userId));
-		return ldapTemplate.search("", filter.encode(), new AttributesMapper() {
-			public Object mapFromAttributes(Attributes attrs)
-					throws NamingException {
-				return attrs.get("uid").get();
-			}
-
-		});
+		return ldapTemplate.search("", filter.encode(),
+				new LDAPUserAttributesMapper());
 	}
 
-	public LoginResponse AuthenticateUser(LoginRequest loginRequest) throws NamingException {
-		
-		if (this.AuthenticateLDAPUser(loginRequest)){
-			
-			DirContextAdapter dc = lookupUserAttributesByUserId(loginRequest.getuserName());
-			LoginResponse loginResponse = umapsusMapper.MapLDAPAttributeToLoginResponse(dc, true);
-			System.out.println("Authentication=" + loginResponse.isLoggedin());
-			System.out.println("GraphId=" + loginResponse.getGraphId());
-			System.out.println("Authentication=" + loginResponse.isLoggedin());
-			System.out.println("SurName=" + loginResponse.getSurname());
-			return loginResponse;
+	private class LDAPUserAttributesMapper implements AttributesMapper {
+		public Object mapFromAttributes(Attributes attrs)
+				throws NamingException {
+			LDAPUser ldapuser = new LDAPUser();
+			ldapuser.setGraphid((String) attrs.get(UMapUsConstants.GRAPHID)
+					.get());
+			ldapuser.setIsuseractive((String) attrs.get(
+					UMapUsConstants.ISUSERACTIVE).get());
+			ldapuser.setMail((String) attrs.get(UMapUsConstants.MAIL).get());
+			ldapuser.setActivationCode((String) attrs.get(
+					UMapUsConstants.ACTIVATIONCODE).get());
+
+			return ldapuser;
 		}
-		
-		
-		
-		return null;
-	}
-	
-	private boolean AuthenticateLDAPUser(LoginRequest loginRequest) throws NamingException {
-		Filter f = new EqualsFilter("uid", loginRequest.getuserName());
-		boolean isLoggedin = ldapTemplate.authenticate("", f.toString(), 
-				loginRequest.getPassWord());
-		
-		return isLoggedin;
-	}
-	
-	private DirContextAdapter lookupUserAttributesByUserId(String userId) {
-
-//	Object obj = ldapTemplate.lookup(UMapUsConstants.UID + "=" + userId
-//				+ "," + UMapUsConstants.LDAPSEARCHBASE);
-		String[] attributes = {UMapUsConstants.SN,UMapUsConstants.GN,UMapUsConstants.GRAPHID};
-		DirContextAdapter dc = (DirContextAdapter) ldapTemplate.lookup(UMapUsConstants.UID+"=" + userId);
-		
-		return dc;
 	}
 
 }

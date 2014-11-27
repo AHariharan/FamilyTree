@@ -6,13 +6,13 @@ import javax.naming.NamingException;
 import com.umapus.common.domain.entity.LoginRequest;
 import com.umapus.common.domain.entity.LoginResponse;
 import com.umapus.common.domain.entity.SignUpRequest;
-import com.umapus.common.domain.entity.SignUpResponse;
+import com.umapus.controller.domain.entity.SignUpStatus;
 
 
 public interface LdapDao {
 
 	
-	public String CreateLDAPUser(SignUpRequest signUpRequest) throws NamingException;
-	public LoginResponse AuthenticateUser(LoginRequest loginRequest) throws NamingException;
+	public SignUpStatus CreateLDAPUser(SignUpRequest signUpRequest) throws NamingException;
+	public boolean activateUser(String uid, String activationCode);
 	
 }

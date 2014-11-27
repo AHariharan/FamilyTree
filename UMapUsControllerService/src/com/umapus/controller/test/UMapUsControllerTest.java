@@ -53,26 +53,28 @@ public class UMapUsControllerTest {
 	     SignUpRequest signUpRequest = (SignUpRequest) ctx.getBean("signUpRequest");
 		 LoginRequest loginRequest = (LoginRequest) ctx.getBean("loginRequest");
 		 //Login(cntlcomp,loginRequest);
-	     SignUp(cntlcomp, signUpRequest);
+	     //SignUp(cntlcomp, signUpRequest);
+	     Activate(cntlcomp,"vglvishnu@gmail.com","f26b4a50377900094ca373253252643e");
 		 
 	}
 
 	
 	public static void SignUp(UMapUsComponent cntlcomp, SignUpRequest signUpRequest){
 		
-		cntlcomp.SetSignUpFirstName("Arun Kumar");
-		signUpRequest.setEmail("arun_nh@yahoo.com");
-		signUpRequest.setFamilyName("Natamai");
-		signUpRequest.setLastName("NH");
+		cntlcomp.SetSignUpFirstName("Chari");
+		signUpRequest.setEmail("vglvishnu@gmail.com");
+		signUpRequest.setFamilyName("Vaitiyam");
+		signUpRequest.setLastName("VG");
 		signUpRequest.setPassword("test123");
-		signUpRequest.setFirstName("Arun Kumar");
-		cntlcomp.SignUp(signUpRequest,"activationcode");
+		signUpRequest.setFirstName("Chari");
+		cntlcomp.SignUp(signUpRequest);
 	}
 
-	private static void Login(UMapUsComponent cntlcomp, LoginRequest loginRequest){
+	
+public static void Activate(UMapUsComponent cntlcomp, String emailid, String activationCode){
 		
-		loginRequest.setUserName("vglvishnu@yahoo.com");
-		loginRequest.setPassWord("Test@123");
-		cntlcomp.Login(loginRequest);
+		
+		System.out.println("Activated = " +cntlcomp.activateAccount(emailid, activationCode));
 	}
+	
 }
