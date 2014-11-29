@@ -19,10 +19,10 @@ import org.springframework.ldap.filter.AndFilter;
 import org.springframework.ldap.filter.EqualsFilter;
 import org.springframework.ldap.support.LdapNameBuilder;
 
+import com.umapus.common.domain.entity.LDAPUser;
 import com.umapus.common.domain.entity.SignUpRequest;
 import com.umapus.common.domain.entity.SignUpResponse;
 import com.umapus.common.domain.entity.UMapUsConstants;
-import com.umapus.controller.domain.entity.LDAPUser;
 import com.umapus.controller.domain.entity.SignUpStatus;
 import com.umapus.controller.domain.util.HelperTools;
 import com.umapus.controller.domain.util.UMapUsMapper;
@@ -51,31 +51,17 @@ public class LdapDaoImpl implements LdapDao {
 	public SignUpStatus CreateLDAPUser(SignUpRequest signUpRequest) {
 
 		// List userList = this.findUserByUserId(signUpRequest.getEmail());
-		List<LDAPUser> userList = this.findUserByLDAPUserId(signUpRequest
-				.getEmail());
+		LDAPUser ldapuser = this.findUserByUserId(signUpRequest.getEmail());
 
-		if (userList.size() != 0) {
+		if (ldapuser != null) {
+			if (ldapuser.getIsuseractive().equalsIgnoreCase("false")) {
+				System.out.println("User already exist and inactive");
+				return new SignUpStatus(signUpResponse.ALREADY_EXISTS_INACTIVE,
+						null);
+			} else {
+				System.out.println("User already exist and active");
 
-			int i = 0;
-
-			while (userList.iterator().hasNext()) {
-
-				LDAPUser ldapuser = (LDAPUser) userList.get(i);
-				i++;
-
-				if (ldapuser.getMail().equalsIgnoreCase(
-						signUpRequest.getEmail())) {
-					if (ldapuser.getIsuseractive().equalsIgnoreCase("false")) {
-						System.out.println("User already exist and inactive");
-						return new SignUpStatus(
-								signUpResponse.ALREADY_EXISTS_INACTIVE, null);
-					} else {
-						System.out.println("User already exist and active");
-
-						return new SignUpStatus(signUpResponse.ALREADY_EXISTS,
-								null);
-					}
-				}
+				return new SignUpStatus(signUpResponse.ALREADY_EXISTS, null);
 			}
 		}
 
@@ -118,36 +104,27 @@ public class LdapDaoImpl implements LdapDao {
 		attributes.put(oc);
 
 		ldapTemplate.bind(entryDN, null, attributes);
-		//addUsertoGroup(signUpRequest.getEmail());
+		// addUsertoGroup(signUpRequest.getEmail());
 
 		return new SignUpStatus(signUpResponse.SUCCESS, activationCode);
 
 	}
-    public boolean activateUser(String uid, String activationCode){
-    	List<LDAPUser> userList = this.findUserByLDAPUserId(uid);
 
-		if (userList.size() != 0) {
+	public boolean activateUser(String userId, String activationCode) {
+		LDAPUser ldapuser = this.findUserByUserId(userId);
 
-			int i = 0;
-
-			while (userList.iterator().hasNext()) {
-
-				LDAPUser ldapuser = (LDAPUser) userList.get(i);
-				i++;
-
-				if (ldapuser.getMail().equalsIgnoreCase(
-						uid)) {
-					if (ldapuser.getIsuseractive().equalsIgnoreCase("false")){
-						
-						addUsertoGroup( uid);
-						updateActivationAttribute( uid);
-						return true;
-					}
-				}
+		if (ldapuser != null) {
+			if (ldapuser.getIsuseractive().equalsIgnoreCase("false")) {
+				System.out.println("User already exist and inactive");
+				addUsertoGroup(userId);
+				updateActivationAttribute(userId);
+				return true;
 			}
 		}
-    	return false;
-    }
+
+		return false;
+	}
+
 	private void addUsertoGroup(String uid) {
 
 		String DN = "uid=" + uid + ",dc=umapus,dc=com";
@@ -160,22 +137,44 @@ public class LdapDaoImpl implements LdapDao {
 				attr);
 		ldapTemplate.modifyAttributes(dn, new ModificationItem[] { item });
 	}
-	
+
 	private void updateActivationAttribute(String uid) {
 
-		String 	userdn = "uid=" + uid ;
-			//	+ ",dc=umapus,dc=com";
-		//String baseDn = "cn=umapusmembers";
+		String userdn = "uid=" + uid;
+		// + ",dc=umapus,dc=com";
+		// String baseDn = "cn=umapusmembers";
 
-		Name dn = LdapNameBuilder.newInstance().add(userdn)
-				.build();
-		Attribute attr = new BasicAttribute(UMapUsConstants.ISUSERACTIVE, "true");
-		ModificationItem item = new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-				attr);
+		Name dn = LdapNameBuilder.newInstance().add(userdn).build();
+		Attribute attr = new BasicAttribute(UMapUsConstants.ISUSERACTIVE,
+				"true");
+		ModificationItem item = new ModificationItem(
+				DirContext.REPLACE_ATTRIBUTE, attr);
 		ldapTemplate.modifyAttributes(dn, new ModificationItem[] { item });
 	}
 
-	private List findUserByLDAPUserId(String userId) {
+	public  LDAPUser findUserByUserId(String userId) {
+
+		List<LDAPUser> userList = this.findUserListByLDAPUserId(userId);
+
+		if (userList.size() != 0) {
+
+			int i = 0;
+
+			while (userList.iterator().hasNext()) {
+
+				LDAPUser ldapuser = (LDAPUser) userList.get(i);
+				i++;
+
+				if (ldapuser.getMail().equalsIgnoreCase(userId)) {
+					return ldapuser;
+				}
+			}
+		}
+
+		return null;
+	}
+
+	public List findUserListByLDAPUserId(String userId) {
 
 		AndFilter filter = new AndFilter();
 		filter.and(new EqualsFilter(UMapUsConstants.OBJECTCLASS,

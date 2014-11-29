@@ -6,7 +6,7 @@ import javax.naming.NamingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.umapus.common.domain.entity.LoginRequest;
+import com.umapus.common.domain.entity.LDAPUser;
 import com.umapus.common.domain.entity.LoginResponse;
 import com.umapus.common.domain.entity.SignUpRequest;
 import com.umapus.common.domain.entity.SignUpResponse;
@@ -51,7 +51,7 @@ public class UMapUsComponent {
 
 	public boolean activateAccount(String emailid, String activationCode) {
 		boolean result = dao.getLdapDao().activateUser(emailid, activationCode);
-		
+
 		return result;
 	}
 
@@ -80,7 +80,12 @@ public class UMapUsComponent {
 			e.printStackTrace();
 		}
 
-		return null;
+		return signupstatus.getSignupresponse();
+	}
+
+	public LDAPUser LoginFailure(String userId) {
+
+		return dao.getLdapDao().findUserByUserId(userId);
 	}
 
 }

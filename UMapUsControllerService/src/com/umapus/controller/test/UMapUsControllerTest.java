@@ -29,7 +29,8 @@ public class UMapUsControllerTest {
 		 LoginRequest loginRequest = (LoginRequest) ctx.getBean("loginRequest");
 		 //Login(cntlcomp,loginRequest);
 	     //SignUp(cntlcomp, signUpRequest);
-	     Activate(cntlcomp,"vglvishnu@gmail.com","f26b4a50377900094ca373253252643e");
+	     //Activate(cntlcomp,"vglvishnu@gmail.com","f26b4a50377900094ca373253252643e");
+	     LoginFailure(cntlcomp,"vglvishnu@gmail.com");
 		 
 	}
 
@@ -52,4 +53,10 @@ public static void Activate(UMapUsComponent cntlcomp, String emailid, String act
 		System.out.println("Activated = " +cntlcomp.activateAccount(emailid, activationCode));
 	}
 	
+
+public static void LoginFailure(UMapUsComponent cntlcomp, String emailid){
+	
+	
+	System.out.println("Activated = " +cntlcomp.LoginFailure(emailid));
+}
 }
