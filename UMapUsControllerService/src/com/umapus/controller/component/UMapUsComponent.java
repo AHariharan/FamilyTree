@@ -55,7 +55,7 @@ public class UMapUsComponent {
 		return result;
 	}
 
-	public SignUpResponse SignUp(SignUpRequest signUpRequest) {
+	public SignUpResponse signUp(SignUpRequest signUpRequest) {
 		SignUpStatus signupstatus = null;
 
 		try {
@@ -83,7 +83,7 @@ public class UMapUsComponent {
 		return signupstatus.getSignupresponse();
 	}
 
-	public LDAPUser LoginFailure(String userId) {
+	public LDAPUser loginFailure(String userId) {
 
 		return dao.getLdapDao().findUserByUserId(userId);
 	}

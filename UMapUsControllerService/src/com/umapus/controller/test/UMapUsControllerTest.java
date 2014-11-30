@@ -43,7 +43,7 @@ public class UMapUsControllerTest {
 		signUpRequest.setLastName("VG");
 		signUpRequest.setPassword("test123");
 		signUpRequest.setFirstName("Chari");
-		cntlcomp.SignUp(signUpRequest);
+		cntlcomp.signUp(signUpRequest);
 	}
 
 	
@@ -57,6 +57,6 @@ public static void Activate(UMapUsComponent cntlcomp, String emailid, String act
 public static void LoginFailure(UMapUsComponent cntlcomp, String emailid){
 	
 	
-	System.out.println("Activated = " +cntlcomp.LoginFailure(emailid));
+	System.out.println("Activated = " +cntlcomp.loginFailure(emailid));
 }
 }
