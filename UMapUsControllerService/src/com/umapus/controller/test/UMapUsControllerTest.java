@@ -28,9 +28,9 @@ public class UMapUsControllerTest {
 	     SignUpRequest signUpRequest = (SignUpRequest) ctx.getBean("signUpRequest");
 		 LoginRequest loginRequest = (LoginRequest) ctx.getBean("loginRequest");
 		 //Login(cntlcomp,loginRequest);
-	     //SignUp(cntlcomp, signUpRequest);
+	     SignUp(cntlcomp, signUpRequest);
 	     //Activate(cntlcomp,"vglvishnu@gmail.com","f26b4a50377900094ca373253252643e");
-	     LoginFailure(cntlcomp,"vglvishnu@gmail.com");
+	     //LoginFailure(cntlcomp,"vglvishnu@gmail.com");
 		 
 	}
 

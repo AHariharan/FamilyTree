@@ -64,7 +64,7 @@ public class UMapUsService {
 	
 
 
-	@RequestMapping(value = { "/login"},method = RequestMethod.POST)
+	/*@RequestMapping(value = { "/login"},method = RequestMethod.POST)
 	public String Login(@ModelAttribute("loginrequest") LoginRequest loginrequest,ModelMap model,HttpServletRequest request)
 			throws Exception {
 
@@ -76,7 +76,7 @@ public class UMapUsService {
 		           
 		try
 		{
-		LoginResponse response = component.Login(loginrequest);
+		LoginResponse response = component.login(loginrequest);
 		if(response !=  null)
 			return "UMapUSWork";
 	    else
@@ -87,7 +87,7 @@ public class UMapUsService {
 			return "LoginFailure";
 		}
 		
-	}
+	}*/
 
 	
 	
@@ -121,8 +121,8 @@ public class UMapUsService {
 	
 
 	
-	@RequestMapping(value = { "/activateAccount"},method = RequestMethod.GET)
-	public String activateAccount(@RequestParam(value="email") String emailid,@RequestParam(value="activationCode") String activationCode)
+	@RequestMapping(value = {"/activate/account"},method = RequestMethod.GET)
+	public String activateAccount(@RequestParam(value="id") String emailid,@RequestParam(value="authtoken") String activationCode)
 	{
 		System.out.println("Test Activation link click with emailid :- " + emailid + " activationCode :" + activationCode);
 		boolean result = component.activateAccount(emailid,activationCode);
@@ -154,7 +154,7 @@ public class UMapUsService {
 			 String encodedString = UMapUSLoginUtilities.generateActivationLink();
 			 System.out.println("Encoded String :- " + encodedString);
 			 String activationCode = encodedString;
-		     component.SignUp(signUpRequest,activationCode);
+		     component.signUp(signUpRequest);
 		  
 		}catch(Exception e)
 		{

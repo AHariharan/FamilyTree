@@ -135,7 +135,7 @@
 
 
 	<!-- This is a test bean -->
-	 <!-- <bean id="cntlComp" class="com.umapus.controller.component.UMapUsComponent" />  -->
+	 <bean id="cntlComp" class="com.umapus.controller.component.UMapUsComponent" /> 
 
 	<!-- <bean id="umapsusConstants" class="com.umapus.common.domain.entity.UMapUsConstants" 
 		/> -->

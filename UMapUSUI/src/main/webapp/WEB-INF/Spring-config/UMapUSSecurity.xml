@@ -39,9 +39,9 @@
 		<security:intercept-url pattern="/images/**"
 			access="IS_AUTHENTICATED_ANONYMOUSLY" />
 
-	 	<security:intercept-url pattern="/UMapUS*"
+	 	<security:intercept-url pattern="/UMapUSWork"
 			access="ROLE_UMAPUSMEMBERS" />
-		<security:intercept-url pattern="/activateAccount"
+		<security:intercept-url pattern="/activate/account"
 			access="IS_AUTHENTICATED_ANONYMOUSLY" />
 			
  
@@ -54,7 +54,7 @@
 		<!-- Override default login and logout pages -->
 		<security:form-login login-page="/"
 			login-processing-url="/login" username-parameter="userName" authentication-success-handler-ref="UMapUSAuthSuccessHandler"
-			password-parameter="passWord" default-target-url="/UMapUSWork"
+			password-parameter="passWord" default-target-url="/UMapUSWork" 
 			authentication-failure-url="/LoginFailure" 
 			always-use-default-target="true"/>
 			

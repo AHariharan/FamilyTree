@@ -48,7 +48,7 @@ public class HelperTools {
 
 	public URI generateActivationUrl(String userId, String activationCode) {
 		String stringActivationUrl = MessageFormat.format(baseActivationUrl
-				+ "/activate/account?id={0}&authtoken={1}", userId,
+				+ "/UMapUSUI/activate/account?id={0}&authtoken={1}", userId,
 				activationCode);
 		URI activationuri = null;
 		try {
