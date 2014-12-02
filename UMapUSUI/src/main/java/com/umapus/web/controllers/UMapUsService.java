@@ -25,6 +25,7 @@ import javax.ws.rs.core.NewCookie;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -41,6 +42,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.umapus.common.domain.entity.LoginRequest;
 import com.umapus.common.domain.entity.LoginResponse;
 import com.umapus.common.domain.entity.SignUpRequest;
+import com.umapus.common.domain.entity.SignUpResponse;
 import com.umapus.common.domain.entity.User;
 import com.umapus.controller.component.UMapUsComponent;
 import com.umapus.external.mail.EmailManager;
@@ -142,6 +144,7 @@ public class UMapUsService {
 	@RequestMapping(value = { "/signup"},method = RequestMethod.POST)
 	@Produces(MediaType.APPLICATION_JSON)
 	public @ResponseBody Object SignUp(@RequestBody SignUpRequest signUpRequest , HttpServletRequest request) {
+		SignUpResponse resp = null;
 		System.out.println("Session is : " + request.getSession().getId());
         System.out.println("Sign up request getFamilyName :" + signUpRequest.getFamilyName());
         System.out.println("Sign up request getFirstName :" + signUpRequest.getFirstName());
@@ -154,14 +157,14 @@ public class UMapUsService {
 			 String encodedString = UMapUSLoginUtilities.generateActivationLink();
 			 System.out.println("Encoded String :- " + encodedString);
 			 String activationCode = encodedString;
-		     component.signUp(signUpRequest);
-		  
+		     resp = component.signUp(signUpRequest);
+		    
 		}catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 		
-		return "Success";
+		return resp;
 	}
 
 	/*private HttpSession createSession(HttpServletRequest req,

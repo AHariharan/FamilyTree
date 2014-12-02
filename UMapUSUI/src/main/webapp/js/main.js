@@ -1,6 +1,7 @@
 var Account = function() {
 	var self = this;
 	
+	
 	$("#forgotpasswd").on("click",function(e)
 			{
 		       $("#ForgotPasswordPopup").css("display", "block");
@@ -114,10 +115,36 @@ var Account = function() {
 	                request.setRequestHeader(header, token);
 	            }, 
 				success : function(data, textStatus, jqXHR) {
-					alert("Sign up successful");
+					if(data == "SUCCESS")
+						{ 						
+					        $('#signupsuccess').css("display", "block");
+					        $('#signupfailure').css("display", "none");
+						}
+					if(data == "ALREADY_EXISTS")
+					{ 						
+				         $('#signupfailure').css("display", "block");
+				         $('#signupsuccess').css("display", "none");
+				         $('#signupfailure h5').html("User already exists. Please verify your email address / login");
+				         
+					}
+					if(data == "ALREADY_EXISTS_INACTIVE")
+					{ 						
+				         $('#signupfailure').css("display", "block");
+				         $('#signupsuccess').css("display", "none");
+				         $('#signupfailure h5').html("User already exists. You need to activate your account before login");
+				         
+					}
+					if(data == "FAILED")
+					{ 						
+				         $('#signupfailure').css("display", "block");
+				         $('#signupsuccess').css("display", "none");
+				         $('#signupfailure h5').html("Oops !!! something went wrong. Please try again later.");
+				         
+					}
 				},
 				error : function(data) {
-					alert("Unable to fetch familyname list" + data);
+					$('#signupfailure').css("display", "block");
+					$('#signupsuccess').css("display", "none");
 				}
 				
 			});
@@ -259,3 +286,11 @@ var CustomPopup = function()
 };
 
 var customPopup = new CustomPopup();
+
+var initJqueryEvents = function()
+{
+    $("#signupfailure button,#signupsuccess button").click(function(){
+    	$(this).parent().slideUp();
+    });
+}();
+
