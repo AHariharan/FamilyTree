@@ -124,21 +124,21 @@ var Account = function() {
 					{ 						
 				         $('#signupfailure').css("display", "block");
 				         $('#signupsuccess').css("display", "none");
-				         $('#signupfailure h5').html("User already exists. Please verify your email address / login");
+				         $('#signupfailure h5').html(errorMessages.signup.err_user_already_exists_active);
 				         
 					}
 					if(data == "ALREADY_EXISTS_INACTIVE")
 					{ 						
 				         $('#signupfailure').css("display", "block");
 				         $('#signupsuccess').css("display", "none");
-				         $('#signupfailure h5').html("User already exists. You need to activate your account before login");
+				         $('#signupfailure h5').html(errorMessages.signup.err_user_already_exists_inactive);
 				         
 					}
 					if(data == "FAILED")
 					{ 						
 				         $('#signupfailure').css("display", "block");
 				         $('#signupsuccess').css("display", "none");
-				         $('#signupfailure h5').html("Oops !!! something went wrong. Please try again later.");
+				         $('#signupfailure h5').html(errorMessages.signup.err_signupfailure_generic);
 				         
 					}
 				},

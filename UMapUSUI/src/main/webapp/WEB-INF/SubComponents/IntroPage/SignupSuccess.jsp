@@ -1,6 +1,6 @@
 <div id="signupsuccess"
-	class="alert alert-success alert-dismissible fade in" role="alert" style="display:none">
-	<button type="button" class="close" data-dismiss="alert">
+	class="alert alert-success fade in" role="alert" style="display:none">
+	<button type="button" class="close">
 		<span aria-hidden="true">×</span><span class="sr-only">Close</span>
 	</button>
 	<strong>Sign up successful !!!</strong> You will receive an email
